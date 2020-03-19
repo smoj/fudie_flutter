@@ -19,7 +19,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_advanced_networkimage: 0.7.0
+  flutter_advanced_networkimage: 0.5.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -45,6 +45,7 @@ flutter:
   assets:
     - assets/
     - assets/magaza/
+    - assets/fonts/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
@@ -58,20 +59,23 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
+    - family: Baloo
+      fonts:
+        - asset: assets/fonts/BalooBhai-Regular.ttf
     - family: Yrsa
       fonts:
-        - asset: assets/magaza/fonts/Yrsa-Regular.ttf
-        - asset: assets/magaza/fonts/Yrsa-Bold.ttf
+        - asset: assets/fonts/Yrsa-Regular.ttf
+        - asset: assets/fonts/Yrsa-Bold.ttf
           weight: 600
-        - asset: assets/magaza/fonts/Yrsa-Medium.ttf
+        - asset: assets/fonts/Yrsa-Medium.ttf
           weight: 500
     - family: Montserrat
       fonts:
-        - asset: assets/magaza/fonts/Montserrat-SemiBold.ttf
+        - asset: assets/fonts/Montserrat-SemiBold.ttf
           weight: 700
-        - asset: assets/magaza/fonts/Montserrat-Regular.ttf
+        - asset: assets/fonts/Montserrat-Regular.ttf
           weight: 600
-        - asset: assets/magaza/fonts/Montserrat-Light.ttf
+        - asset: assets/fonts/Montserrat-Light.ttf
           weight: 300
   #
   # For details regarding fonts from package dependencies,

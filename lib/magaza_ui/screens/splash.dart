@@ -10,7 +10,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState(){
     super.initState();
-    Timer(Duration(seconds: 4), ()=> Navigator.of(context).pushNamed('/slider'));
+//    Timer(Duration(seconds: 4), ()=> Navigator.of(context).pushNamed('/slider'));
   }
 
   Widget build(BuildContext context) {
@@ -28,32 +28,28 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
             Align(
-              alignment: Alignment.bottomCenter,
+              alignment: Alignment.center,
               child: Container(
                 padding: EdgeInsets.only(top:10),
                 decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                        begin: Alignment.centerRight,
-                        end: Alignment.centerLeft,
-                        colors: [
-                          Color.fromRGBO(131, 58, 180, 1),
-                          Color.fromRGBO(253, 29, 29, 1),
-                          Color.fromRGBO(252, 176, 69, 1)
-                        ]
-                    )
+//                    color: Colors.white
                 ),
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 30),
                   alignment: Alignment(0,0),
-                  color: Colors.white,
                   height: MediaQuery.of(context).size.height * 0.25,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      Text('Magazine UI', style: TextStyle(
-                          color: Colors.black,
-                          fontFamily: 'Yrsa',
-                          fontWeight: FontWeight.w700,
+                      CircularProgressIndicator(
+                        backgroundColor: Colors.white,
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.05,
+                      ),
+                      Text('Reader UI', style: TextStyle(
+                          color: Colors.white,
+                          fontFamily: 'Baloo',
                           fontSize: MediaQuery.of(context).size.height * 0.05,
                           height: 0.9,
                           decoration: TextDecoration.none
@@ -63,43 +59,12 @@ class _SplashScreenState extends State<SplashScreen> {
                           fontSize: MediaQuery.of(context).size.height * 0.024,
                           fontFamily: 'Montserrat',
                           fontWeight: FontWeight.w300,
-                          decoration: TextDecoration.none
+                          decoration: TextDecoration.none,
+                        color: Colors.white
                       ),)
                     ],
                   ),
                 ),
-              ),
-            ),
-//            Align(
-//              alignment: Alignment(0,0.45),
-//              child: Container(
-//                height: 10,
-//                width: MediaQuery.of(context).size.width,
-//                decoration: BoxDecoration(
-//                  gradient: LinearGradient(
-//                    begin: Alignment.centerRight,
-//                    end: Alignment.centerLeft,
-//                    colors: [
-//                      Color.fromRGBO(131, 58, 180, 1),
-//                      Color.fromRGBO(253, 29, 29, 1),
-//                      Color.fromRGBO(252, 176, 69, 1)
-//                    ]
-//                  )
-//                ),
-//              ),
-//            ),
-            Align(
-              alignment: Alignment(0,0.55),
-              child: Container(
-                width: 96,
-                height: 96,
-                child: Image.asset('assets/magaza/logo.png', fit: BoxFit.fitWidth,),
-              ),
-            ),
-            Align(
-              alignment: Alignment(0,0),
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.white,
               ),
             ),
           ],
