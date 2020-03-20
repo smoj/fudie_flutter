@@ -62,21 +62,9 @@ flutter:
     - family: Baloo
       fonts:
         - asset: assets/fonts/BalooBhai-Regular.ttf
-    - family: Yrsa
+    - family: Varela
       fonts:
-        - asset: assets/fonts/Yrsa-Regular.ttf
-        - asset: assets/fonts/Yrsa-Bold.ttf
-          weight: 600
-        - asset: assets/fonts/Yrsa-Medium.ttf
-          weight: 500
-    - family: Montserrat
-      fonts:
-        - asset: assets/fonts/Montserrat-SemiBold.ttf
-          weight: 700
-        - asset: assets/fonts/Montserrat-Regular.ttf
-          weight: 600
-        - asset: assets/fonts/Montserrat-Light.ttf
-          weight: 300
+        - asset: assets/fonts/VarelaRound-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

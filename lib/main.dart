@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:magaza_flutter/magaza_ui/screens/forgot.dart';
-import 'package:magaza_flutter/magaza_ui/screens/auth_tab.dart';
-import 'package:magaza_flutter/magaza_ui/screens/detail.dart';
-import 'package:magaza_flutter/magaza_ui/screens/home.dart';
-import 'package:magaza_flutter/magaza_ui/screens/register.dart';
-import 'package:magaza_flutter/magaza_ui/screens/search.dart';
-import 'package:magaza_flutter/magaza_ui/screens/splash.dart';
-import 'package:magaza_flutter/magaza_ui/screens/favourite.dart';
-import 'package:magaza_flutter/magaza_ui/screens/story_highlight.dart';
-import 'package:magaza_flutter/magaza_ui/screens/profile.dart';
-import 'package:magaza_flutter/magaza_ui/screens/i_slider.dart';
-import 'package:magaza_flutter/magaza_ui/screens/edit_profile.dart';
+import 'package:magaza_flutter/ui/screens/forgot.dart';
+import 'package:magaza_flutter/ui/screens/auth_tab.dart';
+import 'package:magaza_flutter/ui/screens/detail.dart';
+import 'package:magaza_flutter/ui/screens/home.dart';
+import 'package:magaza_flutter/ui/screens/register.dart';
+import 'package:magaza_flutter/ui/screens/search.dart';
+import 'package:magaza_flutter/ui/screens/splash.dart';
+import 'package:magaza_flutter/ui/screens/favourite.dart';
+import 'package:magaza_flutter/ui/screens/story_highlight.dart';
+import 'package:magaza_flutter/ui/screens/profile.dart';
+import 'package:magaza_flutter/ui/screens/i_slider.dart';
+import 'package:magaza_flutter/ui/screens/edit_profile.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/' : (context) => SplashScreen(),
+        '/' : (context) => ISliderScreen(),
         '/home' : (context) => HomeScreen(),
         '/detail' : (context) => DetailScreen(),
         '/login' : (context) => AuthTabScreen(),
@@ -40,6 +40,35 @@ class MyApp extends StatelessWidget {
         '/edit-profile' : (context) => EditProfilePage()
       },
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: TextTheme(
+          headline: TextStyle(
+            fontSize: 62,
+            height: 0.8,
+            fontFamily: 'Baloo',
+          ),
+          title: TextStyle(
+            fontSize: 52,
+            height: 0.8,
+            fontFamily: 'Baloo',
+          ),
+          subhead: TextStyle(
+            fontSize: 44,
+            height: 0.8,
+            fontFamily: 'Baloo',
+          ),
+          body1: TextStyle(
+            fontFamily: 'Varela',
+            fontSize: 26,
+              height: 0.8
+          ),
+          body2: TextStyle(
+              fontFamily: 'Varela',
+              fontSize: 20,
+              height: 1.4
+          )
+        )
+      ),
     );
   }
 }

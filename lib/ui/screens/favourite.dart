@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:magaza_flutter/magaza_ui/screens/sidemenu.dart';
-import 'package:magaza_flutter/magaza_ui/single-widgets.dart';
+import 'package:magaza_flutter/ui/screens/sidemenu.dart';
+import 'package:magaza_flutter/ui/single-widgets.dart';
 
 class FavouriteScreen extends StatefulWidget {
   @override
