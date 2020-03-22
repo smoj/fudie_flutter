@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:magaza_flutter/ui/screens/login.dart';
-import 'package:magaza_flutter/ui/screens/register.dart';
+import 'package:reader_ui_flutter/ui/screens/login.dart';
+import 'package:reader_ui_flutter/ui/screens/register.dart';
 
 class AuthTabScreen extends StatelessWidget {
   @override

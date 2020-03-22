@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:magaza_flutter/ui/screens/sidemenu.dart';
+import 'package:reader_ui_flutter/ui/screens/sidemenu.dart';
 
 class BlankPage extends StatelessWidget {
   @override

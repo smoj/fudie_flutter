@@ -1,5 +1,6 @@
-import 'package:magaza_flutter/ui/screens/slide_meta.dart';
+import 'package:reader_ui_flutter/ui/screens/slide_meta.dart';
 import 'package:flutter/material.dart';
+import 'package:reader_ui_flutter/ui/single-widgets.dart';
 
 class ISliderScreen extends StatefulWidget {
   @override
@@ -84,16 +85,34 @@ class _ISliderScreenState extends State<ISliderScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Icon(pageSlides[index].iconType, color: Colors.white, size: MediaQuery.of(context).size.width * 0.25,),
-                            SizedBox(height: 20,),
+                            SizedBox(height: MediaQuery.of(context).size.width * 0.1,),
                             Text(pageSlides[index].title, textAlign: TextAlign.center, style: Theme.of(context).textTheme.subhead.copyWith(
                               color: Colors.white,
-                              fontSize: MediaQuery.of(context).size.width * 0.1,
+                              fontSize: MediaQuery.of(context).size.width * 0.075,
                               height: 1.1
                             ),),
-                            SizedBox(height: 10,),
+                            SizedBox(height: MediaQuery.of(context).size.width * 0.05,),
                             Text(pageSlides[index].message, textAlign: TextAlign.center, style: Theme.of(context).textTheme.body2.copyWith(
                               color: Colors.white,
-                            ),)
+                              fontSize: MediaQuery.of(context).size.width * 0.05,
+                            ),),
+                            SizedBox(height: MediaQuery.of(context).size.width * 0.1,),
+                            FlatButton(
+                              onPressed: (){
+                                if(index >= pageSlides.length-1){
+                                  // last slide already reached. go to home
+                                  Navigator.pushNamed(context, '/home');
+                                }
+                                else{
+                                  slider.nextPage(duration: Duration(milliseconds: 500), curve: Curves.easeIn);
+                                }
+                              },
+                              child: UIButton(
+                                'Next',
+                                buttonColor: Colors.redAccent,
+                                buttonTextColor: Colors.white,
+                              ),
+                            ),
                           ],
                         ),
                       ),

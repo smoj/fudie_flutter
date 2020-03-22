@@ -54,6 +54,62 @@ class FeedItem extends StatelessWidget {
             height: 400,
           ),
         ),
+        Positioned(
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          child: Container(
+            color: selectColors[Random().nextInt(selectColors.length)].withOpacity(0.4),
+          ),
+        ),
+        Positioned(
+          bottom: MediaQuery.of(context).size.width * 0.09,
+          left: MediaQuery.of(context).size.width * 0.07,
+          right: MediaQuery.of(context).size.width * 0.1,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(this.title, style: Theme.of(context).textTheme.subtitle.copyWith(
+                color: Colors.white
+              ),),
+              SizedBox(
+                height: 10,
+              ),
+              Row(
+                children: <Widget>[
+                  Icon(Icons.timer, color: Colors.white,),
+                  SizedBox(width: 7,),
+                  Text(this.timestamp, style: Theme.of(context).textTheme.body2.copyWith(
+                      color: Colors.white,
+                  ),),
+                  Spacer(),
+                  Text(this.category.toLowerCase(), style: Theme.of(context).textTheme.body2.copyWith(
+                      color: Colors.white
+                  ),),
+                ],
+              ),
+            ],
+          ),
+        ),
+        Align(
+          alignment: Alignment.topLeft,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.07, vertical: MediaQuery.of(context).size.width * 0.07),
+            child: Row(
+              children: <Widget>[
+                CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: MediaQuery.of(context).size.width * 0.035
+                ),
+                SizedBox(width: 10,),
+                Text('BBC', style: Theme.of(context).textTheme.body2.copyWith(
+                  color: Colors.white
+                ),)
+              ],
+            ),
+          ),
+        ),
         Align(
           alignment: Alignment.topRight,
           child: (this.special) ? Container(
@@ -68,66 +124,6 @@ class FeedItem extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),),
           ) : null,
-        ),
-        Positioned(
-          bottom: 0,
-          top: 220,
-          left: 25,
-          child: Container(
-            width: 1,
-            decoration: BoxDecoration(
-              color: Color.fromRGBO(255, 255, 255, 0.5),
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: 20,
-          left: 15,
-          child: Container(
-            decoration: BoxDecoration(
-                color: Color.fromRGBO(0, 0, 0, 0.5),
-                borderRadius: BorderRadius.circular(5)
-            ),
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-            child: RotatedBox(
-              quarterTurns: 3,
-              child: Text(this.category.toUpperCase(), style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'Montserrat',
-                  fontSize: 10,
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 8
-              ),),
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: 40,
-          left: 55,
-          right: 20,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(this.title, style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'Yrsa',
-                  fontWeight: FontWeight.w600,
-                  fontSize: 33
-              ),),
-              Row(
-                children: <Widget>[
-                  Icon(Icons.timer, color: Colors.white,),
-                  SizedBox(width: 7,),
-                  Text(this.timestamp, style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.normal,
-                    fontSize: 20
-                  ),),
-                ],
-              )
-            ],
-          ),
         ),
       ],
     );

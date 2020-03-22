@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:magaza_flutter/ui/single-widgets.dart';
-import 'package:magaza_flutter/ui/screens/sidemenu.dart';
+import 'package:reader_ui_flutter/ui/single-widgets.dart';
+import 'package:reader_ui_flutter/ui/screens/sidemenu.dart';
 import 'package:flutter/services.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         title: 'Himalayas',
                         timestamp: '23 Mins ago',
                         category: 'SOCIAL',
-                        imageUrl: 'https://i.picsum.photos/id/866/300/200.jpg',
+                        imageUrl: 'https://i.picsum.photos/id/866/400/400.jpg',
                         special: true,
                       ),
                     ),
@@ -85,7 +85,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         title: 'Seaside Musings',
                         timestamp: '11 Mins ago',
                         category: 'TRAVEL',
-                        imageUrl: 'https://i.picsum.photos/id/372/400/200.jpg',
+                        imageUrl: 'https://i.picsum.photos/id/372/400/400.jpg',
                         special: false,
                       ),
                     ),
