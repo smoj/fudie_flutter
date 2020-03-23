@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:reader_ui_flutter/ui/screens/sidemenu.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
+import 'package:reader_ui_flutter/ui/single-widgets.dart';
+import 'package:reader_ui_flutter/ui/widgets/quote.dart';
 
 class DetailScreen extends StatelessWidget {
   @override
@@ -26,11 +28,7 @@ class DetailScreen extends StatelessWidget {
           iconTheme: IconThemeData(
               color: Colors.black
           ),
-          title: Text('Detail Screen', style: TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.w700,
-              color: Colors.black
-          ),),
+          title: Text('Detail Screen', style: Theme.of(context).textTheme.body2),
         ),
         body: SafeArea(
           child: SingleChildScrollView(
@@ -39,220 +37,109 @@ class DetailScreen extends StatelessWidget {
                   Stack(
                     children: <Widget>[
                       Container(
-                        constraints: BoxConstraints(
-                          minHeight: 300
-                        ),
+                        color: Colors.red,
+                        height: 300,
                         width: MediaQuery.of(context).size.width,
-                          child: TransitionToImage(
-                            image: AdvancedNetworkImage(
-                              'https://picsum.photos/300/300',
-                              loadedCallback: () => print('Network Image loaded.'),
-                              loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
-                              timeoutDuration: Duration(seconds: 60),
-                              retryLimit: 2,
-                            ),
-                          )
+                        child: TransitionToImage(
+                          image: AdvancedNetworkImage(
+                            'https://i.picsum.photos/id/866/400/400.jpg',
+                            loadedCallback: () => print('Network Image loaded.'),
+                            loadFailedCallback: () => print('Oh, no! failed! Timeout and Retry limit exceeded'),
+                            timeoutDuration: Duration(seconds: 60),
+                            retryLimit: 2,
+                          ),
+                          fit: BoxFit.fitWidth,
+                          enableRefresh: true,
+                        ),
                       ),
                       Positioned(
                         top: 0,
                         bottom: 0,
-                        right: 0,
                         left: 0,
+                        right: 0,
                         child: Container(
-                            color: Color.fromRGBO(0, 0, 0, 0.4)
+                          color: Colors.black.withOpacity(0.4),
                         ),
                       ),
                       Positioned(
-                        right: 15,
-                        top: 20,
+                        bottom: MediaQuery.of(context).size.width * 0.03,
+                        left: MediaQuery.of(context).size.width * 0.07,
+                        right: MediaQuery.of(context).size.width * 0.1,
                         child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Text('27', style: TextStyle(
+                            Text('The Availability of Low-Cost Flights', style: Theme.of(context).textTheme.subtitle.copyWith(
                                 color: Colors.white,
-                                fontSize: 50,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Yrsa',
-                                height: 0.65
+                                fontSize: MediaQuery.of(context).size.width * 0.1,
+                                height: 1.1
                             ),),
-                            Text('July', style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.w700,
-                                fontFamily: 'Yrsa'
-                            ),),
-                            SizedBox(height: 20,),
-                            CircleAvatar(
-                              radius: 25,
-                              backgroundImage: AssetImage('assets/magaza/avatar.png'),
-                            )
-                          ],
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 30,
-                        left: 55,
-                        right: 55,
-                        child: Column(
-                          children: <Widget>[
-                            Text('Pohoda festival one of the best in Europe', style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 33,
-                                fontFamily: 'Yrsa',
-                                fontWeight: FontWeight.w700,
-                                height: 1
-                            ),),
-                            SizedBox(height: 10,),
+                            SizedBox(
+                              height: 20,
+                            ),
                             Row(
                               children: <Widget>[
-                                Text('0 Comments', style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.w600
+                                CircleAvatar(
+                                    backgroundColor: Colors.white,
+                                    radius: MediaQuery.of(context).size.width * 0.035
+                                ),
+                                SizedBox(width: 7,),
+                                Text('BBC World', style: Theme.of(context).textTheme.body2.copyWith(
+                                  color: Colors.white,
+                                  fontSize: MediaQuery.of(context).size.width * 0.05
                                 ),),
-                                SizedBox(width: 15,),
-                                Text('5 Likes', style: TextStyle(
+                                Spacer(),
+                                Text('Politics', style: Theme.of(context).textTheme.body2.copyWith(
                                     color: Colors.white,
-                                    fontSize: 14,
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.w600
-                                ),),
-                                SizedBox(width: 15,),
-                                Text('26 Shares', style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.w600
+                                    fontSize: MediaQuery.of(context).size.width * 0.05
                                 ),),
                               ],
-                            )
+                            ),
+                            SizedBox(height: 20,),
                           ],
                         ),
                       ),
-                      Positioned(
-                        bottom: 0,
-                        left: 25,
-                        child: Container(
-                          width: 1,
-                          height: 200,
-                          color: Color.fromRGBO(255, 255, 255, 0.5),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: 20,
-                        left: 15,
-                        child: Container(
-                          decoration: BoxDecoration(
-                              color: Color.fromRGBO(0, 0, 0, 0.5),
-                              borderRadius: BorderRadius.circular(5)
-                          ),
-                          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
-                          child: RotatedBox(
-                            quarterTurns: 3,
-                            child: Text('MUSIC', style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'Montserrat',
-                                fontSize: 10,
-                                fontWeight: FontWeight.w700,
-                                letterSpacing: 8
-                            ),),
-                          ),
-                        ),
-                      )
                     ],
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(27.0),
-                    child: Text('You know the drill by now. I show up at festivals and snap hundreds of pictures with smiling fans from around the world. This time, the 100 Nights of Summer Tour sampled the Pohoda Festival in Slovakia. Maybe it was the weather, maybe it was the twentieth anniversary, and almost certainly the ample amounts of vodka, but the Slovaks made this a weekend to remember. You know the drill by now. I show up at festivals and snap hundreds of pictures with smiling fans from around the world. This time, the 100 Nights of Summer Tour sampled the Pohoda Festival in Slovakia. Maybe it was the weather.', style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w300
-                    ),),
-                  ),
-                  Stack(
-                    children: <Widget>[
-                      Positioned(
-                        top: -100,
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        child: Icon(
-                          Icons.format_quote,
-                          color: Color.fromRGBO(224, 233, 233, 0.88),
-                          size: 180,
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.fromLTRB(60, 88, 60, 48),
-                        child: Text('Sometimes life hits you in the head with a brick. Do not lose faith.', textAlign: TextAlign.center, style: TextStyle(
-                            fontSize: 30,
-                            fontFamily: 'Yrsa',
-                            fontWeight: FontWeight.w600
-                        ),),
-                      )
-                    ],
-                  ),
-                  Image.asset('assets/magaza/detail-pic.png'),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 34),
-                    child: Text('You know the drill by now. I show up at festivals and snap hundreds of pictures with smiling fans from around the world. This time, the 100 Nights of Summer Tour sampled the Pohoda Festival in Slovakia. Maybe it was the weather, maybe it was the twentieth anniversary, and almost certainly the ample amounts of vodka, but the Slovaks made this a weekend to remember.', style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Montserrat',
-                        fontWeight: FontWeight.w300
-                    ),),
-                  ),
-                  Row(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 27, vertical: 10),
-                        child: Text('- Michelle Martinez', style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w300
-                        ),),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 27,vertical: 20),
-                    child: Row(
+                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.07, vertical: MediaQuery.of(context).size.width * 0.07),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Icon(
-                          Icons.favorite_border,
-                          color: Colors.black,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text('36', style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w600
+                        Text('The availability of low-cost flights and last minute internet deals means that cheap holidays are far easier to come by than they used to be, but it can still take a bit of shopping around to get the best discounts.', style: Theme.of(context).textTheme.body2.copyWith(
+                          fontSize: MediaQuery.of(context).size.width * 0.05,
+                          height: 1.55
                         ),),
-                        SizedBox(
-                          width: 20,
-                        ),
-                        Icon(
-                          Icons.favorite_border,
-                          color: Colors.black,
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text('36', style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w600
+                        UIQuote('Have the Courage to Follow your Heart and Intuition', 'Steve Jobs. 2003'),
+                        Text('You can often get discounts on flights, hotels, car hire and holiday packages if you book online. Make sure that the site you’re booking with has a secure payment system and that you print off your confirmation so that you can call the company with any queries or problems.', style: Theme.of(context).textTheme.body2.copyWith(
+                            fontSize: MediaQuery.of(context).size.width * 0.05,
+                            height: 1.55
                         ),),
-                        SizedBox(
-                          width: 30,
+                        SizedBox( height: 15,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Icon(Icons.timer, color: Colors.grey.shade500, size: MediaQuery.of(context).size.width * 0.08,),
+                            SizedBox(width: 10,),
+                            Text('11 Nov. At 17:42', textAlign: TextAlign.left, style: Theme.of(context).textTheme.body2.copyWith(
+                              fontSize: MediaQuery.of(context).size.width * 0.05
+                            ),),
+                            Spacer(),
+                            Icon(Icons.share, color: Colors.grey.shade500, size: MediaQuery.of(context).size.width * 0.08,),
+                            SizedBox(width: 10,),
+                            Icon(Icons.bookmark_border, color: Colors.grey.shade500, size: MediaQuery.of(context).size.width * 0.08,),
+                          ],
                         ),
-                        Icon(
-                          Icons.share,
-                          color: Colors.black,
-                        ),
+                        SizedBox(height: 20,),
+                        Text('Comments', textAlign: TextAlign.left, style: Theme.of(context).textTheme.body1.copyWith(
+                          fontFamily: 'Baloo'
+                        ),),
                       ],
                     ),
+                  ),
+                  Divider(color: Colors.grey.shade400, height: 1,),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.07, vertical: MediaQuery.of(context).size.width * 0.07),
+                    child: Container(),
                   )
                 ],
               )

@@ -24,11 +24,7 @@ class BlankPage extends StatelessWidget {
         iconTheme: IconThemeData(
             color: Colors.black
         ),
-        title: Text('Detail Screen', style: TextStyle(
-            fontFamily: 'Montserrat',
-            fontWeight: FontWeight.w700,
-            color: Colors.black
-        ),),
+        title: Text('Blank Screen', style: Theme.of(context).textTheme.body2),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
