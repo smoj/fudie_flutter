@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reader_ui_flutter/ui/single-widgets.dart';
-import 'package:reader_ui_flutter/ui/screens/sidemenu.dart';
+import 'package:fudie_ui_flutter/ui/single-widgets.dart';
+import 'package:fudie_ui_flutter/ui/screens/sidemenu.dart';
 import 'package:flutter/services.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -1,6 +1,6 @@
-import 'package:reader_ui_flutter/ui/screens/slide_meta.dart';
+import 'package:fudie_ui_flutter/ui/screens/slide_meta.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_ui_flutter/ui/single-widgets.dart';
+import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 
 class ISliderScreen extends StatefulWidget {
   @override

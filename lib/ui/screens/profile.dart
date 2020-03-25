@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reader_ui_flutter/ui/screens/sidemenu.dart';
+import 'package:fudie_ui_flutter/ui/screens/sidemenu.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
 

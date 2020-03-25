@@ -1,4 +1,4 @@
-package com.audacitus.reader_ui_flutter
+package com.audacitus.fudie_ui_flutter
 
 import android.os.Bundle
 

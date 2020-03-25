@@ -16,7 +16,7 @@ A custom UI for Magazine/News apps build using flutter
 - Press the play button to run the code
 
 ### For iOS:
-- Open the `reader_ui_flutter/ios/Runner` folder using Xcode. You can also do this via android studio.
+- Open the `fudie_ui_flutter/ios/Runner` folder using Xcode. You can also do this via android studio.
 [![N|Solid](https://audacitus.com/furniture/3-OpenInXcode.png)](#)
 - In Xcode, ensure the Runner is selected. Under the general tab, ensure a team is selected
 [![N|Solid](https://audacitus.com/furniture/4-XCode-Team.png)](#)

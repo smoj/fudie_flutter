@@ -1,4 +1,4 @@
-name: reader_ui_flutter
+name: fudie_ui_flutter
 description: A Flutter App for mobile news apps
 
 # The following defines the version and build number for your application.
@@ -59,12 +59,14 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Baloo
+    - family: Poppins
       fonts:
-        - asset: assets/fonts/BalooBhai-Regular.ttf
-    - family: Varela
+        - asset: assets/fonts/Poppins-Regular.ttf
+        - asset: assets/fonts/Poppins-Bold.ttf
+          weight: 600
+    - family: Nunito
       fonts:
-        - asset: assets/fonts/VarelaRound-Regular.ttf
+        - asset: assets/fonts/Nunito-Regular.ttf
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

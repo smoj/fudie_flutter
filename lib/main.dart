@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:reader_ui_flutter/ui/screens/forgot.dart';
-import 'package:reader_ui_flutter/ui/screens/auth_tab.dart';
-import 'package:reader_ui_flutter/ui/screens/detail.dart';
-import 'package:reader_ui_flutter/ui/screens/home.dart';
-import 'package:reader_ui_flutter/ui/screens/register.dart';
-import 'package:reader_ui_flutter/ui/screens/search.dart';
-import 'package:reader_ui_flutter/ui/screens/splash.dart';
-import 'package:reader_ui_flutter/ui/screens/favourite.dart';
-import 'package:reader_ui_flutter/ui/screens/story_highlight.dart';
-import 'package:reader_ui_flutter/ui/screens/profile.dart';
-import 'package:reader_ui_flutter/ui/screens/i_slider.dart';
-import 'package:reader_ui_flutter/ui/screens/edit_profile.dart';
+import 'package:fudie_ui_flutter/ui/screens/forgot.dart';
+import 'package:fudie_ui_flutter/ui/screens/auth_tab.dart';
+import 'package:fudie_ui_flutter/ui/screens/detail.dart';
+import 'package:fudie_ui_flutter/ui/screens/home.dart';
+import 'package:fudie_ui_flutter/ui/screens/register.dart';
+import 'package:fudie_ui_flutter/ui/screens/search.dart';
+import 'package:fudie_ui_flutter/ui/screens/splash.dart';
+import 'package:fudie_ui_flutter/ui/screens/favourite.dart';
+import 'package:fudie_ui_flutter/ui/screens/story_highlight.dart';
+import 'package:fudie_ui_flutter/ui/screens/profile.dart';
+import 'package:fudie_ui_flutter/ui/screens/i_slider.dart';
+import 'package:fudie_ui_flutter/ui/screens/edit_profile.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/' : (context) => DetailScreen(),
+        '/' : (context) => SplashScreen(),
         '/home' : (context) => HomeScreen(),
         '/detail' : (context) => DetailScreen(),
         '/login' : (context) => AuthTabScreen(),

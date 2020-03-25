@@ -1,8 +1,8 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=/Users/sememojugbe/Developer/flutter"
-export "FLUTTER_APPLICATION_PATH=/Users/sememojugbe/AndroidStudioProjects/reader_ui_flutter"
-export "FLUTTER_TARGET=/Users/sememojugbe/AndroidStudioProjects/reader_ui_flutter/lib/main.dart"
+export "FLUTTER_APPLICATION_PATH=/Users/sememojugbe/AndroidStudioProjects/fudie_ui_flutter"
+export "FLUTTER_TARGET=/Users/sememojugbe/AndroidStudioProjects/fudie_ui_flutter/lib/main.dart"
 export "FLUTTER_BUILD_DIR=build"
 export "SYMROOT=${SOURCE_ROOT}/../build/ios"
 export "FLUTTER_FRAMEWORK_DIR=/Users/sememojugbe/Developer/flutter/bin/cache/artifacts/engine/ios"
