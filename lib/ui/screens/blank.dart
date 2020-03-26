@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fudie_ui_flutter/ui/screens/sidemenu.dart';
+import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 
 class BlankPage extends StatelessWidget {
   @override

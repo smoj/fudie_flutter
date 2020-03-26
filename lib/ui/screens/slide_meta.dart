@@ -9,7 +9,8 @@ class SlideMeta {
   IconData iconType;
 
   SlideMeta(
-      {this.title,
+      {
+        this.title,
         this.message,
         this.backgroundColor,
         this.backgroundImage,

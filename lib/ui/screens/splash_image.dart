@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
-import 'package:fudie_ui_flutter/ui/single-widgets.dart' as prefix0;
 
-class SplashScreen extends StatefulWidget {
+import 'package:flutter/widgets.dart';
+
+class SplashScreenImage extends StatefulWidget {
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _SplashScreenImageState createState() => _SplashScreenImageState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashScreenImageState extends State<SplashScreenImage> {
   @override
   void initState(){
     super.initState();
@@ -23,32 +24,40 @@ class _SplashScreenState extends State<SplashScreen> {
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/magaza/splash-bg.png'),
+                      fit: BoxFit.fitWidth
+                  )
+              ),
+            ),
+            Container(
+              decoration: BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color.fromRGBO(255, 101, 85, 1), Color.fromRGBO(214, 48, 49, 1)]
-                  )
+                    end: Alignment(0,1),
+                    colors: [Color.fromRGBO(0, 0, 0, 0.8), Color.fromRGBO(0, 0, 0, 0.4)]
+                  ),
               ),
             ),
             //Image Container
             Align(
-              alignment: Alignment(-0.7,-0.6),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  UIDisplay3(text: 'Order', color: Colors.white,),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  UIDisplay3(text: 'Eat', color: Colors.white,),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  UIDisplay3(text: 'Repeat', color: Colors.white,),
-                ],
-              )
+                alignment: Alignment(-0.7,-0.6),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    UIDisplay3(text: 'Order', color: Colors.white,),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    UIDisplay3(text: 'Eat', color: Colors.white,),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    UIDisplay3(text: 'Repeat', color: Colors.white,),
+                  ],
+                )
             ),
             Align(
                 alignment: Alignment(-0.7, 0.8),
@@ -73,7 +82,6 @@ class _SplashScreenState extends State<SplashScreen> {
                         fontFamily: 'Poppins',
                         fontWeight: FontWeight.bold
                     ),),
-                    SizedBox(height: 10,),
                     UITitle(text: 'Flutter Food UI Kit', color: Colors.white,)
                   ],
                 ),

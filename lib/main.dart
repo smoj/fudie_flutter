@@ -7,6 +7,7 @@ import 'package:fudie_ui_flutter/ui/screens/home.dart';
 import 'package:fudie_ui_flutter/ui/screens/register.dart';
 import 'package:fudie_ui_flutter/ui/screens/search.dart';
 import 'package:fudie_ui_flutter/ui/screens/splash.dart';
+import 'package:fudie_ui_flutter/ui/screens/splash_image.dart';
 import 'package:fudie_ui_flutter/ui/screens/favourite.dart';
 import 'package:fudie_ui_flutter/ui/screens/story_highlight.dart';
 import 'package:fudie_ui_flutter/ui/screens/profile.dart';
@@ -41,38 +42,7 @@ class MyApp extends StatelessWidget {
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textTheme: TextTheme(
-          headline: TextStyle(
-            fontSize: 62,
-            height: 0.8,
-            fontFamily: 'Baloo',
-          ),
-          title: TextStyle(
-            fontSize: 52,
-            height: 0.8,
-            fontFamily: 'Baloo',
-          ),
-          subhead: TextStyle(
-            fontSize: 44,
-            height: 0.8,
-            fontFamily: 'Baloo',
-          ),
-          subtitle: TextStyle(
-            fontSize: 36,
-            height: 0.8,
-            fontFamily: 'Baloo',
-          ),
-          body1: TextStyle(
-            fontFamily: 'Varela',
-            fontSize: 26,
-              height: 0.8
-          ),
-          body2: TextStyle(
-              fontFamily: 'Varela',
-              fontSize: 20,
-              height: 1.4
-          )
-        )
+        
       ),
     );
   }
