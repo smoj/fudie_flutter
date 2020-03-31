@@ -17,7 +17,7 @@ class _ISliderScreenState extends State<ISliderScreen> {
         message: 'A Flutter news app for iOS and Android',
         backgroundColor: Colors.red,
         textColor: Colors.white,
-        backgroundImage: 'assets/magaza/slider1.png',
+        backgroundImage: 'assets/images/slider1.png',
         iconType: Icons.play_for_work
     ),
     SlideMeta(
@@ -25,7 +25,7 @@ class _ISliderScreenState extends State<ISliderScreen> {
         message: 'Complete with documentation and Copy & Paste examples',
         backgroundColor: Colors.blue.shade500,
         textColor: Colors.white,
-        backgroundImage: 'assets/magaza/slider2.png',
+        backgroundImage: 'assets/images/slider2.png',
         iconType: Icons.play_arrow
     ),
     SlideMeta(
@@ -33,7 +33,7 @@ class _ISliderScreenState extends State<ISliderScreen> {
         message: 'Focus on building your app, not designing it',
         backgroundColor: Colors.white,
         textColor: Colors.black,
-        backgroundImage: 'assets/magaza/slider3.png',
+        backgroundImage: 'assets/images/slider3.png',
         iconType: Icons.wallpaper
     ),
   ];

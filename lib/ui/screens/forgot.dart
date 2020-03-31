@@ -29,7 +29,7 @@ class ForgotScreen extends StatelessWidget {
           decoration: BoxDecoration(
             color: Color.fromRGBO(57, 127, 249, 1),
 //          image: DecorationImage(
-//            image: AssetImage('assets/magaza/login-bg.png'),
+//            image: AssetImage('assets/images/login-bg.png'),
 //            fit: BoxFit.fill
 //          )
           ),

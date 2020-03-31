@@ -22,13 +22,21 @@ void main() async{
 }
 
 class MyApp extends StatelessWidget {
+
+  final appLightTheme = ThemeData(
+      primaryColor: Color.fromRGBO(215, 41, 41, 1),
+      accentColor: Color.fromRGBO(255, 221, 161, 1),
+      primaryColorDark: Color.fromRGBO(12, 12, 12, 1),
+      scaffoldBackgroundColor: Color.fromRGBO(246, 245, 250, 1)
+  );
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/' : (context) => SplashScreen(),
+        '/' : (context) => HomeScreen(),
         '/home' : (context) => HomeScreen(),
         '/detail' : (context) => DetailScreen(),
         '/login' : (context) => AuthTabScreen(),
@@ -41,9 +49,7 @@ class MyApp extends StatelessWidget {
         '/edit-profile' : (context) => EditProfilePage()
       },
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-
-      ),
+      theme: appLightTheme,
     );
   }
 }

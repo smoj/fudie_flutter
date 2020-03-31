@@ -25,7 +25,7 @@ class _SplashScreenImageState extends State<SplashScreenImage> {
             Container(
               decoration: BoxDecoration(
                   image: DecorationImage(
-                      image: AssetImage('assets/magaza/splash-bg.png'),
+                      image: AssetImage('assets/images/splash-bg.png'),
                       fit: BoxFit.fitWidth
                   )
               ),

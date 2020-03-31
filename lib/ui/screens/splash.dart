@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
-import 'package:fudie_ui_flutter/ui/single-widgets.dart' as prefix0;
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -12,7 +11,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState(){
     super.initState();
-//    Timer(Duration(seconds: 4), ()=> Navigator.of(context).pushNamed('/slider'));
+    Timer(Duration(seconds: 4), ()=> Navigator.of(context).pushNamed('/home'));
   }
 
   Widget build(BuildContext context) {

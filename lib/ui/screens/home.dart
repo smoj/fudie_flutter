@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 import 'package:fudie_ui_flutter/ui/screens/sidemenu.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_advanced_networkimage/provider.dart';
+import 'package:flutter_advanced_networkimage/transition.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -37,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: Color.fromRGBO(246, 245, 250, 1),
           drawer: SideMenuScreen(),
           appBar: AppBar(
             brightness: Brightness.light,
@@ -49,11 +51,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               )
             ],
-            backgroundColor: Colors.white,
+            backgroundColor: Color.fromRGBO(246, 245, 250, 1),
             iconTheme: IconThemeData(
                 color: Colors.black
             ),
-            title: Text('Magaza', style: TextStyle(
+            title: Text('Home', style: TextStyle(
                 fontFamily: 'Montserrat',
                 fontWeight: FontWeight.w700,
                 color: Colors.black
@@ -61,88 +63,110 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           body: SafeArea(
             child: SingleChildScrollView(
-                child: Column(
-                  children: <Widget>[
-                    FlatButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: (){
-                        Navigator.pushNamed(context, '/story-highlight');
-                      },
-                      child: FeedItem(
-                        title: 'Himalayas',
-                        timestamp: '23 Mins ago',
-                        category: 'SOCIAL',
-                        imageUrl: 'https://i.picsum.photos/id/866/400/400.jpg',
-                        special: true,
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * ScreenGapValue),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Text('Welcome back,', textAlign: TextAlign.left, style: TextStyle(
+                                          fontSize: MediaQuery.of(context).size.width * 0.05,
+                                          fontFamily: 'Nunito'
+                                      ),),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                      UIDisplay2(text: 'Mr Bradley', color: primaryColor,)
+                                    ],
+                                  ),
+                                ),
+                                CircleAvatar(
+                                  radius: 30,
+                                  backgroundImage: AdvancedNetworkImage(
+                                    'https://randomuser.me/api/portraits/women/8.jpg',
+                                    loadedCallback: () => print('Network Image loaded.'),
+                                    loadFailedCallback: () => print('Oh, no! image load failed!'),
+                                    timeoutDuration: Duration(seconds: 30),
+                                    retryLimit: 2,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                    FlatButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: (){
-                        Navigator.pushNamed(context, '/detail');
-                      },
-                      child: FeedItem(
-                        title: 'Seaside Musings',
-                        timestamp: '11 Mins ago',
-                        category: 'TRAVEL',
-                        imageUrl: 'https://i.picsum.photos/id/372/400/400.jpg',
-                        special: false,
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * (ScreenGapValue / 3)),
+                        padding: EdgeInsets.only(left: 15),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(5),
+                            boxShadow: [lightFaintShadow]
+                        ),
+                        child: TextField(
+//                        controller: TextEditingController(text: ''),
+                          style: TextStyle(
+                              color: Colors.black.withOpacity(0.5),
+                            fontFamily: 'Nunito'
+                          ),
+                          decoration: InputDecoration(
+                              border: InputBorder.none,
+                              hintText: 'What do you want to order?',
+                              hintStyle: TextStyle(
+                                  color: Color.fromRGBO(0, 0, 0, 0.5),
+                                  fontFamily: 'Nunito',
+                              )
+                          ),
+                        ),
                       ),
-                    ),
-                    FlatButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: (){
-                        Navigator.pushNamed(context, '/detail');
-                      },
-                      child: FeedItem(
-                        title: 'Aurora Dust',
-                        timestamp: '5 Mins ago',
-                        category: 'LIFE',
-                        imageUrl: 'https://i.picsum.photos/id/974/400/300.jpg',
-                        special: false,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
+                        child: UITitle(text: 'New Deals', color: Color.fromRGBO(112, 112, 112, 1),),
                       ),
-                    ),
-                    FlatButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: (){
-                        Navigator.pushNamed(context, '/detail');
-                      },
-                      child: FeedItem(
-                        title: 'Other choice',
-                        timestamp: '5 Mins ago',
-                        category: 'LIFE',
-                        imageUrl: 'https://i.picsum.photos/id/970/400/300.jpg',
-                        special: false,
+                      UIItemLarge(),
+                      SizedBox(
+                        height: 20,
                       ),
-                    ),
-                    FlatButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: (){
-                        Navigator.pushNamed(context, '/detail');
-                      },
-                      child: FeedItem(
-                        title: 'Silent Muse',
-                        timestamp: '5 Mins ago',
-                        category: 'LIFE',
-                        imageUrl: 'https://i.picsum.photos/id/670/400/300.jpg',
-                        special: false,
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
+                        child: UITitle(text: 'Order Category', color: Color.fromRGBO(112, 112, 112, 1),),
                       ),
-                    ),
-                    FlatButton(
-                      padding: EdgeInsets.zero,
-                      onPressed: (){
-                        Navigator.pushNamed(context, '/detail');
-                      },
-                      child: FeedItem(
-                        title: 'Phatom tide',
-                        timestamp: '5 Mins ago',
-                        category: 'LIFE',
-                        imageUrl: 'https://i.picsum.photos/id/345/400/300.jpg',
-                        special: false,
+                      Container(
+                        width: MediaQuery.of(context).size.width,
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: Row(
+                            children: <Widget>[
+                              SizedBox(width: MediaQuery.of(context).size.width * ScreenGapValue,),
+                              UITag(),
+                              UITag(),
+                              UITag(),
+                              UITag(),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
-                )
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
+                        child: UITitle(text: 'Popular Meals', color: Color.fromRGBO(112, 112, 112, 1),),
+                      ),
+                    ],
+                  ),
+                ),
             ),
           )
       ),
