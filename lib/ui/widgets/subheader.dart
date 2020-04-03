@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class UITitle extends StatelessWidget {
+class UISubHeader extends StatelessWidget {
   final String text;
   final Color color;
 
-  UITitle({this.text, this.color});
+  UISubHeader({this.text, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +13,7 @@ class UITitle extends StatelessWidget {
         height: 0.8,
         fontWeight: FontWeight.w600,
         color: this.color != null ? this.color : Colors.black,
-        fontSize: MediaQuery.of(context).size.width * 0.06
+        fontSize: MediaQuery.of(context).size.width * 0.05
     ),);
   }
 }

@@ -8,4 +8,5 @@ export 'widgets/title.dart';
 export 'widgets/item_large.dart';
 export 'widgets/item_medium.dart';
 export 'widgets/tag.dart';
+export 'widgets/subheader.dart';
 export 'theme.dart';

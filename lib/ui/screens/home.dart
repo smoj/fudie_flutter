@@ -164,6 +164,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
                         child: UITitle(text: 'Popular Meals', color: Color.fromRGBO(112, 112, 112, 1),),
                       ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue,),
+                        child: Row(
+                          children: <Widget>[
+                            UIItemMedium(),
+                            SizedBox(width: 20,),
+                            UIItemMedium()
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
