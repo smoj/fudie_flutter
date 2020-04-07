@@ -4,6 +4,8 @@ import 'package:fudie_ui_flutter/ui/screens/sidemenu.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
+import 'package:provider/provider.dart';
+import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -36,6 +38,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -80,6 +83,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
+                                      Switch(
+                                        value: themeProvider.isLight,
+                                        onChanged: (boolVal){
+                                          themeProvider.setTheme(boolVal);
+                                        },
+                                      ),
                                       Text('Welcome back,', textAlign: TextAlign.left, style: TextStyle(
                                           fontSize: MediaQuery.of(context).size.width * 0.05,
                                           fontFamily: 'Nunito'
