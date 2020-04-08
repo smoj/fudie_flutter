@@ -6,15 +6,14 @@ class ThemeProvider with ChangeNotifier {
   bool isLight;
 
   final lightTheme = AppTheme(
-    primaryColor: Color.fromRGBO(215, 41, 41, 1),
-    accentColor: Color.fromRGBO(255, 221, 161, 1),
-    flatBlack: Color.fromRGBO(18, 18, 18, 1),
+    scaffoldBackground: Color.fromRGBO(246, 245, 250, 1),
+    textColor: flatBlack,
+    textBrandColor: primaryColor
   );
 
   final darkTheme = AppTheme(
-    primaryColor: Color.fromRGBO(0, 0, 0, 1),
-    accentColor: Color.fromRGBO(255, 221, 161, 1),
-    flatBlack: Color.fromRGBO(18, 18, 18, 1),
+    scaffoldBackground: flatBlack,
+    textColor: flatWhite
   );
 
   ThemeProvider({this.isLight});

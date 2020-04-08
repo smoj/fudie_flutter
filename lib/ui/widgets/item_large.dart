@@ -2,13 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
+import 'package:fudie_ui_flutter/ui/theme_meta.dart';
+import 'package:provider/provider.dart';
+import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class UIItemLarge extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Container(
       decoration: BoxDecoration(
-          color: primaryColor,
+          color: (themeProvider.isLight) ? primaryColor : Color.fromRGBO(255, 255, 255, 0.12),
           borderRadius: BorderRadius.circular(10)
       ),
       margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue),
@@ -19,15 +23,20 @@ class UIItemLarge extends StatelessWidget {
         children: <Widget>[
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
-            child: TransitionToImage(
-              image: AdvancedNetworkImage(
-                'https://i.picsum.photos/id/483/350/150.jpg',
-                loadedCallback: () => print('Network Image loaded.'),
-                loadFailedCallback: () => print('Oh, no! failed! Timeout and Retry limit exceeded'),
-                timeoutDuration: Duration(seconds: 60),
-                retryLimit: 2,
+            child: Container(
+              constraints: BoxConstraints(
+                minHeight: 100
               ),
-              fit: BoxFit.contain,
+              child: TransitionToImage(
+                image: AdvancedNetworkImage(
+                  'https://i.picsum.photos/id/483/350/150.jpg',
+                  loadedCallback: () => print('Network Image loaded.'),
+                  loadFailedCallback: () => print('Oh, no! failed! Timeout and Retry limit exceeded'),
+                  timeoutDuration: Duration(seconds: 60),
+                  retryLimit: 2,
+                ),
+                fit: BoxFit.contain,
+              ),
             ),
           ),
           SizedBox(
@@ -40,7 +49,7 @@ class UIItemLarge extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('Uzumaki Ramen Style', style: TextStyle(
+                  Text('Uzumaki Ramen Style', maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(
                       color: Colors.white,
                       fontSize: MediaQuery.of(context).size.width * 0.055,
                       fontWeight: FontWeight.bold

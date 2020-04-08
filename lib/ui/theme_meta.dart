@@ -1,42 +1,41 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+var primaryColor = Colors.red;
+var accentColor = Colors.yellow;
+var flatBlack = Color.fromRGBO(18, 18, 18, 1);
+var flatWhite = Color.fromRGBO(223, 230, 233, 1);
+
+var lightFaintShadow = BoxShadow(
+    color: Colors.grey.withOpacity(0.1),
+    offset: Offset(0,0),
+    spreadRadius: 4,
+    blurRadius: 4
+);
+
+var ScreenGapValue = 0.07;
+
+var primaryFont = 'Poppins';
+var secondaryFont = 'Nunito';
 
 class AppTheme {
-  Color primaryColor;
-  Color accentColor;
-  Color flatBlack;
-  Color flatLight;
-  Color success;
-  String brandGradientHorizontal;
-  String brandGradientVertical;
+  Color scaffoldBackground;
+  Color textColor;
+  Color textBrandColor;
 
-  AppTheme(
-      {this.primaryColor,
-        this.accentColor,
-        this.flatBlack,
-        this.flatLight,
-        this.success,
-        this.brandGradientHorizontal,
-        this.brandGradientVertical});
+  AppTheme({this.scaffoldBackground, this.textColor, this.textBrandColor});
 
   AppTheme.fromJson(Map<String, dynamic> json) {
-    primaryColor = json['primaryColor'];
-    accentColor = json['accentColor'];
-    flatBlack = json['flatBlack'];
-    flatLight = json['flatLight'];
-    success = json['success'];
-    brandGradientHorizontal = json['brandGradientHorizontal'];
-    brandGradientVertical = json['brandGradientVertical'];
+    scaffoldBackground = json['scaffoldBackground'];
+    textColor = json['textColor'];
+    textBrandColor = json['textBrandColor'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['primaryColor'] = this.primaryColor;
-    data['accentColor'] = this.accentColor;
-    data['flatBlack'] = this.flatBlack;
-    data['flatLight'] = this.flatLight;
-    data['success'] = this.success;
-    data['brandGradientHorizontal'] = this.brandGradientHorizontal;
-    data['brandGradientVertical'] = this.brandGradientVertical;
+    data['scaffoldBackground'] = this.scaffoldBackground;
+    data['textColor'] = this.textColor;
+    data['textBrandColor'] = this.textBrandColor;
     return data;
   }
 }

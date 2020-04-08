@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
+import 'package:fudie_ui_flutter/ui/theme_meta.dart';
 
 class UIItemMedium extends StatelessWidget {
   @override

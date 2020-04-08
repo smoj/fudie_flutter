@@ -4,6 +4,7 @@ import 'package:fudie_ui_flutter/ui/screens/sidemenu.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
+import 'package:fudie_ui_flutter/ui/theme_meta.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
@@ -42,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-          backgroundColor: Color.fromRGBO(246, 245, 250, 1),
+          backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
           drawer: SideMenuScreen(),
           appBar: AppBar(
             brightness: Brightness.light,
@@ -59,8 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Colors.black
             ),
             title: Text('Home', style: TextStyle(
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.w700,
+                fontFamily: primaryFont,
                 color: Colors.black
             ),),
           ),
@@ -77,39 +77,50 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
+                            Switch(
+                              value: themeProvider.isLight,
+                              onChanged: (boolVal){
+                                themeProvider.setTheme(boolVal);
+                              },
+                            ),
                             Row(
                               children: <Widget>[
                                 Expanded(
                                   child: Column(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: <Widget>[
-                                      Switch(
-                                        value: themeProvider.isLight,
-                                        onChanged: (boolVal){
-                                          themeProvider.setTheme(boolVal);
-                                        },
-                                      ),
-                                      Text('Welcome back,', textAlign: TextAlign.left, style: TextStyle(
-                                          fontSize: MediaQuery.of(context).size.width * 0.05,
-                                          fontFamily: 'Nunito'
-                                      ),),
+                                      UISubHeader(text: 'Welcome back'),
                                       SizedBox(
-                                        height: 10,
+                                        height: 20,
                                       ),
-                                      UIDisplay2(text: 'Mr Bradley', color: primaryColor,)
+                                      UIDisplay2(text: 'Mr Bradley', color: (themeProvider.isLight) ? themeProvider.lightTheme.textBrandColor : themeProvider.darkTheme.textColor,)
                                     ],
                                   ),
                                 ),
-                                CircleAvatar(
-                                  radius: 30,
-                                  backgroundImage: AdvancedNetworkImage(
-                                    'https://randomuser.me/api/portraits/women/8.jpg',
-                                    loadedCallback: () => print('Network Image loaded.'),
-                                    loadFailedCallback: () => print('Oh, no! image load failed!'),
-                                    timeoutDuration: Duration(seconds: 30),
-                                    retryLimit: 2,
+                                Container(
+                                  width: 70,
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(100),
+                                    border: Border.all(
+                                      color: primaryColor,
+                                      width: 7
+                                    )
                                   ),
-                                ),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(100),
+                                    child: TransitionToImage(
+                                      image: AdvancedNetworkImage(
+                                        'https://randomuser.me/api/portraits/women/8.jpg',
+                                        loadedCallback: () => print('Network Image loaded.'),
+                                        loadFailedCallback: () => print('Oh, no! image load failed!'),
+                                        timeoutDuration: Duration(seconds: 30),
+                                        retryLimit: 2,
+                                      ),
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                )
                               ],
                             ),
                           ],
@@ -141,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
-                        child: UITitle(text: 'New Deals', color: Color.fromRGBO(112, 112, 112, 1),),
+                        child: UITitle(text: 'New Deals'),
                       ),
                       UIItemLarge(),
                       SizedBox(
@@ -149,7 +160,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
-                        child: UITitle(text: 'Order Category', color: Color.fromRGBO(112, 112, 112, 1),),
+                        child: UITitle(text: 'Order Category'),
                       ),
                       Container(
                         width: MediaQuery.of(context).size.width,
@@ -171,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
-                        child: UITitle(text: 'Popular Meals', color: Color.fromRGBO(112, 112, 112, 1),),
+                        child: UITitle(text: 'Popular Meals'),
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue,),
