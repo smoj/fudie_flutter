@@ -2,18 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
-import 'package:fudie_ui_flutter/ui/theme_meta.dart';
+import 'package:provider/provider.dart';
+import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class UIItemMedium extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Expanded(
       child: Column(
         children: <Widget>[
           Container(
             padding: EdgeInsets.all(10),
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: (themeProvider.isLight) ? Colors.white : Color.fromRGBO(12, 12, 12, 0.11),
               borderRadius: BorderRadius.circular(10),
               boxShadow: [lightFaintShadow],
             ),
@@ -37,7 +39,7 @@ class UIItemMedium extends StatelessWidget {
                   height: 10,
                 ),
                 Text('Uzumaki Ramen Style', style: TextStyle(
-                    color: Colors.black,
+                    color: (themeProvider.isLight) ? Colors.black : flatWhite,
                     fontSize: MediaQuery.of(context).size.width * 0.048,
                     fontFamily: 'Nunito'
                 ),),
@@ -47,7 +49,10 @@ class UIItemMedium extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                UISubHeader(text: '39.99',),
+                Opacity(
+                    child: UISubHeader(text: '39.99', weight: FontWeight.bold,),
+                    opacity: 0.6,
+                ),
               ],
             ),
           ),

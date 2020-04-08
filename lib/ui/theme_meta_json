@@ -1,6 +1,7 @@
 [
   {
     "scaffoldBackground": "x",
-    "textColor": "x"
+    "textColor": "x",
+    "textBrandColor": "x"
   }
 ]

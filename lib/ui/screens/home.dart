@@ -49,19 +49,19 @@ class _HomeScreenState extends State<HomeScreen> {
             brightness: Brightness.light,
             actions: <Widget>[
               IconButton(
-                icon: Icon(Icons.search),
+                icon: Icon(Icons.search, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
                 onPressed: (){
                   Navigator.pushNamed(context, '/search');
                 },
               )
             ],
-            backgroundColor: Color.fromRGBO(246, 245, 250, 1),
+            backgroundColor: (themeProvider.isLight) ? Colors.white : Color.fromRGBO(66, 66, 66, 1),
             iconTheme: IconThemeData(
-                color: Colors.black
+                color: (themeProvider.isLight) ? flatBlack : flatWhite
             ),
             title: Text('Home', style: TextStyle(
                 fontFamily: primaryFont,
-                color: Colors.black
+                color: (themeProvider.isLight) ? flatBlack : flatWhite
             ),),
           ),
           body: SafeArea(
