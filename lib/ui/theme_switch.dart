@@ -19,6 +19,16 @@ var ScreenGapValue = 0.07;
 var primaryFont = 'Poppins';
 var secondaryFont = 'Nunito';
 
+var darkThemeElevation1 = Color.fromRGBO(255, 255, 255, 0.07);
+var darkThemeElevation2 = Color.fromRGBO(255, 255, 255, 0.08);
+var darkThemeElevation4 = Color.fromRGBO(255, 255, 255, 0.09);
+var darkThemeElevation6 = Color.fromRGBO(255, 255, 255, 0.11);
+var darkThemeElevation8 = Color.fromRGBO(255, 255, 255, 0.12);
+var darkThemeElevation12 = Color.fromRGBO(255, 255, 255, 0.14);
+var darkThemeElevation16 = Color.fromRGBO(255, 255, 255, 0.15);
+
+
+
 class ThemeProvider with ChangeNotifier {
   bool isLight;
 

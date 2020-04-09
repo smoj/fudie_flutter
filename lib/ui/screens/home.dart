@@ -169,13 +169,24 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Row(
                             children: <Widget>[
                               SizedBox(width: MediaQuery.of(context).size.width * ScreenGapValue,),
-                              UITag(),
-                              UITag(),
-                              UITag(),
-                              UITag(),
+                              UITag('Breakfast'),
+                              UITag('Lunch'),
+                              UITag('Take Out'),
+                              UITag('Others'),
                             ],
                           ),
                         ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
+                        child: UITitle(text: 'Order History'),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue),
+                        child: UIOrder(),
                       ),
                       SizedBox(
                         height: 20,

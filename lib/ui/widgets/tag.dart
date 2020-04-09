@@ -4,6 +4,10 @@ import 'package:fudie_ui_flutter/ui/theme_meta.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class UITag extends StatelessWidget {
+  final String text;
+
+  UITag(this.text);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,7 +17,7 @@ class UITag extends StatelessWidget {
           color: primaryColor,
           borderRadius: BorderRadius.circular(50)
       ),
-      child: Text('Breakfast', style: TextStyle(
+      child: Text(this.text, style: TextStyle(
           color: Colors.white,
           fontFamily: 'Nunito',
           fontSize: MediaQuery.of(context).size.width * 0.045
