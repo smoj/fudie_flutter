@@ -4,7 +4,6 @@ import 'package:fudie_ui_flutter/ui/screens/sidemenu.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
-import 'package:fudie_ui_flutter/ui/theme_meta.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 

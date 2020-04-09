@@ -4,143 +4,158 @@ import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 import 'package:fudie_ui_flutter/ui/widgets/quote.dart';
+import 'package:provider/provider.dart';
+import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
         backgroundColor: Colors.white,
         drawer: SideMenuScreen(),
         appBar: AppBar(
           brightness: Brightness.light,
-          leading: IconButton(
-            icon: Icon(Icons.arrow_back),
-            onPressed: (){
-              Navigator.pop(context);
-            },
-          ),
           actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.bookmark_border),
-            )
+//            IconButton(
+//              icon: Icon(Icons.search, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
+//              onPressed: (){
+//                Navigator.pushNamed(context, '/search');
+//              },
+//            )
+          FlatButton(
+            padding: EdgeInsets.zero,
+            child: Switch(
+              value: themeProvider.isLight,
+              onChanged: (boolVal){
+                themeProvider.setTheme(boolVal);
+              },
+            ),
+          )
           ],
-          backgroundColor: Colors.white,
+          backgroundColor: (themeProvider.isLight) ? Colors.white : Color.fromRGBO(66, 66, 66, 1),
           iconTheme: IconThemeData(
-              color: Colors.black
+              color: (themeProvider.isLight) ? flatBlack : flatWhite
           ),
-          title: Text('Detail Screen', style: Theme.of(context).textTheme.body2),
+          title: Text('Home', style: TextStyle(
+              fontFamily: primaryFont,
+              color: (themeProvider.isLight) ? flatBlack : flatWhite
+          ),),
         ),
         body: SafeArea(
           child: SingleChildScrollView(
               child: Column(
                 children: <Widget>[
-                  Stack(
-                    children: <Widget>[
-                      Container(
-                        color: Colors.red,
-                        height: 300,
-                        width: MediaQuery.of(context).size.width,
-                        child: TransitionToImage(
-                          image: AdvancedNetworkImage(
-                            'https://i.picsum.photos/id/866/400/400.jpg',
-                            loadedCallback: () => print('Network Image loaded.'),
-                            loadFailedCallback: () => print('Oh, no! failed! Timeout and Retry limit exceeded'),
-                            timeoutDuration: Duration(seconds: 60),
-                            retryLimit: 2,
-                          ),
-                          fit: BoxFit.fitWidth,
-                          enableRefresh: true,
-                        ),
-                      ),
-                      Positioned(
-                        top: 0,
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        child: Container(
-                          color: Colors.black.withOpacity(0.4),
-                        ),
-                      ),
-                      Positioned(
-                        bottom: MediaQuery.of(context).size.width * 0.03,
-                        left: MediaQuery.of(context).size.width * 0.07,
-                        right: MediaQuery.of(context).size.width * 0.1,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: <Widget>[
-                            Text('The Availability of Low-Cost Flights', style: Theme.of(context).textTheme.subtitle.copyWith(
-                                color: Colors.white,
-                                fontSize: MediaQuery.of(context).size.width * 0.1,
-                                height: 1.1
-                            ),),
-                            SizedBox(
-                              height: 20,
+                  Container(
+                    color: Colors.grey.shade800,
+                    constraints: BoxConstraints(
+                        minHeight: 400
+                    ),
+                    height: 400,
+                    child: Stack(
+                      children: <Widget>[
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                begin: Alignment(0,0.1),
+                                end: Alignment.bottomCenter,
+                                colors: [Colors.black.withOpacity(0), Colors.black.withOpacity(0.5)]
+                              )
                             ),
-                            Row(
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment(-0.9,-0.87),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                color: Colors.green,
+                                borderRadius: BorderRadius.circular(100)
+                            ),
+                            padding: EdgeInsets.fromLTRB(18, 9, 18, 8),
+                            child: Text('Available', style: TextStyle(
+                              fontSize: 18,
+                              height: 1
+                            ),),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment(0.9,-0.87),
+                          child: Container(
+                            constraints: BoxConstraints(
+                              minWidth: 100
+                            ),
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(100)
+                            ),
+                            padding: EdgeInsets.fromLTRB(18, 9, 18, 8),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
-                                CircleAvatar(
-                                    backgroundColor: Colors.white,
-                                    radius: MediaQuery.of(context).size.width * 0.035
-                                ),
-                                SizedBox(width: 7,),
-                                Text('BBC World', style: Theme.of(context).textTheme.body2.copyWith(
-                                  color: Colors.white,
-                                  fontSize: MediaQuery.of(context).size.width * 0.05
-                                ),),
-                                Spacer(),
-                                Text('Politics', style: Theme.of(context).textTheme.body2.copyWith(
+                                Icon(Icons.star_border, color: Colors.white, size: 18,),
+                                Icon(Icons.star_border, color: Colors.white, size: 18,),
+                                Icon(Icons.star, color: Colors.white, size: 18,),
+                                Icon(Icons.star, color: Colors.white, size: 18,),
+                                Icon(Icons.star, color: Colors.white, size: 18,),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment(-0.7,0.8),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Text('BBQ Ribs in Mushroom gravy', maxLines: 3, textAlign: TextAlign.left, style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: primaryFont,
+                              fontWeight: FontWeight.w900,
+                              fontSize: MediaQuery.of(context).size.width * 0.065
+                            ),),
+                          ),
+                        ),
+                        Align(
+                          alignment: Alignment(0.7,0.8),
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: <Widget>[
+                                Text('4.99', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
                                     color: Colors.white,
+                                    fontFamily: secondaryFont,
+                                    height: 1,
                                     fontSize: MediaQuery.of(context).size.width * 0.05
+                                ),),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text('4.99', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
+                                    color: Colors.white,
+                                    fontFamily: primaryFont,
+                                    fontWeight: FontWeight.w900,
+                                    height: 1,
+                                    fontSize: MediaQuery.of(context).size.width * 0.065
                                 ),),
                               ],
                             ),
-                            SizedBox(height: 20,),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.07, vertical: MediaQuery.of(context).size.width * 0.07),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text('The availability of low-cost flights and last minute internet deals means that cheap holidays are far easier to come by than they used to be, but it can still take a bit of shopping around to get the best discounts.', style: Theme.of(context).textTheme.body2.copyWith(
-                          fontSize: MediaQuery.of(context).size.width * 0.05,
-                          height: 1.55
-                        ),),
-                        UIQuote('Have the Courage to Follow your Heart and Intuition', 'Steve Jobs. 2003'),
-                        Text('You can often get discounts on flights, hotels, car hire and holiday packages if you book online. Make sure that the site you’re booking with has a secure payment system and that you print off your confirmation so that you can call the company with any queries or problems.', style: Theme.of(context).textTheme.body2.copyWith(
-                            fontSize: MediaQuery.of(context).size.width * 0.05,
-                            height: 1.55
-                        ),),
-                        SizedBox( height: 15,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Icon(Icons.timer, color: Colors.grey.shade500, size: MediaQuery.of(context).size.width * 0.08,),
-                            SizedBox(width: 10,),
-                            Text('11 Nov. At 17:42', textAlign: TextAlign.left, style: Theme.of(context).textTheme.body2.copyWith(
-                              fontSize: MediaQuery.of(context).size.width * 0.05
-                            ),),
-                            Spacer(),
-                            Icon(Icons.share, color: Colors.grey.shade500, size: MediaQuery.of(context).size.width * 0.08,),
-                            SizedBox(width: 10,),
-                            Icon(Icons.bookmark_border, color: Colors.grey.shade500, size: MediaQuery.of(context).size.width * 0.08,),
-                          ],
-                        ),
-                        SizedBox(height: 20,),
-                        Text('Comments', textAlign: TextAlign.left, style: Theme.of(context).textTheme.body1.copyWith(
-                          fontFamily: 'Baloo'
-                        ),),
                       ],
                     ),
                   ),
-                  Divider(color: Colors.grey.shade400, height: 1,),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.07, vertical: MediaQuery.of(context).size.width * 0.07),
-                    child: Container(),
-                  )
+                  Container(
+                    height: 15,
+                    decoration: BoxDecoration(
+                      gradient: brandGradientHorizontal
+                    ),
+                  ),
                 ],
               )
           ),

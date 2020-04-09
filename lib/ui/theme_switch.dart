@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'theme_meta.dart';
 
 var primaryColor = Colors.red;
+var primaryColorLighter = Color.fromRGBO(255, 101, 85, 1);
 var accentColor = Colors.yellow;
 var flatBlack = Color.fromRGBO(18, 18, 18, 1);
 var flatWhite = Color.fromRGBO(223, 230, 233, 1);
@@ -26,6 +27,18 @@ var darkThemeElevation6 = Color.fromRGBO(255, 255, 255, 0.11);
 var darkThemeElevation8 = Color.fromRGBO(255, 255, 255, 0.12);
 var darkThemeElevation12 = Color.fromRGBO(255, 255, 255, 0.14);
 var darkThemeElevation16 = Color.fromRGBO(255, 255, 255, 0.15);
+
+var brandGradientHorizontal = LinearGradient(
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+    colors: [primaryColorLighter, primaryColor]
+);
+
+var brandGradientVertical = LinearGradient(
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+    colors: [primaryColor, primaryColorLighter]
+);
 
 
 
