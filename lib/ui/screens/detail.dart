@@ -12,7 +12,7 @@ class DetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
         drawer: SideMenuScreen(),
         appBar: AppBar(
           brightness: Brightness.light,
@@ -49,9 +49,9 @@ class DetailScreen extends StatelessWidget {
                   Container(
                     color: Colors.grey.shade800,
                     constraints: BoxConstraints(
-                        minHeight: 400
+                        minHeight: 300
                     ),
-                    height: 400,
+                    height: 300,
                     child: Stack(
                       children: <Widget>[
                         Positioned(
@@ -60,12 +60,31 @@ class DetailScreen extends StatelessWidget {
                           right: 0,
                           bottom: 0,
                           child: Container(
+                            width: MediaQuery.of(context).size.width,
+                            child: TransitionToImage(
+                              image: AdvancedNetworkImage(
+                                'https://i.picsum.photos/id/384/300/300.jpg',
+                                loadedCallback: () => print('Network Image loaded.'),
+                                loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
+                                timeoutDuration: Duration(seconds: 60),
+                                retryLimit: 2,
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 0,
+                          left: 0,
+                          right: 0,
+                          bottom: 0,
+                          child: Container(
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment(0,0.1),
-                                end: Alignment.bottomCenter,
-                                colors: [Colors.black.withOpacity(0), Colors.black.withOpacity(0.5)]
-                              )
+                                gradient: LinearGradient(
+                                    begin: Alignment(0,0.1),
+                                    end: Alignment.bottomCenter,
+                                    colors: [Colors.black.withOpacity(0), Colors.black.withOpacity(0.5)]
+                                )
                             ),
                           ),
                         ),
@@ -151,11 +170,30 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    height: 15,
+                    height: MediaQuery.of(context).size.width * 0.03,
                     decoration: BoxDecoration(
                       gradient: brandGradientHorizontal
                     ),
                   ),
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.045, vertical: MediaQuery.of(context).size.width * 0.07),
+                    color: (themeProvider.isLight) ? Colors.white : darkThemeElevation16,
+                    child: Row(
+                      children: <Widget>[
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            UICaption(text: 'Average Delivery Time',),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            UIHeadline(text: '35 Minutes',)
+                          ],
+                        ),
+                        Column(),
+                      ],
+                    ),
+                  )
                 ],
               )
           ),

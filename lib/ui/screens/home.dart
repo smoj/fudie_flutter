@@ -185,7 +185,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue),
-                        child: UIOrder(),
+                        child: UIOrder(
+                          order: 'Order #454444',
+                          qty: '33',
+                          description: 'Old Country Burger',
+                          imageUrl: 'https://i.picsum.photos/id/483/64/64.jpg',
+                          total: '334',
+                        ),
                       ),
                       SizedBox(
                         height: 20,

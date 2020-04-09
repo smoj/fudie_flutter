@@ -11,4 +11,5 @@ export 'widgets/tag.dart';
 export 'widgets/subheader.dart';
 export 'widgets/order.dart';
 export 'widgets/caption.dart';
+export 'widgets/headline.dart';
 export 'theme.dart';

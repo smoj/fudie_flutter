@@ -7,6 +7,20 @@ import 'package:fudie_ui_flutter/ui/widgets/caption.dart';
 import 'package:flutter_advanced_networkimage/provider.dart';
 
 class UIOrder extends StatelessWidget {
+  final String order;
+  final String description;
+  final String total;
+  final String imageUrl;
+  final String qty;
+
+  UIOrder({
+    @required this.order,
+    @required this.description,
+    @required this.total,
+    @required this.imageUrl,
+    @required this.qty
+  });
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -55,7 +69,7 @@ class UIOrder extends StatelessWidget {
                         borderRadius: BorderRadius.circular(10),
                         image: DecorationImage(
                           image: AdvancedNetworkImage(
-                            'https://i.picsum.photos/id/483/64/64.jpg',
+                            this.imageUrl,
                             loadedCallback: () => print('Network Image loaded.'),
                             loadFailedCallback: () => print('Oh, no! failed! Timeout and Retry limit exceeded'),
                             timeoutDuration: Duration(seconds: 60),
@@ -79,7 +93,7 @@ class UIOrder extends StatelessWidget {
                         ),
                         Align(
                           alignment: Alignment.center,
-                          child: Text('3+', textAlign: TextAlign.center, style: TextStyle(
+                          child: Text(this.qty, textAlign: TextAlign.center, style: TextStyle(
                               fontSize: MediaQuery.of(context).size.width * 0.065,
                               fontFamily: primaryFont,
                               fontWeight: FontWeight.w700,
@@ -95,22 +109,24 @@ class UIOrder extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.only(left: 10),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                UITitle(text: 'Order #4588484', color: Colors.white,),
-                SizedBox(
-                  height: 10,
-                ),
-                UICaption(text: 'Old Country burger', color: Colors.white.withOpacity(0.8),),
-                SizedBox(
-                  height: 10,
-                ),
-                UICaption(text: '21.99', color: Colors.white, font: secondaryFont, weight: FontWeight.bold,)
-              ],
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.only(left: 10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  UITitle(text: this.order, color: Colors.white, height: 1.1,),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  UICaption(text: this.description, color: Colors.white.withOpacity(0.8),),
+                  SizedBox(
+                    height: 5,
+                  ),
+                  UICaption(text: this.total, color: Colors.white, font: secondaryFont, weight: FontWeight.bold,)
+                ],
+              ),
             ),
           ),
         ],
