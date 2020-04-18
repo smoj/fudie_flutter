@@ -12,4 +12,6 @@ export 'widgets/subheader.dart';
 export 'widgets/order.dart';
 export 'widgets/caption.dart';
 export 'widgets/headline.dart';
+export 'widgets/qty-counter.dart';
+export 'widgets/order.dart';
 export 'theme.dart';
