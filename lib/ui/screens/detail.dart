@@ -256,14 +256,26 @@ class DetailScreen extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
-                        UIExtra(),
+                        UIExtra(title: 'Pickles', price: '2.99',),
                         SizedBox(width: 10,),
-                        UIExtra(),
-                        SizedBox(width: 10,),
-                        UIExtra(),
+                        UIExtra(title: 'Onions', price: '2.99',),
                       ],
                     ),
-                  )
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                    child: UITitle(text: 'More from Vendor',),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: MediaQuery.of(context).size.width * 0.065),
+                    child: Row(
+                      children: <Widget>[
+                        UIItemMedium(),
+                        SizedBox(width: 20,),
+                        UIItemMedium()
+                      ],
+                    ),
+                  ),
                 ],
               )
           ),
