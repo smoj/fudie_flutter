@@ -39,6 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final screenWidth = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
@@ -66,12 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
           body: SafeArea(
             child: SingleChildScrollView(
                 child: Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: screenWidth,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * ScreenGapValue),
+                        padding: EdgeInsets.all(screenWidth * ScreenGapValue),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -126,7 +127,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * (ScreenGapValue / 3)),
+                        margin: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: screenWidth * (ScreenGapValue / 3)),
                         padding: EdgeInsets.only(left: 15),
                         decoration: BoxDecoration(
                             color: Colors.white,
@@ -150,7 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
+                        padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: screenWidth * 0.06),
                         child: UITitle(text: 'New Deals'),
                       ),
                       UIItemLarge(),
@@ -158,16 +159,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 20,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
+                        padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: screenWidth * 0.06),
                         child: UITitle(text: 'Order Category'),
                       ),
                       Container(
-                        width: MediaQuery.of(context).size.width,
+                        width: screenWidth,
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: <Widget>[
-                              SizedBox(width: MediaQuery.of(context).size.width * ScreenGapValue,),
+                              SizedBox(width: screenWidth * ScreenGapValue,),
                               UITag('Breakfast'),
                               UITag('Lunch'),
                               UITag('Take Out'),
@@ -180,11 +181,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 20,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
+                        padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: screenWidth * 0.06),
                         child: UITitle(text: 'Order History'),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue),
+                        padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue),
                         child: UIOrder(
                           order: 'Order #454444',
                           qty: '33',
@@ -197,11 +198,11 @@ class _HomeScreenState extends State<HomeScreen> {
                         height: 20,
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: MediaQuery.of(context).size.width * 0.06),
+                        padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: screenWidth * 0.06),
                         child: UITitle(text: 'Popular Meals'),
                       ),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue,),
+                        padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue,),
                         child: Row(
                           children: <Widget>[
                             UIItemMedium(),

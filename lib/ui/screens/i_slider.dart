@@ -108,9 +108,7 @@ class _ISliderScreenState extends State<ISliderScreen> {
                                 }
                               },
                               child: UIButton(
-                                'Next',
-                                buttonColor: Colors.redAccent,
-                                buttonTextColor: Colors.white,
+                                buttonText: 'Next',
                               ),
                             ),
                           ],

@@ -12,8 +12,10 @@ class DetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
-    final metaFontSize = MediaQuery.of(context).size.width * 0.045;
-    final horizontalPadding = MediaQuery.of(context).size.width * 0.045;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final metaFontSize = screenWidth * 0.045;
+    final horizontalPadding = screenWidth * 0.045;
+    final headingPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.01);
     return Scaffold(
         backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
         drawer: SideMenuScreen(),
@@ -46,238 +48,249 @@ class DetailScreen extends StatelessWidget {
           ),),
         ),
         body: SafeArea(
-          child: SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Container(
-                    color: Colors.grey.shade800,
-                    constraints: BoxConstraints(
-                        minHeight: 300
-                    ),
-                    height: 300,
-                    child: Stack(
-                      children: <Widget>[
-                        Positioned(
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          child: Container(
-                            width: MediaQuery.of(context).size.width,
-                            child: TransitionToImage(
-                              image: AdvancedNetworkImage(
-                                'https://i.picsum.photos/id/384/300/300.jpg',
-                                loadedCallback: () => print('Network Image loaded.'),
-                                loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
-                                timeoutDuration: Duration(seconds: 60),
-                                retryLimit: 2,
-                              ),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
+          child: Stack(
+            children: <Widget>[
+              SingleChildScrollView(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                        color: Colors.grey.shade800,
+                        constraints: BoxConstraints(
+                            minHeight: 300
                         ),
-                        Positioned(
-                          top: 0,
-                          left: 0,
-                          right: 0,
-                          bottom: 0,
-                          child: Container(
-                            decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    begin: Alignment(0,0.1),
-                                    end: Alignment.bottomCenter,
-                                    colors: [Colors.black.withOpacity(0), Colors.black.withOpacity(0.5)]
-                                )
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment(-0.9,-0.87),
-                          child: Container(
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(100)
-                            ),
-                            padding: EdgeInsets.fromLTRB(18, 9, 18, 8),
-                            child: Text('Available', style: TextStyle(
-                              fontSize: metaFontSize,
-                              height: 1
-                            ),),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment(0.9,-0.87),
-                          child: Container(
-                            constraints: BoxConstraints(
-                              minWidth: 100
-                            ),
-                            decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(100)
-                            ),
-                            padding: EdgeInsets.fromLTRB(18, 9, 18, 8),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: <Widget>[
-                                Icon(Icons.star_border, color: Colors.white, size: metaFontSize,),
-                                Icon(Icons.star_border, color: Colors.white, size: metaFontSize,),
-                                Icon(Icons.star, color: Colors.white, size: metaFontSize,),
-                                Icon(Icons.star, color: Colors.white, size: metaFontSize,),
-                                Icon(Icons.star, color: Colors.white, size: metaFontSize,),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment(-0.7,0.8),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.7,
-                            child: Text('BBQ Ribs in Mushroom gravy', maxLines: 3, textAlign: TextAlign.left, style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: primaryFont,
-                              fontWeight: FontWeight.w900,
-                              fontSize: MediaQuery.of(context).size.width * 0.065
-                            ),),
-                          ),
-                        ),
-                        Align(
-                          alignment: Alignment(0.7,0.8),
-                          child: Container(
-                            width: MediaQuery.of(context).size.width * 0.7,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: <Widget>[
-                                Text('4.99', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
-                                    color: Colors.white,
-                                    fontFamily: secondaryFont,
-                                    height: 1,
-                                    fontSize: MediaQuery.of(context).size.width * 0.05
-                                ),),
-                                SizedBox(
-                                  height: 10,
+                        height: 300,
+                        child: Stack(
+                          children: <Widget>[
+                            Positioned(
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              child: Container(
+                                width: screenWidth,
+                                child: TransitionToImage(
+                                  image: AdvancedNetworkImage(
+                                    'https://i.picsum.photos/id/384/300/300.jpg',
+                                    loadedCallback: () => print('Network Image loaded.'),
+                                    loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
+                                    timeoutDuration: Duration(seconds: 60),
+                                    retryLimit: 2,
+                                  ),
+                                  fit: BoxFit.cover,
                                 ),
-                                Text('4.99', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
+                              ),
+                            ),
+                            Positioned(
+                              top: 0,
+                              left: 0,
+                              right: 0,
+                              bottom: 0,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    gradient: LinearGradient(
+                                        begin: Alignment(0,0.1),
+                                        end: Alignment.bottomCenter,
+                                        colors: [Colors.black.withOpacity(0), Colors.black.withOpacity(0.5)]
+                                    )
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment(-0.9,-0.87),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(100)
+                                ),
+                                padding: EdgeInsets.fromLTRB(18, 9, 18, 8),
+                                child: Text('Available', style: TextStyle(
+                                    fontSize: metaFontSize,
+                                    height: 1
+                                ),),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment(0.9,-0.87),
+                              child: Container(
+                                constraints: BoxConstraints(
+                                    minWidth: 100
+                                ),
+                                decoration: BoxDecoration(
+                                    color: Colors.red,
+                                    borderRadius: BorderRadius.circular(100)
+                                ),
+                                padding: EdgeInsets.fromLTRB(18, 9, 18, 8),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Icon(Icons.star_border, color: Colors.white, size: metaFontSize,),
+                                    Icon(Icons.star_border, color: Colors.white, size: metaFontSize,),
+                                    Icon(Icons.star, color: Colors.white, size: metaFontSize,),
+                                    Icon(Icons.star, color: Colors.white, size: metaFontSize,),
+                                    Icon(Icons.star, color: Colors.white, size: metaFontSize,),
+                                  ],
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment(-0.7,0.8),
+                              child: Container(
+                                width: screenWidth * 0.7,
+                                child: Text('BBQ Ribs in Mushroom gravy', maxLines: 3, textAlign: TextAlign.left, style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: primaryFont,
                                     fontWeight: FontWeight.w900,
-                                    height: 1,
-                                    fontSize: MediaQuery.of(context).size.width * 0.065
+                                    fontSize: screenWidth * 0.065
                                 ),),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    height: MediaQuery.of(context).size.width * 0.03,
-                    decoration: BoxDecoration(
-                      gradient: brandGradientHorizontal
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: MediaQuery.of(context).size.width * 0.065),
-                    color: (themeProvider.isLight) ? Colors.white : darkThemeElevation16,
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(
-                          flex: 4,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              UICaption(text: 'Average Delivery Time',),
-                              SizedBox(
-                                height: 10,
                               ),
-                              UIHeadline(text: '35 Minutes',)
-                            ],
-                          ),
+                            ),
+                            Align(
+                              alignment: Alignment(0.7,0.8),
+                              child: Container(
+                                width: screenWidth * 0.7,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: <Widget>[
+                                    Text('4.99', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: secondaryFont,
+                                        height: 1,
+                                        fontSize: screenWidth * 0.05
+                                    ),),
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text('4.99', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
+                                        color: Colors.white,
+                                        fontFamily: primaryFont,
+                                        fontWeight: FontWeight.w900,
+                                        height: 1,
+                                        fontSize: screenWidth * 0.065
+                                    ),),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
-                        Expanded(
-                          flex: 5,
-                          child: Column(
-                            children: <Widget>[
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
+                      ),
+                      Container(
+                        height: screenWidth * 0.03,
+                        decoration: BoxDecoration(
+                            gradient: brandGradientHorizontal
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.065),
+                        color: (themeProvider.isLight) ? Colors.white : darkThemeElevation16,
+                        child: Row(
+                          children: <Widget>[
+                            Expanded(
+                              flex: 4,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  GestureDetector(
-                                    onTap:() {},
-                                    child: Container(
-                                      padding: EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                          color: themeProvider.isLight ? Colors.white : darkThemeElevation8,
-                                          boxShadow: [lightFaintShadow],
-                                          borderRadius: BorderRadius.circular(5)
-                                      ),
-                                      child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack : flatWhite,),
-                                    ),
+                                  UICaption(text: 'Average Delivery Time',),
+                                  SizedBox(
+                                    height: 10,
                                   ),
-                                  SizedBox(width: 20,),
-                                  UITitle(text: '33',),
-                                  SizedBox(width: 20,),
-                                  GestureDetector(
-                                    onTap:() {},
-                                    child: Container(
-                                      padding: EdgeInsets.all(10),
-                                      decoration: BoxDecoration(
-                                          color: themeProvider.isLight ? Colors.white : darkThemeElevation8,
-                                          boxShadow: [lightFaintShadow],
-                                          borderRadius: BorderRadius.circular(5)
-                                      ),
-                                      child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack : flatWhite,),
-                                    ),
-                                  ),
+                                  UIHeadline(text: '35 mins',)
                                 ],
-                              )
-                            ],
-                          ),
+                              ),
+                            ),
+                            Expanded(
+                              flex: 5,
+                              child: Column(
+                                children: <Widget>[
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: <Widget>[
+                                      GestureDetector(
+                                        onTap:() {},
+                                        child: Container(
+                                          padding: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              color: themeProvider.isLight ? Colors.white : darkThemeElevation8,
+                                              boxShadow: [lightFaintShadow],
+                                              borderRadius: BorderRadius.circular(5)
+                                          ),
+                                          child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack : flatWhite,),
+                                        ),
+                                      ),
+                                      SizedBox(width: 20,),
+                                      UITitle(text: '33',),
+                                      SizedBox(width: 20,),
+                                      GestureDetector(
+                                        onTap:() {},
+                                        child: Container(
+                                          padding: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              color: themeProvider.isLight ? Colors.white : darkThemeElevation8,
+                                              boxShadow: [lightFaintShadow],
+                                              borderRadius: BorderRadius.circular(5)
+                                          ),
+                                          child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack : flatWhite,),
+                                        ),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.045, vertical: MediaQuery.of(context).size.width * 0.065),
-                    child: Text('Minim irure fugiat aliqua velit Lorem esse sunt aliquip. Lorem occaecat culpa amet eu consequat nostrud cillum ipsum ut Lorem veniam laborum. Occaecat nisi labore in ea', style: TextStyle(
-                      fontFamily: secondaryFont,
-                      color: themeProvider.isLight ? flatBlack : flatWhite,
-                      height: 1.5
-                    ),),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                    child: UITitle(text: 'Extras',),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * 0.045, vertical: MediaQuery.of(context).size.width * 0.065),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: <Widget>[
-                        UIExtra(title: 'Pickles', price: '2.99',),
-                        SizedBox(width: 10,),
-                        UIExtra(title: 'Onions', price: '2.99',),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                    child: UITitle(text: 'More from Vendor',),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: MediaQuery.of(context).size.width * 0.065),
-                    child: Row(
-                      children: <Widget>[
-                        UIItemMedium(),
-                        SizedBox(width: 20,),
-                        UIItemMedium()
-                      ],
-                    ),
-                  ),
-                ],
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.045, vertical: screenWidth * 0.065),
+                        child: Text('Minim irure fugiat aliqua velit Lorem esse sunt aliquip. Lorem occaecat culpa amet eu consequat nostrud cillum ipsum ut Lorem veniam laborum. Occaecat nisi labore in ea', style: TextStyle(
+                            fontFamily: secondaryFont,
+                            color: themeProvider.isLight ? flatBlack : flatWhite,
+                            height: 1.5
+                        ),),
+                      ),
+                      Padding(
+                        padding: headingPadding,
+                        child: UITitle(text: 'Extras',),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.045, vertical: screenWidth * 0.065),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: <Widget>[
+                            UIExtra(title: 'Pickles', price: '2.99',),
+                            SizedBox(width: 10,),
+                            UIExtra(title: 'Onions', price: '2.99',),
+                          ],
+                        ),
+                      ),
+                      Padding(
+                        padding: headingPadding,
+                        child: UITitle(text: 'More from Vendor',),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.065),
+                        child: Row(
+                          children: <Widget>[
+                            UIItemMedium(),
+                            SizedBox(width: 20,),
+                            UIItemMedium()
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 60,
+                      ),
+                    ],
+                  )
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: UIButton(buttonText: 'Order', price: '\$349.99',),
               )
+            ],
           ),
         )
     );
