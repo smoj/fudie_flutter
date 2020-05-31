@@ -10,3 +10,4 @@ jobs:
       - run: flutter doctor
       - run: flutter pub get
       - run: flutter -v build apk
+      - run: flutter test test/unit_test.dart
