@@ -4,7 +4,9 @@ import 'package:fudie_ui_flutter/ui/screens/forgot.dart';
 import 'package:fudie_ui_flutter/ui/screens/auth_tab.dart';
 import 'package:fudie_ui_flutter/ui/screens/detail.dart';
 import 'package:fudie_ui_flutter/ui/screens/home.dart';
+import 'package:fudie_ui_flutter/ui/screens/login.dart';
 import 'package:fudie_ui_flutter/ui/screens/register.dart';
+import 'package:fudie_ui_flutter/ui/screens/signup.dart';
 import 'package:fudie_ui_flutter/ui/screens/search.dart';
 import 'package:fudie_ui_flutter/ui/screens/splash.dart';
 import 'package:fudie_ui_flutter/ui/screens/splash_image.dart';
@@ -44,7 +46,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/' : (context) => SplashScreen(),
+        '/' : (context) => SignupScreen(),
         '/home' : (context) => HomeScreen(),
         '/detail' : (context) => DetailScreen(),
         '/login' : (context) => AuthTabScreen(),

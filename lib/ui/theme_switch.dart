@@ -41,7 +41,6 @@ var brandGradientVertical = LinearGradient(
 );
 
 
-
 class ThemeProvider with ChangeNotifier {
   bool isLight;
 

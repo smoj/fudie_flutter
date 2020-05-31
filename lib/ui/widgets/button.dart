@@ -12,7 +12,6 @@ class UIButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
       padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
         gradient: brandGradientHorizontal,
@@ -24,7 +23,7 @@ class UIButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Text('Order', textAlign: TextAlign.center, style: TextStyle(
+          Text(this.buttonText, textAlign: TextAlign.center, style: TextStyle(
             color: Colors.white,
             fontFamily: primaryFont,
             fontWeight: FontWeight.w500,
