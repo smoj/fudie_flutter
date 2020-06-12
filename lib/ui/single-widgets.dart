@@ -14,4 +14,5 @@ export 'widgets/caption.dart';
 export 'widgets/headline.dart';
 export 'widgets/qty-counter.dart';
 export 'widgets/order.dart';
+export 'widgets/item-itenary.dart';
 export 'theme.dart';

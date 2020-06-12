@@ -55,7 +55,7 @@ class SignupScreen extends StatelessWidget {
                       },
                     ),
                   ),
-                  UIDisplay2(text: 'Welcome', color: Colors.red,),
+                  UIDisplay2(text: 'Signup', color: Colors.red,),
                   SizedBox(height: 10,),
                   TextField(
 //                    controller: TextEditingController(text: 'aries@hades.com'),

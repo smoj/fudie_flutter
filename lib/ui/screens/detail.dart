@@ -288,7 +288,10 @@ class DetailScreen extends StatelessWidget {
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: UIButton(buttonText: 'Order', price: '\$349.99',),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: UIButton(buttonText: 'Order', price: '\$349.99',),
+                ),
               )
             ],
           ),
