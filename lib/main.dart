@@ -10,6 +10,7 @@ import 'package:fudie_ui_flutter/ui/screens/register.dart';
 import 'package:fudie_ui_flutter/ui/screens/signup.dart';
 import 'package:fudie_ui_flutter/ui/screens/search.dart';
 import 'package:fudie_ui_flutter/ui/screens/splash.dart';
+import 'package:fudie_ui_flutter/ui/screens/success.dart';
 import 'package:fudie_ui_flutter/ui/screens/splash_image.dart';
 import 'package:fudie_ui_flutter/ui/screens/favourite.dart';
 import 'package:fudie_ui_flutter/ui/screens/story_highlight.dart';
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/' : (context) => OrderDetailScreen(),
+        '/' : (context) => SuccessScreen(),
         '/home' : (context) => HomeScreen(),
         '/detail' : (context) => DetailScreen(),
         '/login' : (context) => AuthTabScreen(),

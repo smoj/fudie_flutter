@@ -4,6 +4,7 @@ export 'widgets/favourite-item.dart';
 export 'widgets/button.dart';
 export 'widgets/display3.dart';
 export 'widgets/display2.dart';
+export 'widgets/display1.dart';
 export 'widgets/title.dart';
 export 'widgets/item_large.dart';
 export 'widgets/item_medium.dart';

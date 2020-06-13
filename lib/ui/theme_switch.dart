@@ -7,6 +7,7 @@ var primaryColorLighter = Color.fromRGBO(255, 101, 85, 1);
 var accentColor = Colors.yellow;
 var flatBlack = Color.fromRGBO(18, 18, 18, 1);
 var flatWhite = Color.fromRGBO(223, 230, 233, 1);
+var success = Color.fromRGBO(176, 219, 67, 1);
 
 var lightFaintShadow = BoxShadow(
     color: Colors.grey.withOpacity(0.1),
@@ -47,12 +48,14 @@ class ThemeProvider with ChangeNotifier {
   final lightTheme = AppTheme(
     scaffoldBackground: Color.fromRGBO(246, 245, 250, 1),
     textColor: flatBlack,
-    textBrandColor: primaryColor
+    textBrandColor: primaryColor,
+    accentColor: primaryColor
   );
 
   final darkTheme = AppTheme(
     scaffoldBackground: flatBlack,
-    textColor: flatWhite
+    textColor: flatWhite,
+    accentColor: Colors.yellow
   );
 
   ThemeProvider({this.isLight});
