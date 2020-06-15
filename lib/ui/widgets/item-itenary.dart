@@ -57,7 +57,7 @@ class UIItenary extends StatelessWidget {
                   fontFamily: 'Poppins',
                   fontSize: 20,
                   letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.w600,
                   height: 1
               ),),
               Text('30% Discount', textAlign: TextAlign.right, style: TextStyle(
