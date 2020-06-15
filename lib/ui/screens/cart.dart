@@ -87,7 +87,65 @@ class CartScreen extends StatelessWidget {
                             ),
                           child: Column(
                             children: <Widget>[
-                              UIItenary(),
+                              FlatButton(
+                                  child: UIItenary(),
+                                  padding: EdgeInsets.zero,
+                                  onPressed: (){
+                                    showDialog(context: context, builder: (BuildContext context){
+                                      return Container(
+                                        decoration: BoxDecoration(
+                                            borderRadius : BorderRadius.only(
+                                              topLeft: Radius.circular(10),
+                                              topRight: Radius.circular(10),
+                                              bottomLeft: Radius.circular(10),
+                                              bottomRight: Radius.circular(10),
+                                            ),
+                                            boxShadow : [BoxShadow(
+                                                color: Color.fromRGBO(0, 0, 0, 0.10000000149011612),
+                                                offset: Offset(0,4),
+                                                blurRadius: 26
+                                            )],
+                                            color : themeProvider.isLight ? Color.fromRGBO(255, 255, 255, 1) : darkThemeElevation2,
+                                          ),
+                                        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 30),
+                                        margin: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.2, horizontal: MediaQuery.of(context).size.width * 0.06),
+                                        child: Column(
+                                          children: <Widget>[
+                                            Container(
+                                                width: 51,
+                                                height: 51,
+                                                decoration: BoxDecoration(
+                                                  borderRadius : BorderRadius.only(
+                                                    topLeft: Radius.circular(10),
+                                                    topRight: Radius.circular(10),
+                                                    bottomLeft: Radius.circular(10),
+                                                    bottomRight: Radius.circular(10),
+                                                  ),
+                                                  image : DecorationImage(
+                                                      image: AssetImage('assets/images/food4.png'),
+                                                      fit: BoxFit.fitWidth
+                                                  ),
+                                                )
+                                            ),
+                                            SizedBox(height: 25,),
+                                            Text('Old Country burger, salad & fries, olives', textAlign: TextAlign.center, style: TextStyle(
+                                                color: Color.fromRGBO(18, 18, 18, 1),
+                                                fontFamily: 'Poppins',
+                                                fontSize: 16,
+                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                                fontWeight: FontWeight.w600,
+                                                height: 1
+                                            ),),
+                                            SizedBox(height: 25,),
+                                            UIButton(buttonText: 'Update'),
+                                            SizedBox(height: 10,),
+                                            UIButton(buttonText: 'Delete',)
+                                          ],
+                                        ),
+                                      );
+                                    });
+                                  },
+                              ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 5),
                                 child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),

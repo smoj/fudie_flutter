@@ -6,8 +6,9 @@ class UIButton extends StatelessWidget {
   final String buttonText;
   final IconData buttonIcon;
   final String price;
+  final bool outline;
 
-  UIButton({this.buttonText, this.buttonIcon, this.price});
+  UIButton({this.buttonText, this.buttonIcon, this.price, this.outline});
 
   @override
   Widget build(BuildContext context) {
@@ -30,13 +31,13 @@ class UIButton extends StatelessWidget {
             fontSize: 18
           ),),
           (this.price != null || this.buttonIcon != null) ? Spacer() : SizedBox(width: 0,),
-          (this.price != null) ? Text('\$ 349', style: TextStyle(
+          (this.price != null) ? Text('$price', style: TextStyle(
               color: Colors.white,
               fontFamily: secondaryFont,
               fontSize: 18,
               fontWeight: FontWeight.w600
-          ),) : Text(''),
-          (this.buttonIcon != null) ? Icon(this.buttonIcon, color: Colors.white,): Text(''),
+          ),) : SizedBox(width: 0,),
+          (this.buttonIcon != null) ? Icon(this.buttonIcon, color: Colors.white,): SizedBox(),
         ],
       ),
     );
