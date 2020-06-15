@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class CartScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
