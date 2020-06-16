@@ -29,7 +29,7 @@ class UIItemLarge extends StatelessWidget {
               ),
               child: TransitionToImage(
                 image: AdvancedNetworkImage(
-                  'https://i.picsum.photos/id/483/350/150.jpg',
+                  'https://picsum.photos/id/483/350/150.jpg',
                   loadedCallback: () => print('Network Image loaded.'),
                   loadFailedCallback: () => print('Oh, no! failed! Timeout and Retry limit exceeded'),
                   timeoutDuration: Duration(seconds: 60),

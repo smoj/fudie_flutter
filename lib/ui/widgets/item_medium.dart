@@ -26,7 +26,7 @@ class UIItemMedium extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10),
                   child: TransitionToImage(
                     image: AdvancedNetworkImage(
-                      'https://i.picsum.photos/id/201/350/250.jpg',
+                      'https://picsum.photos/id/201/350/250.jpg',
                       loadedCallback: () => print('Network Image loaded.'),
                       loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
                       timeoutDuration: Duration(seconds: 60),

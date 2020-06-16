@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class SideMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
     return Drawer(
       child: Container(
-        color: Color.fromRGBO(28, 27, 27, 1),
+        color: flatBlack,
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
@@ -21,56 +24,40 @@ class SideMenuScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text('Hello,', style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Montserrat',
+                            color: flatWhite,
+                            fontFamily: secondaryFont,
                             fontWeight: FontWeight.w300
                         ),),
-                        Text('Elizabeth', overflow: TextOverflow.fade, style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Yrsa',
-                          fontSize: 35,
-                          fontWeight: FontWeight.w600,
-                        ),),
-                        Text('Hurley', overflow: TextOverflow.fade, style: TextStyle(
-                          color: Colors.white,
-                          fontFamily: 'Yrsa',
-                          fontSize: 35,
+                        Text('Elizabeth Hurley Alzerden', maxLines: 2, overflow: TextOverflow.fade, style: TextStyle(
+                          color: flatWhite,
+                          fontFamily: primaryFont,
+                          fontSize: 30,
                           fontWeight: FontWeight.w600,
                         ),),
                       ],
                     ),
-                    Align(
-                      alignment: Alignment(1.35,-1),
-                      child: FlatButton(
-                          padding: EdgeInsets.zero,
-                          child: Icon(Icons.person, color: Colors.white, size: 35,),
-                          onPressed: (){
-                            Navigator.of(context).pushNamed('/profile');
-                          },
-                      ),
-                    )
                   ],
                 )
               ),
             ),
             Container(
               padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
-              color: Color.fromRGBO(28, 27, 27, 1),
+              color: darkThemeElevation6.withOpacity(0),
               child: Column(
                 children: <Widget>[
                   SizedBox(height: 30,),
-                  Divider( height: 1, color: Color.fromRGBO(51, 50, 50, 1)),
+                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
                   ListTile(
                       title: Text('Favourites', style: TextStyle(
-                          color: Colors.white,
+                          color: flatWhite,
                           fontWeight: FontWeight.w600,
-                          fontFamily: 'Montserrat',
+                          fontFamily: primaryFont,
                           fontSize: 18
                       ),),
                       onTap: (){
                         Navigator.pushNamed(context, '/favourite');
                       },
-                      leading: Icon(Icons.favorite, color: Colors.white,),
+                      leading: Icon(Icons.favorite, color: flatWhite,),
                       trailing: Container(
                           padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
                           width: 30,
@@ -82,84 +69,84 @@ class SideMenuScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(90)
                             ),
                             child: Text('89', textAlign: TextAlign.center, style: TextStyle(
-                                color: Colors.white,
+                                color: flatWhite,
                                 fontSize: 15,
-                                fontFamily: 'Montserrat',
+                                fontFamily: primaryFont,
                                 fontWeight: FontWeight.w600
                             )),
                           ))
                   ),
-                  Divider( height: 1, color: Color.fromRGBO(51, 50, 50, 1)),
+                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
                   ListTile(
                     title: Text('Home', style: TextStyle(
-                        color: Colors.white,
+                        color: flatWhite,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Montserrat',
+                        fontFamily: primaryFont,
                         fontSize: 18
                     ),),
-                    leading: Icon(Icons.home, color: Colors.white,),
+                    leading: Icon(Icons.home, color: flatWhite,),
                     onTap: (){
                       Navigator.pushNamed(context, '/home');
                     },
                   ),
-                  Divider( height: 1, color: Color.fromRGBO(51, 50, 50, 1)),
+                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
                   ListTile(
                     onTap: (){
                       Navigator.pushNamed(context, '/detail');
                     },
                     title: Text('Detail Page', style: TextStyle(
-                        color: Colors.white,
+                        color: flatWhite,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Montserrat',
+                        fontFamily: primaryFont,
                         fontSize: 18
                     ),),
-                    leading: Icon(Icons.book, color: Colors.white,),
+                    leading: Icon(Icons.book, color: flatWhite,),
                   ),
-                  Divider( height: 1, color: Color.fromRGBO(51, 50, 50, 1)),
+                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
                   ListTile(
                     onTap: (){
                       Navigator.pushNamed(context, '/search');
                     },
                     title: Text('Search', style: TextStyle(
-                        color: Colors.white,
+                        color: flatWhite,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Montserrat',
+                        fontFamily: primaryFont,
                         fontSize: 18
                     ),),
-                    leading: Icon(Icons.search, color: Colors.white,),
+                    leading: Icon(Icons.search, color: flatWhite,),
                   ),
-                  Divider( height: 1, color: Color.fromRGBO(51, 50, 50, 1)),
+                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
                   ListTile(
                     onTap: (){
                       Navigator.pushNamed(context, '/profile');
                     },
                     title: Text('Profile', style: TextStyle(
-                        color: Colors.white,
+                        color: flatWhite,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Montserrat',
+                        fontFamily: primaryFont,
                         fontSize: 18
                     ),),
-                    leading: Icon(Icons.person, color: Colors.white,),
+                    leading: Icon(Icons.person, color: flatWhite,),
                   ),
-                  Divider( height: 1, color: Color.fromRGBO(51, 50, 50, 1)),
+                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
                   ListTile(
                     onTap: (){
                       Navigator.pushNamed(context, '/story-highlight');
                     },
                     title: Text('Special Story', style: TextStyle(
-                        color: Colors.white,
+                        color: flatWhite,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Montserrat',
+                        fontFamily: primaryFont,
                         fontSize: 18
                     ),),
-                    leading: Icon(Icons.star, color: Colors.white,),
+                    leading: Icon(Icons.star, color: flatWhite,),
                   ),
-                  Divider( height: 1, color: Color.fromRGBO(51, 50, 50, 1)),
+                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
                   ListTile(
                     title: Text('Logout', style: TextStyle(
-                        color: Colors.white,
+                        color: flatWhite,
                         fontWeight: FontWeight.w600,
-                        fontFamily: 'Montserrat',
+                        fontFamily: primaryFont,
                         fontSize: 18
                     ),),
                     onTap: (){
@@ -180,7 +167,7 @@ class SideMenuScreen extends StatelessWidget {
                         ),
                       );
                     },
-                    leading: Icon(Icons.exit_to_app, color: Colors.white,),
+                    leading: Icon(Icons.exit_to_app, color: flatWhite,),
                   ),
                 ],
               ),
