@@ -3,9 +3,14 @@ import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class SideMenuScreen extends StatelessWidget {
+
+  String _ThemeText(boolVal){
+    return boolVal ? 'Light Theme' : 'Dark Theme';
+  }
+
   @override
   Widget build(BuildContext context) {
-    final themeProvider = Provider.of<ThemeProvider>(context);
+  final themeProvider = Provider.of<ThemeProvider>(context);
     return Drawer(
       child: Container(
         color: flatBlack,
@@ -48,14 +53,33 @@ class SideMenuScreen extends StatelessWidget {
                   SizedBox(height: 30,),
                   Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
                   ListTile(
-                      title: Text('Favourites', style: TextStyle(
+                      title: Text(_ThemeText(themeProvider.isLight), style: TextStyle(
                           color: flatWhite,
                           fontWeight: FontWeight.w600,
                           fontFamily: primaryFont,
                           fontSize: 18
                       ),),
                       onTap: (){
-                        Navigator.pushNamed(context, '/favourite');
+                        themeProvider.setTheme(!themeProvider.isLight);
+                      },
+                      leading: Icon(Icons.settings_brightness, color: flatWhite,),
+                      trailing: Switch(
+                        value: themeProvider.isLight,
+                        onChanged: (boolVal){
+                          themeProvider.setTheme(boolVal);
+                        },
+                      ),
+                  ),
+                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
+                  ListTile(
+                      title: Text('Cart Items', style: TextStyle(
+                          color: flatWhite,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: primaryFont,
+                          fontSize: 18
+                      ),),
+                      onTap: (){
+//                        Navigator.pushNamed(context, '/favourite');
                       },
                       leading: Icon(Icons.favorite, color: flatWhite,),
                       trailing: Container(
@@ -75,99 +99,6 @@ class SideMenuScreen extends StatelessWidget {
                                 fontWeight: FontWeight.w600
                             )),
                           ))
-                  ),
-                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
-                  ListTile(
-                    title: Text('Home', style: TextStyle(
-                        color: flatWhite,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: primaryFont,
-                        fontSize: 18
-                    ),),
-                    leading: Icon(Icons.home, color: flatWhite,),
-                    onTap: (){
-                      Navigator.pushNamed(context, '/home');
-                    },
-                  ),
-                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
-                  ListTile(
-                    onTap: (){
-                      Navigator.pushNamed(context, '/detail');
-                    },
-                    title: Text('Detail Page', style: TextStyle(
-                        color: flatWhite,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: primaryFont,
-                        fontSize: 18
-                    ),),
-                    leading: Icon(Icons.book, color: flatWhite,),
-                  ),
-                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
-                  ListTile(
-                    onTap: (){
-                      Navigator.pushNamed(context, '/search');
-                    },
-                    title: Text('Search', style: TextStyle(
-                        color: flatWhite,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: primaryFont,
-                        fontSize: 18
-                    ),),
-                    leading: Icon(Icons.search, color: flatWhite,),
-                  ),
-                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
-                  ListTile(
-                    onTap: (){
-                      Navigator.pushNamed(context, '/profile');
-                    },
-                    title: Text('Profile', style: TextStyle(
-                        color: flatWhite,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: primaryFont,
-                        fontSize: 18
-                    ),),
-                    leading: Icon(Icons.person, color: flatWhite,),
-                  ),
-                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
-                  ListTile(
-                    onTap: (){
-                      Navigator.pushNamed(context, '/story-highlight');
-                    },
-                    title: Text('Special Story', style: TextStyle(
-                        color: flatWhite,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: primaryFont,
-                        fontSize: 18
-                    ),),
-                    leading: Icon(Icons.star, color: flatWhite,),
-                  ),
-                  Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
-                  ListTile(
-                    title: Text('Logout', style: TextStyle(
-                        color: flatWhite,
-                        fontWeight: FontWeight.w600,
-                        fontFamily: primaryFont,
-                        fontSize: 18
-                    ),),
-                    onTap: (){
-                      return showDialog(
-                        context: context,
-                        builder: (context) => AlertDialog(
-                          title: Text('Want to logout?'),
-                          actions: <Widget>[
-                            FlatButton(
-                              onPressed: () => Navigator.of(context).pop(false),
-                              child: Text('No'),
-                            ),
-                            FlatButton(
-                              onPressed: () => Navigator.pushNamedAndRemoveUntil(context, '/login', (_) => false),
-                              child: Text('Yes'),
-                            ),
-                          ],
-                        ),
-                      );
-                    },
-                    leading: Icon(Icons.exit_to_app, color: flatWhite,),
                   ),
                 ],
               ),

@@ -72,3 +72,33 @@ class ThemeProvider with ChangeNotifier {
     notifyListeners();
   }
 }
+
+getTextFieldStyle(bool isLight){
+  return TextStyle(
+      color: (isLight) ? flatBlack : flatWhite,
+      fontFamily: secondaryFont,
+      fontWeight: FontWeight.w500,
+      fontSize: 20,
+  );
+}
+
+getHintStyle(bool isLight){
+  return TextStyle(
+      color: (isLight) ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5),
+      fontFamily: secondaryFont,
+      fontWeight: FontWeight.w500
+  );
+}
+
+getInputDecoration(bool isLight, String label, String placeholder){
+  return InputDecoration(
+      labelText: '$label',
+      labelStyle: TextStyle(
+          color: (isLight) ? flatBlack : flatWhite,
+          fontSize: 18,
+      ),
+//      border: InputBorder.none,
+      hintText: '$placeholder',
+      hintStyle: getHintStyle(isLight)
+  );
+}

@@ -7,8 +7,9 @@ class UIButton extends StatelessWidget {
   final IconData buttonIcon;
   final String price;
   final bool outline;
+  VoidCallback onTap;
 
-  UIButton({this.buttonText, this.buttonIcon, this.price, this.outline});
+  UIButton({this.buttonText, this.buttonIcon, this.price, this.outline, this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    print('Provider Data:');
+//    print('Provider Data:');
     print(Provider.of<ThemeProvider>(context).isLight);
     return MaterialApp(
       initialRoute: '/',
@@ -55,7 +55,8 @@ class MyApp extends StatelessWidget {
         '/' : (context) => SplashScreen(),
         '/home' : (context) => HomeScreen(),
         '/detail' : (context) => DetailScreen(),
-        '/login' : (context) => AuthTabScreen(),
+        '/login' : (context) => LoginScreen(),
+        '/register' : (context) => RegisterScreen(),
         '/search' : (context) => SearchScreen(),
         '/forgot' : (context) => ForgotScreen(),
         '/slider' : (context) => ISliderScreen(),

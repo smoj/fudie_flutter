@@ -77,12 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Switch(
-                              value: themeProvider.isLight,
-                              onChanged: (boolVal){
-                                themeProvider.setTheme(boolVal);
-                              },
-                            ),
+                            SizedBox(height: screenWidth * 0.05,),
                             Row(
                               children: <Widget>[
                                 Expanded(
@@ -190,7 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           order: 'Order #454444',
                           qty: '33',
                           description: 'Old Country Burger',
-                          imageUrl: 'https://i.picsum.photos/id/483/64/64.jpg',
+                          imageUrl: 'https://picsum.photos/id/483/64/64.jpg',
                           total: '334',
                         ),
                       ),

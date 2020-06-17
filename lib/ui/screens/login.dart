@@ -9,17 +9,28 @@ class LoginScreen extends StatelessWidget {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-//      appBar: AppBar(
-//        backgroundColor: Colors.white,
-//        iconTheme: IconThemeData(
-//            color: Colors.black
-//        ),
-//        title: Text('Login', style: TextStyle(
-//            fontFamily: 'Montserrat',
-//            fontWeight: FontWeight.w700,
-//            color: Colors.black
-//        ),),
-//      ),
+      appBar: AppBar(
+        brightness: Brightness.light,
+        actions: <Widget>[
+          FlatButton(
+            padding: EdgeInsets.zero,
+            child: Switch(
+              value: themeProvider.isLight,
+              onChanged: (boolVal){
+                themeProvider.setTheme(boolVal);
+              },
+            ),
+          )
+        ],
+        backgroundColor: (themeProvider.isLight) ? Colors.white : Color.fromRGBO(66, 66, 66, 1),
+        iconTheme: IconThemeData(
+            color: (themeProvider.isLight) ? flatBlack : flatWhite
+        ),
+        title: Text('Login', style: TextStyle(
+            fontFamily: primaryFont,
+            color: (themeProvider.isLight) ? flatBlack : flatWhite
+        ),),
+      ),
       resizeToAvoidBottomPadding: false,
       backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
       body: SafeArea(
@@ -28,14 +39,13 @@ class LoginScreen extends StatelessWidget {
             Align(
               alignment: Alignment(0.8,-0.95),
               child: Container(
-                width: 65,
-                height: 65,
+                width: screenWidth * 0.2,
+                height: screenWidth * 0.2,
                 decoration: BoxDecoration(
-                  color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
                   image: DecorationImage(
                     image: AssetImage('assets/images/logo.png'),
-                    fit: BoxFit.contain
+                    fit: BoxFit.fill
                   )
                 ),
               ),
@@ -46,69 +56,76 @@ class LoginScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  FlatButton(
-                    padding: EdgeInsets.zero,
-                    child: Switch(
-                      value: themeProvider.isLight,
-                      onChanged: (boolVal){
-                        themeProvider.setTheme(boolVal);
-                      },
-                    ),
-                  ),
-                  UIDisplay2(text: 'Welcome', color: Colors.red,),
+//                  FlatButton(
+//                    padding: EdgeInsets.zero,
+//                    child: Switch(
+//                      value: themeProvider.isLight,
+//                      onChanged: (boolVal){
+//                        themeProvider.setTheme(boolVal);
+//                      },
+//                    ),
+//                  ),
+                  UIDisplay2(text: 'Welcome', color: themeProvider.isLight ? primaryColor : flatWhite,),
                   SizedBox(height: 10,),
                   TextField(
 //                    controller: TextEditingController(text: 'aries@hades.com'),
-                    style: TextStyle(
-                        color: (themeProvider.isLight) ? flatBlack : flatWhite,
-                        fontFamily: secondaryFont,
-                        fontWeight: FontWeight.w500
-                    ),
-                    decoration: InputDecoration(
-                        labelText: 'Username/Email',
-                        labelStyle: TextStyle(
-                            color: (themeProvider.isLight) ? flatBlack : flatWhite
-                        ),
-                        border: InputBorder.none,
-                        hintText: 'Your username',
-                        hintStyle: TextStyle(
-                            color: (themeProvider.isLight) ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5),
-                            fontFamily: secondaryFont,
-                            fontWeight: FontWeight.w500
-                        )
-                    ),
-                  ),
-                  Divider(
-                    color: (themeProvider.isLight) ? flatBlack : flatWhite,
+                    style: getTextFieldStyle(themeProvider.isLight),
+                    decoration: getInputDecoration(themeProvider.isLight, 'Username Email', 'Your username'),
                   ),
                   TextField(
 //                    controller: TextEditingController(text: 'aries@hades.com'),
                     obscureText: true,
-                    style: TextStyle(
-                        color: (themeProvider.isLight) ? flatBlack : flatWhite,
-                        fontFamily: secondaryFont,
-                    ),
-                    decoration: InputDecoration(
-                        labelText: 'Password',
-                        labelStyle: TextStyle(
-                            color: (themeProvider.isLight) ? flatBlack : flatWhite
-                        ),
-                        border: InputBorder.none,
-                        hintText: 'Min 6 characters',
-                        hintStyle: TextStyle(
-                            color: (themeProvider.isLight) ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5),
-                            fontFamily: secondaryFont,
-                            fontWeight: FontWeight.w700
-                        )
-                    ),
+                    style: getTextFieldStyle(themeProvider.isLight),
+                    decoration: getInputDecoration(themeProvider.isLight, 'Password', 'Min 6 Characters'),
                   ),
-                  Divider(
-                    color: (themeProvider.isLight) ? flatBlack : flatWhite,
+                  SizedBox(
+                    height: 30,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).pushNamed('/register');
+                          },
+                          child: Text('Signup', textAlign: TextAlign.left, style: TextStyle(
+                              color: themeProvider.isLight ? flatBlack : flatWhite,
+                              fontFamily: 'Nunito',
+                              fontSize: 17,
+                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                              fontWeight: FontWeight.normal,
+                              height: 1
+                          ),),
+                        ),
+                      ),
+                      SizedBox(width: 20,),
+                      Expanded(
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).pushNamed('/forgot');
+                          },
+                          child: Text('Forgot', textAlign: TextAlign.left, style: TextStyle(
+                              color: themeProvider.isLight ? flatBlack : flatWhite,
+                              fontFamily: 'Nunito',
+                              fontSize: 17,
+                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                              fontWeight: FontWeight.normal,
+                              height: 1
+                          ),),
+                        )
+                      )
+                    ],
                   ),
                   SizedBox(
                     height: 50,
                   ),
-                  UIButton(buttonText: 'Login',),
+                  GestureDetector(
+                    child: UIButton(buttonText: 'Login',),
+                    onTap: (){
+                      Navigator.of(context).pushNamed('/home');
+                    },
+                  ),
                   SizedBox(
                     height: 50,
                   ),
