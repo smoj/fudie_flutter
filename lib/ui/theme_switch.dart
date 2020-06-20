@@ -73,6 +73,25 @@ class ThemeProvider with ChangeNotifier {
   }
 }
 
+/* Splash Background Styles */
+var splashImageBackground = BoxDecoration(
+    image: DecorationImage(
+        image: AssetImage('assets/images/splash-bg.png'),
+        fit: BoxFit.fitWidth
+    ),
+    color: Colors.black.withOpacity(0.5),
+);
+
+var splashGradientBackground = BoxDecoration(
+    gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [Color.fromRGBO(255, 101, 85, 1), Color.fromRGBO(214, 48, 49, 1)]
+    )
+);
+
+/* Form Styles*/
+
 getTextFieldStyle(bool isLight){
   return TextStyle(
       color: (isLight) ? flatBlack : flatWhite,

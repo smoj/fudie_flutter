@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
+import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -21,13 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
           fit: StackFit.expand,
           children: <Widget>[
             Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color.fromRGBO(255, 101, 85, 1), Color.fromRGBO(214, 48, 49, 1)]
-                  )
-              ),
+              decoration: splashImageBackground, // change to splashImageBackground for image background
             ),
             //Image Container
             Align(
@@ -60,7 +55,11 @@ class _SplashScreenState extends State<SplashScreen> {
                       width: 60,
                       decoration: BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.circular(10)
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            image: AssetImage('assets/images/logo.png'),
+                            fit: BoxFit.fill
+                        )
                       ),
                     ),
                     SizedBox(

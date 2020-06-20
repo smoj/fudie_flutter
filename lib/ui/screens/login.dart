@@ -120,12 +120,9 @@ class LoginScreen extends StatelessWidget {
                   SizedBox(
                     height: 50,
                   ),
-                  GestureDetector(
-                    child: UIButton(buttonText: 'Login',),
-                    onTap: (){
-                      Navigator.of(context).pushNamed('/home');
-                    },
-                  ),
+                  UIButton(buttonText: 'Login', onTap: (){
+                    Navigator.of(context).pushNamed('/home');
+                  },),
                   SizedBox(
                     height: 50,
                   ),

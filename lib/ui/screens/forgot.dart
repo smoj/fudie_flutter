@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'dart:async';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 
@@ -33,84 +34,67 @@ class ForgotScreen extends StatelessWidget {
       ),
       resizeToAvoidBottomPadding: false,
       backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
-      body: SafeArea(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    UIDisplay2(text: 'Reset', color: themeProvider.isLight ? primaryColor : flatWhite,),
-                    SizedBox(height: 10,),
-                    TextField(
-//                    controller: TextEditingController(text: 'aries@hades.com'),
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Email Address', 'youremail@address.com'),
-                    ),
-                    Divider(
-                      color: (themeProvider.isLight) ? flatBlack : flatWhite,
-                    ),
-                    TextField(
-//                    controller: TextEditingController(text: 'aries@hades.com'),
-                      obscureText: true,
-                      style: TextStyle(
-                        color: (themeProvider.isLight) ? flatBlack : flatWhite,
-                        fontFamily: secondaryFont,
-                      ),
-                      decoration: InputDecoration(
-                          labelText: 'Password',
-                          labelStyle: TextStyle(
-                              color: (themeProvider.isLight) ? flatBlack : flatWhite
-                          ),
-                          border: InputBorder.none,
-                          hintText: 'Min 6 characters',
-                          hintStyle: TextStyle(
-                              color: (themeProvider.isLight) ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5),
-                              fontFamily: secondaryFont,
-                              fontWeight: FontWeight.w700
-                          )
-                      ),
-                    ),
-                    Divider(
-                      color: (themeProvider.isLight) ? flatBlack : flatWhite,
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
+      body: Builder(
+        builder: (BuildContext context){
+          return SafeArea(
+              child: Stack(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
-                        Expanded(
-                          child: GestureDetector(
-                            onTap: (){
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('Go Back', textAlign: TextAlign.left, style: TextStyle(
-                                color: themeProvider.isLight ? flatBlack : flatWhite,
-                                fontFamily: 'Nunito',
-                                fontSize: 17,
-                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                fontWeight: FontWeight.normal,
-                                height: 1
-                            ),),
-                          ),
+                        UIDisplay2(text: 'Reset', color: themeProvider.isLight ? primaryColor : flatWhite,),
+                        SizedBox(height: 10,),
+                        TextField(
+//                    controller: TextEditingController(text: 'aries@hades.com'),
+                          style: getTextFieldStyle(themeProvider.isLight),
+                          decoration: getInputDecoration(themeProvider.isLight, 'Email Address', 'youremail@address.com'),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Expanded(
+                              child: GestureDetector(
+                                onTap: (){
+                                  Navigator.of(context).pop();
+                                },
+                                child: Text('Go Back', textAlign: TextAlign.left, style: TextStyle(
+                                    color: themeProvider.isLight ? flatBlack : flatWhite,
+                                    fontFamily: 'Nunito',
+                                    fontSize: 17,
+                                    letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                    fontWeight: FontWeight.normal,
+                                    height: 1
+                                ),),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 50,
+                        ),
+                        UIButton(buttonText: 'Reset Password', onTap: (){
+                          final snackBar = SnackBar(
+                            content: Text('Reset Email Sent!'),
+                          );
+                          Scaffold.of(context).showSnackBar(snackBar);
+                          Timer(Duration(seconds: 1), ()=> Navigator.of(context).pop());
+                        },),
+                        SizedBox(
+                          height: 50,
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    UIButton(buttonText: 'Reset Password',),
-                    SizedBox(
-                      height: 50,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          )
+                  ),
+                ],
+              )
+          );
+        },
       ),
     );
   }

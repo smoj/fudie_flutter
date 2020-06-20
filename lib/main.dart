@@ -15,7 +15,6 @@ import 'package:fudie_ui_flutter/ui/screens/search.dart';
 import 'package:fudie_ui_flutter/ui/screens/splash.dart';
 import 'package:fudie_ui_flutter/ui/screens/success.dart';
 import 'package:fudie_ui_flutter/ui/screens/vendor.dart';
-import 'package:fudie_ui_flutter/ui/screens/splash_image.dart';
 import 'package:fudie_ui_flutter/ui/screens/favourite.dart';
 import 'package:fudie_ui_flutter/ui/screens/story_highlight.dart';
 import 'package:fudie_ui_flutter/ui/screens/profile.dart';

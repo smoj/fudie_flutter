@@ -46,30 +46,36 @@ class UIItemLarge extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('Uzumaki Ramen Style', maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(
-                      color: Colors.white,
-                      fontSize: MediaQuery.of(context).size.width * 0.055,
-                      fontWeight: FontWeight.bold
-                  ),),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Text('Naruto Shop', style: TextStyle(
-                      color: Colors.white
-                  ),),
-                ],
+              Expanded(
+                flex: 6,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Uzumaki Ramen Style', maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(
+                        color: Colors.white,
+                        fontSize: MediaQuery.of(context).size.width * 0.055,
+                        fontWeight: FontWeight.bold
+                    ),),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text('Naruto Shop', style: TextStyle(
+                        color: Colors.white
+                    ),),
+                  ],
+                ),
               ),
               Spacer(),
-              Text("22.99", textAlign: TextAlign.right, style: TextStyle(
-                  color: Colors.white,
-                  fontSize: MediaQuery.of(context).size.width * 0.08,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Poppins',
-                  height: 1.1
-              ),),
+              Expanded(
+                flex: 3,
+                child: Text("22.99", textAlign: TextAlign.right, style: TextStyle(
+                    color: Colors.white,
+                    fontSize: MediaQuery.of(context).size.width * 0.08,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Poppins',
+                    height: 1.1
+                ),),
+              ),
             ],
           ),
           SizedBox(

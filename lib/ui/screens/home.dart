@@ -149,7 +149,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: screenWidth * 0.06),
                         child: UITitle(text: 'New Deals'),
                       ),
-                      UIItemLarge(),
+                      GestureDetector(
+                          onTap: (){
+                            Navigator.pushNamed(context, '/detail');
+                          },
+                          child: UIItemLarge(),
+                      ),
                       SizedBox(
                         height: 20,
                       ),

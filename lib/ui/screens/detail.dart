@@ -8,7 +8,35 @@ import 'package:fudie_ui_flutter/ui/widgets/quote.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
+  @override
+  _DetailScreenState createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  int itemCount = 1;
+  double totalPrice = 0;
+
+  adjustCount(bool increase){
+    if(itemCount > 0){
+      if(increase){
+        setState(() {
+          itemCount += 1;
+        });
+      }
+      else{
+        setState(() {
+          itemCount -= 1;
+        });
+      }
+    }
+    else{
+      setState(() {
+        itemCount = 1;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -28,21 +56,21 @@ class DetailScreen extends StatelessWidget {
 //                Navigator.pushNamed(context, '/search');
 //              },
 //            )
-          FlatButton(
-            padding: EdgeInsets.zero,
-            child: Switch(
-              value: themeProvider.isLight,
-              onChanged: (boolVal){
-                themeProvider.setTheme(boolVal);
-              },
-            ),
-          )
+            FlatButton(
+              padding: EdgeInsets.zero,
+              child: Switch(
+                value: themeProvider.isLight,
+                onChanged: (boolVal){
+                  themeProvider.setTheme(boolVal);
+                },
+              ),
+            )
           ],
           backgroundColor: (themeProvider.isLight) ? Colors.white : Color.fromRGBO(66, 66, 66, 1),
           iconTheme: IconThemeData(
               color: (themeProvider.isLight) ? flatBlack : flatWhite
           ),
-          title: Text('Home', style: TextStyle(
+          title: Text('Detail', style: TextStyle(
               fontFamily: primaryFont,
               color: (themeProvider.isLight) ? flatBlack : flatWhite
           ),),
@@ -71,7 +99,7 @@ class DetailScreen extends StatelessWidget {
                                 width: screenWidth,
                                 child: TransitionToImage(
                                   image: AdvancedNetworkImage(
-                                    'https://i.picsum.photos/id/384/300/300.jpg',
+                                    'https://picsum.photos/id/384/300/300.jpg',
                                     loadedCallback: () => print('Network Image loaded.'),
                                     loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
                                     timeoutDuration: Duration(seconds: 60),
@@ -100,7 +128,7 @@ class DetailScreen extends StatelessWidget {
                               alignment: Alignment(-0.9,-0.87),
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: Colors.green,
+                                    color: success,
                                     borderRadius: BorderRadius.circular(100)
                                 ),
                                 padding: EdgeInsets.fromLTRB(18, 9, 18, 8),
@@ -117,7 +145,7 @@ class DetailScreen extends StatelessWidget {
                                     minWidth: 100
                                 ),
                                 decoration: BoxDecoration(
-                                    color: Colors.red,
+                                    color: primaryColor,
                                     borderRadius: BorderRadius.circular(100)
                                 ),
                                 padding: EdgeInsets.fromLTRB(18, 9, 18, 8),
@@ -125,8 +153,8 @@ class DetailScreen extends StatelessWidget {
                                   mainAxisSize: MainAxisSize.min,
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: <Widget>[
-                                    Icon(Icons.star_border, color: Colors.white, size: metaFontSize,),
-                                    Icon(Icons.star_border, color: Colors.white, size: metaFontSize,),
+                                    Icon(Icons.star, color: Colors.white.withOpacity(0.5), size: metaFontSize,),
+                                    Icon(Icons.star, color: Colors.white.withOpacity(0.5), size: metaFontSize,),
                                     Icon(Icons.star, color: Colors.white, size: metaFontSize,),
                                     Icon(Icons.star, color: Colors.white, size: metaFontSize,),
                                     Icon(Icons.star, color: Colors.white, size: metaFontSize,),
@@ -158,7 +186,8 @@ class DetailScreen extends StatelessWidget {
                                         color: Colors.white,
                                         fontFamily: secondaryFont,
                                         height: 1,
-                                        fontSize: screenWidth * 0.05
+                                        fontSize: screenWidth * 0.05,
+                                        decoration: TextDecoration.lineThrough
                                     ),),
                                     SizedBox(
                                       height: 10,
@@ -209,7 +238,9 @@ class DetailScreen extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: <Widget>[
                                       GestureDetector(
-                                        onTap:() {},
+                                        onTap:() {
+                                          adjustCount(true);
+                                        },
                                         child: Container(
                                           padding: EdgeInsets.all(10),
                                           decoration: BoxDecoration(
@@ -221,10 +252,12 @@ class DetailScreen extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(width: 20,),
-                                      UITitle(text: '33',),
+                                      UITitle(text: this.itemCount.toString(),),
                                       SizedBox(width: 20,),
                                       GestureDetector(
-                                        onTap:() {},
+                                        onTap:() {
+                                          adjustCount(false);
+                                        },
                                         child: Container(
                                           padding: EdgeInsets.all(10),
                                           decoration: BoxDecoration(
@@ -290,7 +323,9 @@ class DetailScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: UIButton(buttonText: 'Order', price: '\$349.99',),
+                  child: UIButton(buttonText: 'Order', price: '\$349.99', onTap: (){
+//                   do nothing
+                  },),
                 ),
               )
             ],
@@ -299,4 +334,5 @@ class DetailScreen extends StatelessWidget {
     );
   }
 }
+
 

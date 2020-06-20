@@ -11,6 +11,7 @@ class SideMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   final themeProvider = Provider.of<ThemeProvider>(context);
+  final screenWidth = MediaQuery.of(context).size.width;
     return Drawer(
       child: Container(
         color: flatBlack,
@@ -33,10 +34,16 @@ class SideMenuScreen extends StatelessWidget {
                             fontFamily: secondaryFont,
                             fontWeight: FontWeight.w300
                         ),),
-                        Text('Elizabeth Hurley Alzerden', maxLines: 2, overflow: TextOverflow.fade, style: TextStyle(
+                        Text('Elizabeth', maxLines: 2, overflow: TextOverflow.fade, style: TextStyle(
                           color: flatWhite,
                           fontFamily: primaryFont,
-                          fontSize: 30,
+                          fontSize: screenWidth * 0.07,
+                          fontWeight: FontWeight.w600,
+                        ),),
+                        Text('Hurley', maxLines: 2, overflow: TextOverflow.fade, style: TextStyle(
+                          color: flatWhite,
+                          fontFamily: primaryFont,
+                          fontSize: screenWidth * 0.07,
                           fontWeight: FontWeight.w600,
                         ),),
                       ],
@@ -71,35 +78,35 @@ class SideMenuScreen extends StatelessWidget {
                       ),
                   ),
                   Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
-                  ListTile(
-                      title: Text('Cart Items', style: TextStyle(
-                          color: flatWhite,
-                          fontWeight: FontWeight.w600,
-                          fontFamily: primaryFont,
-                          fontSize: 18
-                      ),),
-                      onTap: (){
-//                        Navigator.pushNamed(context, '/favourite');
-                      },
-                      leading: Icon(Icons.favorite, color: flatWhite,),
-                      trailing: Container(
-                          padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-                          width: 30,
-                          height: 30,
-                          child: Container(
-                            padding: EdgeInsets.fromLTRB(0, 3, 0, 0),
-                            decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(90)
-                            ),
-                            child: Text('89', textAlign: TextAlign.center, style: TextStyle(
-                                color: flatWhite,
-                                fontSize: 15,
-                                fontFamily: primaryFont,
-                                fontWeight: FontWeight.w600
-                            )),
-                          ))
-                  ),
+//                  ListTile(
+//                      title: Text('Cart Items', style: TextStyle(
+//                          color: flatWhite,
+//                          fontWeight: FontWeight.w600,
+//                          fontFamily: primaryFont,
+//                          fontSize: 18
+//                      ),),
+//                      onTap: (){
+////                        Navigator.pushNamed(context, '/favourite');
+//                      },
+//                      leading: Icon(Icons.favorite, color: flatWhite,),
+//                      trailing: Container(
+//                          padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+//                          width: 30,
+//                          height: 30,
+//                          child: Container(
+//                            padding: EdgeInsets.fromLTRB(0, 3, 0, 0),
+//                            decoration: BoxDecoration(
+//                                color: Colors.red,
+//                                borderRadius: BorderRadius.circular(90)
+//                            ),
+//                            child: Text('89', textAlign: TextAlign.center, style: TextStyle(
+//                                color: flatWhite,
+//                                fontSize: 15,
+//                                fontFamily: primaryFont,
+//                                fontWeight: FontWeight.w600
+//                            )),
+//                          ))
+//                  ),
                 ],
               ),
             ),
