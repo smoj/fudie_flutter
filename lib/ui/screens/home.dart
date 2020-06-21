@@ -49,9 +49,9 @@ class _HomeScreenState extends State<HomeScreen> {
             brightness: Brightness.light,
             actions: <Widget>[
               IconButton(
-                icon: Icon(Icons.search, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
+                icon: Icon(Icons.shopping_cart, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
                 onPressed: (){
-                  Navigator.pushNamed(context, '/search');
+                  Navigator.pushNamed(context, '/cart');
                 },
               )
             ],
@@ -205,9 +205,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue,),
                         child: Row(
                           children: <Widget>[
-                            UIItemMedium(),
+                            UIItemMedium(onTap: (){
+                              Navigator.pushNamed(context, '/detail');
+                            },),
                             SizedBox(width: 20,),
-                            UIItemMedium()
+                            UIItemMedium(onTap: (){
+                              Navigator.pushNamed(context, '/detail');
+                            },),
                           ],
                         ),
                       ),

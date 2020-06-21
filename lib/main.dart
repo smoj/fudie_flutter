@@ -56,6 +56,7 @@ class MyApp extends StatelessWidget {
         '/detail' : (context) => DetailScreen(),
         '/login' : (context) => LoginScreen(),
         '/register' : (context) => RegisterScreen(),
+        '/cart' : (context) => CartScreen(),
         '/search' : (context) => SearchScreen(),
         '/forgot' : (context) => ForgotScreen(),
         '/slider' : (context) => ISliderScreen(),

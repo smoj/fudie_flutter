@@ -19,7 +19,6 @@ class CartScreen extends StatelessWidget {
     final headingPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.01);
     return Scaffold(
         backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
-        drawer: SideMenuScreen(),
         appBar: AppBar(
           brightness: Brightness.light,
           actions: <Widget>[

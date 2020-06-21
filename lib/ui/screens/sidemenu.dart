@@ -78,35 +78,35 @@ class SideMenuScreen extends StatelessWidget {
                       ),
                   ),
                   Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
-//                  ListTile(
-//                      title: Text('Cart Items', style: TextStyle(
-//                          color: flatWhite,
-//                          fontWeight: FontWeight.w600,
-//                          fontFamily: primaryFont,
-//                          fontSize: 18
-//                      ),),
-//                      onTap: (){
-////                        Navigator.pushNamed(context, '/favourite');
-//                      },
-//                      leading: Icon(Icons.favorite, color: flatWhite,),
-//                      trailing: Container(
-//                          padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
-//                          width: 30,
-//                          height: 30,
-//                          child: Container(
-//                            padding: EdgeInsets.fromLTRB(0, 3, 0, 0),
-//                            decoration: BoxDecoration(
-//                                color: Colors.red,
-//                                borderRadius: BorderRadius.circular(90)
-//                            ),
-//                            child: Text('89', textAlign: TextAlign.center, style: TextStyle(
-//                                color: flatWhite,
-//                                fontSize: 15,
-//                                fontFamily: primaryFont,
-//                                fontWeight: FontWeight.w600
-//                            )),
-//                          ))
-//                  ),
+                  ListTile(
+                      title: Text('Cart Items', style: TextStyle(
+                          color: flatWhite,
+                          fontWeight: FontWeight.w600,
+                          fontFamily: primaryFont,
+                          fontSize: 18
+                      ),),
+                      onTap: (){
+                        Navigator.pushNamed(context, '/cart');
+                      },
+                      leading: Icon(Icons.shopping_cart, color: flatWhite,),
+                      trailing: Container(
+                          padding: EdgeInsets.fromLTRB(0, 5, 0, 0),
+                          width: 30,
+                          height: 30,
+                          child: Container(
+                            padding: EdgeInsets.fromLTRB(0, 2, 0, 0),
+                            decoration: BoxDecoration(
+                                color: Colors.red,
+                                shape: BoxShape.circle
+                            ),
+                            child: Text('89', textAlign: TextAlign.center, style: TextStyle(
+                                color: flatWhite,
+                                fontSize: 15,
+                                fontFamily: secondaryFont,
+                                fontWeight: FontWeight.normal
+                            )),
+                          ))
+                  ),
                 ],
               ),
             ),

@@ -46,7 +46,6 @@ class _DetailScreenState extends State<DetailScreen> {
     final headingPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.01);
     return Scaffold(
         backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
-        drawer: SideMenuScreen(),
         appBar: AppBar(
           brightness: Brightness.light,
           actions: <Widget>[
@@ -239,23 +238,6 @@ class _DetailScreenState extends State<DetailScreen> {
                                     children: <Widget>[
                                       GestureDetector(
                                         onTap:() {
-                                          adjustCount(true);
-                                        },
-                                        child: Container(
-                                          padding: EdgeInsets.all(10),
-                                          decoration: BoxDecoration(
-                                              color: themeProvider.isLight ? Colors.white : darkThemeElevation8,
-                                              boxShadow: [lightFaintShadow],
-                                              borderRadius: BorderRadius.circular(5)
-                                          ),
-                                          child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack : flatWhite,),
-                                        ),
-                                      ),
-                                      SizedBox(width: 20,),
-                                      UITitle(text: this.itemCount.toString(),),
-                                      SizedBox(width: 20,),
-                                      GestureDetector(
-                                        onTap:() {
                                           adjustCount(false);
                                         },
                                         child: Container(
@@ -266,6 +248,23 @@ class _DetailScreenState extends State<DetailScreen> {
                                               borderRadius: BorderRadius.circular(5)
                                           ),
                                           child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack : flatWhite,),
+                                        ),
+                                      ),
+                                      SizedBox(width: 20,),
+                                      UITitle(text: this.itemCount.toString(),),
+                                      SizedBox(width: 20,),
+                                      GestureDetector(
+                                        onTap:() {
+                                          adjustCount(true);
+                                        },
+                                        child: Container(
+                                          padding: EdgeInsets.all(10),
+                                          decoration: BoxDecoration(
+                                              color: themeProvider.isLight ? Colors.white : darkThemeElevation8,
+                                              boxShadow: [lightFaintShadow],
+                                              borderRadius: BorderRadius.circular(5)
+                                          ),
+                                          child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack : flatWhite,),
                                         ),
                                       ),
                                     ],
