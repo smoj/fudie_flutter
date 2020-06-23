@@ -14,19 +14,29 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
-  int itemCount = 1;
-  double totalPrice = 0;
+  int itemCount;
+  double price;
+  double totalPrice;
+
+  void initState(){
+    super.initState();
+    itemCount = 1;
+    price = 4.99;
+    totalPrice = 0;
+  }
 
   adjustCount(bool increase){
     if(itemCount > 0){
       if(increase){
         setState(() {
           itemCount += 1;
+          totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
         });
       }
       else{
         setState(() {
           itemCount -= 1;
+          totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
         });
       }
     }
@@ -181,7 +191,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
-                                    Text('4.99', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
+                                    Text('$price', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: secondaryFont,
                                         height: 1,
@@ -322,8 +332,8 @@ class _DetailScreenState extends State<DetailScreen> {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: UIButton(buttonText: 'Order', price: '\$349.99', onTap: (){
-//                   do nothing
+                  child: UIButton(buttonText: 'Order', price: '\$$totalPrice', onTap: (){
+                   return;
                   },),
                 ),
               )
