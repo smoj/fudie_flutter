@@ -7,8 +7,12 @@ import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class UIItemMedium extends StatefulWidget {
   Function onTap = (){};
+  final double price;
+  final String description;
+  final String url;
+  final String vendor;
 
-  UIItemMedium({this.onTap});
+  UIItemMedium({this.price, this.description, this.url, this.vendor, this.onTap});
 
   @override
   _UIItemMediumState createState() => _UIItemMediumState();
@@ -41,7 +45,7 @@ class _UIItemMediumState extends State<UIItemMedium> {
                     borderRadius: BorderRadius.circular(10),
                     child: TransitionToImage(
                       image: AdvancedNetworkImage(
-                        'https://picsum.photos/id/201/350/250.jpg',
+                        widget.url,
                         loadedCallback: () => print('Network Image loaded.'),
                         loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
                         timeoutDuration: Duration(seconds: 60),
@@ -53,7 +57,7 @@ class _UIItemMediumState extends State<UIItemMedium> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text('Uzumaki Ramen Style', style: TextStyle(
+                  Text(widget.description, style: TextStyle(
                       color: (themeProvider.isLight) ? Colors.black : flatWhite,
                       fontSize: MediaQuery.of(context).size.width * 0.048,
                       fontFamily: 'Nunito'
@@ -65,7 +69,7 @@ class _UIItemMediumState extends State<UIItemMedium> {
                     height: 10,
                   ),
                   Opacity(
-                    child: UISubHeader(text: '39.99', weight: FontWeight.bold,),
+                    child: UISubHeader(text: widget.price.toString(), weight: FontWeight.bold,),
                     opacity: 0.6,
                   ),
                 ],

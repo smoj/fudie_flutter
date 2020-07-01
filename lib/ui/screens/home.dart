@@ -153,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onTap: (){
                             Navigator.pushNamed(context, '/detail');
                           },
-                          child: UIItemLarge(vendor: 'Naruto Shop', price: 23.99, url: 'https://picsum.photos/id/483/350/150.jpg', description: 'Ramen Soup',),
+                          child: UIItemLarge(vendor: 'Naruto Shop', price: 23.99, url: 'http://www.audacitus.com/mobile_app_assets/item-large.png', description: 'Ramen Soup',),
                       ),
                       SizedBox(
                         height: 20,
@@ -190,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           order: '#45444444443',
                           qty: '33',
                           description: 'Sunday May 22nd 2020',
-                          imageUrl: 'https://picsum.photos/id/483/64/64.jpg',
+                          imageUrl: 'http://www.audacitus.com/mobile_app_assets/tiny-order-summary.png',
                           total: '\$334.73',
                         ),
                       ),
@@ -205,13 +205,21 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue,),
                         child: Row(
                           children: <Widget>[
-                            UIItemMedium(onTap: (){
-                              Navigator.pushNamed(context, '/detail');
-                            },),
+                            UIItemMedium(
+                              price : 33,
+                              description: 'Spicy Chinese Salad',
+                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium.png',
+                              onTap: (){
+                                Navigator.pushNamed(context, '/detail');
+                              },),
                             SizedBox(width: 20,),
-                            UIItemMedium(onTap: (){
-                              Navigator.pushNamed(context, '/detail');
-                            },),
+                            UIItemMedium(
+                              price : 33,
+                              description: 'Extra Spicy Pizza',
+                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
+                              onTap: (){
+                                Navigator.pushNamed(context, '/detail');
+                              },),
                           ],
                         ),
                       ),

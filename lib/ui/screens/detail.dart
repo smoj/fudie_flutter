@@ -102,10 +102,11 @@ class _DetailScreenState extends State<DetailScreen> {
                               right: 0,
                               bottom: 0,
                               child: Container(
+//                                'https://picsum.photos/id/384/300/300.jpg'
                                 width: screenWidth,
                                 child: TransitionToImage(
                                   image: AdvancedNetworkImage(
-                                    'https://picsum.photos/id/384/300/300.jpg',
+                                    'http://www.audacitus.com/mobile_app_assets/detail.png',
                                     loadedCallback: () => print('Network Image loaded.'),
                                     loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
                                     timeoutDuration: Duration(seconds: 60),
@@ -319,9 +320,21 @@ class _DetailScreenState extends State<DetailScreen> {
                         padding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.065),
                         child: Row(
                           children: <Widget>[
-                            UIItemMedium(),
+                            UIItemMedium(
+                              price : 33,
+                              description: 'Spicy Chinese Salad',
+                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium.png',
+                              onTap: (){
+                                Navigator.pushNamed(context, '/detail');
+                              },),
                             SizedBox(width: 20,),
-                            UIItemMedium()
+                            UIItemMedium(
+                              price : 33,
+                              description: 'Extra Spicy Pizza',
+                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
+                              onTap: (){
+                                Navigator.pushNamed(context, '/detail');
+                              },),
                           ],
                         ),
                       ),
