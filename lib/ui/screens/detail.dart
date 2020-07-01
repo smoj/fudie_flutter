@@ -287,7 +287,7 @@ class _DetailScreenState extends State<DetailScreen> {
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.045, vertical: screenWidth * 0.065),
-                        child: Text('Minim irure fugiat aliqua velit Lorem esse sunt aliquip. Lorem occaecat culpa amet eu consequat nostrud cillum ipsum ut Lorem veniam laborum. Occaecat nisi labore in ea', style: TextStyle(
+                        child: Text('A hamburger (also burger for short) is a sandwich consisting of one or more cooked patties of ground meat, usually beef, placed inside a sliced bread roll or bun. The patty may be pan fried, grilled, smoked or flame broiled. ... There are many international and regional variations of the hamburger', style: TextStyle(
                             fontFamily: secondaryFont,
                             color: themeProvider.isLight ? flatBlack : flatWhite,
                             height: 1.5
