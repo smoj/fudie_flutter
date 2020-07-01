@@ -153,7 +153,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onTap: (){
                             Navigator.pushNamed(context, '/detail');
                           },
-                          child: UIItemLarge(),
+                          child: UIItemLarge(vendor: 'Naruto Shop', price: 23.99, url: 'https://picsum.photos/id/483/350/150.jpg', description: 'Ramen Soup',),
                       ),
                       SizedBox(
                         height: 20,

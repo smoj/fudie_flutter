@@ -5,8 +5,17 @@ import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_meta.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
+import 'package:fudie_ui_flutter/ui/shared.dart';
 
 class UIItemLarge extends StatelessWidget {
+
+  final double price;
+  final String description;
+  final String url;
+  final String vendor;
+
+  UIItemLarge({this.price, this.description, this.url, this.vendor});
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -29,7 +38,7 @@ class UIItemLarge extends StatelessWidget {
               ),
               child: TransitionToImage(
                 image: AdvancedNetworkImage(
-                  'https://picsum.photos/id/483/350/150.jpg',
+                  '$url',
                   loadedCallback: () => print('Network Image loaded.'),
                   loadFailedCallback: () => print('Oh, no! failed! Timeout and Retry limit exceeded'),
                   timeoutDuration: Duration(seconds: 60),
@@ -47,11 +56,11 @@ class UIItemLarge extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Expanded(
-                flex: 6,
+                flex: 5,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('Uzumaki Ramen Style', maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(
+                    Text('$description', maxLines: 3, overflow: TextOverflow.ellipsis, style: TextStyle(
                         color: Colors.white,
                         fontSize: MediaQuery.of(context).size.width * 0.055,
                         fontWeight: FontWeight.bold
@@ -59,7 +68,7 @@ class UIItemLarge extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    Text('Naruto Shop', style: TextStyle(
+                    Text('$vendor', style: TextStyle(
                         color: Colors.white
                     ),),
                   ],
@@ -68,7 +77,7 @@ class UIItemLarge extends StatelessWidget {
               Spacer(),
               Expanded(
                 flex: 3,
-                child: Text("22.99", textAlign: TextAlign.right, style: TextStyle(
+                child: Text("\$$price", textAlign: TextAlign.right, style: TextStyle(
                     color: Colors.white,
                     fontSize: MediaQuery.of(context).size.width * 0.08,
                     fontWeight: FontWeight.bold,
