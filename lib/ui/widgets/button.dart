@@ -28,10 +28,7 @@ class _UIButtonState extends State<UIButton> {
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         decoration: BoxDecoration(
             gradient: brandGradientHorizontal,
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10)
-            )
+            borderRadius: BorderRadius.all(Radius.circular(10))
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

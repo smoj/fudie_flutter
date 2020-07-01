@@ -187,11 +187,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue),
                         child: UIOrder(
-                          order: 'Order #454444',
+                          order: '#45444444443',
                           qty: '33',
-                          description: 'Old Country Burger',
+                          description: 'Sunday May 22nd 2020',
                           imageUrl: 'https://picsum.photos/id/483/64/64.jpg',
-                          total: '334',
+                          total: '\$334.73',
                         ),
                       ),
                       SizedBox(

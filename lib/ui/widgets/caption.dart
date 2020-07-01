@@ -18,7 +18,7 @@ class UICaption extends StatelessWidget {
         height: 0.8,
         fontWeight: this.weight != null ? this.weight : FontWeight.normal,
         color: this.color != null ? this.color : (themeProvider.isLight) ? themeProvider.lightTheme.textColor : themeProvider.darkTheme.textColor,
-        fontSize: MediaQuery.of(context).size.width * 0.03
+        fontSize: MediaQuery.of(context).size.width * 0.035
     ),);
   }
 }

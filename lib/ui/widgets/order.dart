@@ -24,6 +24,7 @@ class UIOrder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final screenWidth = MediaQuery.of(context).size.width;
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 15, vertical: 15),
       decoration: BoxDecoration(
@@ -113,18 +114,34 @@ class UIOrder extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.only(left: 10),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  UITitle(text: this.order, color: Colors.white, height: 1.1,),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  UICaption(text: this.description, color: Colors.white.withOpacity(0.8),),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  UICaption(text: this.total, color: Colors.white, font: secondaryFont, weight: FontWeight.bold,)
+                  Text('Order #4588484', overflow: TextOverflow.ellipsis, textAlign: TextAlign.left, style: TextStyle(
+                      color: Color.fromRGBO(255, 255, 255, 1),
+                      fontFamily: 'Poppins',
+                      fontSize: 20,
+                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                      fontWeight: FontWeight.w600,
+                      height: 1
+                  ),),
+                  Text('May 22nd 2020', textAlign: TextAlign.left, style: TextStyle(
+                      color: Color.fromRGBO(255, 255, 255, 1),
+                      fontFamily: 'Nunito',
+                      fontSize: screenWidth * 0.04,
+                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                      fontWeight: FontWeight.normal,
+                      height: 1.3333333333333333
+                  ),),
+                  // Figma Flutter Generator 12300Widget - TEXT
+                  Text('\$123.00', textAlign: TextAlign.left, style: TextStyle(
+                      color: Color.fromRGBO(255, 255, 255, 1),
+                      fontFamily: 'Nunito',
+                      fontSize: screenWidth * 0.037,
+                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                      fontWeight: FontWeight.normal,
+                      height: 1.3333333333333333
+                  ),)
                 ],
               ),
             ),
