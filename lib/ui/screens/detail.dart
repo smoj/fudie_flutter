@@ -17,34 +17,31 @@ class _DetailScreenState extends State<DetailScreen> {
   int itemCount;
   double price;
   double totalPrice;
+  int maxCount;
 
   void initState(){
     super.initState();
     itemCount = 1;
     price = 4.99;
-    totalPrice = 0;
+    maxCount = 10;
+    updatePrice(itemCount, price);
   }
 
-  adjustCount(bool increase){
-    if(itemCount > 0){
-      if(increase){
-        setState(() {
-          itemCount += 1;
-          totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
-        });
-      }
-      else{
-        setState(() {
-          itemCount -= 1;
-          totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
-        });
-      }
+  updatePrice(int itemCount, double price){
+    setState(() {
+      totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
+    });
+  }
+
+  adjustCount(bool increment){
+    itemCount = increment ? itemCount+1 : itemCount-1;
+    if(itemCount < 1){
+      itemCount = 0;
     }
-    else{
-      setState(() {
-        itemCount = 1;
-      });
+    if(itemCount >= maxCount){
+      itemCount = maxCount;
     }
+    updatePrice(itemCount, price);
   }
 
   @override
