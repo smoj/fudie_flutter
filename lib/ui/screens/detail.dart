@@ -235,7 +235,13 @@ class _DetailScreenState extends State<DetailScreen> {
                                   SizedBox(
                                     height: 10,
                                   ),
-                                  UIHeadline(text: '35 mins',)
+                                  Text('35 Mins', style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      height: 0.8,
+                                      fontWeight: FontWeight.normal,
+                                      color: (themeProvider.isLight) ? themeProvider.lightTheme.textColor : themeProvider.darkTheme.textColor,
+                                      fontSize: MediaQuery.of(context).size.width * 0.05
+                                  ),)
                                 ],
                               ),
                             ),
