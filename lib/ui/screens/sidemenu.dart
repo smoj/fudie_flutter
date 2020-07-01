@@ -18,29 +18,24 @@ class SideMenuScreen extends StatelessWidget {
         child: ListView(
           padding: EdgeInsets.zero,
           children: <Widget>[
-            DrawerHeader(
-              padding: EdgeInsets.zero,
-              margin: EdgeInsets.zero,
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                child: Stack(
-                  fit: StackFit.expand,
-                  children: <Widget>[
-                    Column(
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+              color: darkThemeElevation6.withOpacity(0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text('Hello,', style: TextStyle(
+                        Text('Hello,', textAlign: TextAlign.left, style: TextStyle(
                             color: flatWhite,
                             fontFamily: secondaryFont,
                             fontWeight: FontWeight.w300
                         ),),
-                        Text('Elizabeth', maxLines: 2, overflow: TextOverflow.fade, style: TextStyle(
-                          color: flatWhite,
-                          fontFamily: primaryFont,
-                          fontSize: screenWidth * 0.07,
-                          fontWeight: FontWeight.w600,
-                        ),),
-                        Text('Hurley', maxLines: 2, overflow: TextOverflow.fade, style: TextStyle(
+                        Text('Elizabeth Aldezan', maxLines: 2, overflow: TextOverflow.fade, style: TextStyle(
                           color: flatWhite,
                           fontFamily: primaryFont,
                           fontSize: screenWidth * 0.07,
@@ -48,15 +43,8 @@ class SideMenuScreen extends StatelessWidget {
                         ),),
                       ],
                     ),
-                  ],
-                )
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 0, 0, 16),
-              color: darkThemeElevation6.withOpacity(0),
-              child: Column(
-                children: <Widget>[
+                    padding: EdgeInsets.fromLTRB(15, 30, 15, 0)
+                  ),
                   SizedBox(height: 30,),
                   Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
                   ListTile(
