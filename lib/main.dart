@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
       primaryColor: Color.fromRGBO(215, 41, 41, 1),
       accentColor: Color.fromRGBO(255, 221, 161, 1),
       primaryColorDark: Color.fromRGBO(12, 12, 12, 1),
-      scaffoldBackgroundColor: Color.fromRGBO(246, 245, 250, 1)
+      scaffoldBackgroundColor: Color.fromRGBO(246, 245, 250, 1),
   );
 
   // This widget is the root of your application.

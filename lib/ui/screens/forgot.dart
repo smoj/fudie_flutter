@@ -9,6 +9,7 @@ class ForgotScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         brightness: Brightness.light,
@@ -40,6 +41,15 @@ class ForgotScreen extends StatelessWidget {
               child: Stack(
                 children: <Widget>[
                   Container(
+                    height: screenHeight,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/images/auth_bg.png'),
+                          fit: BoxFit.fitWidth
+                      ),
+                    ),
+                  ),
+                  Container(
                     padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,29 +61,6 @@ class ForgotScreen extends StatelessWidget {
 //                    controller: TextEditingController(text: 'aries@hades.com'),
                           style: getTextFieldStyle(themeProvider.isLight),
                           decoration: getInputDecoration(themeProvider.isLight, 'Email Address', 'youremail@address.com'),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: <Widget>[
-                            Expanded(
-                              child: GestureDetector(
-                                onTap: (){
-                                  Navigator.of(context).pop();
-                                },
-                                child: Text('Go Back', textAlign: TextAlign.left, style: TextStyle(
-                                    color: themeProvider.isLight ? flatBlack : flatWhite,
-                                    fontFamily: 'Nunito',
-                                    fontSize: 17,
-                                    letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                    fontWeight: FontWeight.normal,
-                                    height: 1
-                                ),),
-                              ),
-                            ),
-                          ],
                         ),
                         SizedBox(
                           height: 50,

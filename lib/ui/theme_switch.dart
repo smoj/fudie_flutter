@@ -118,6 +118,11 @@ getInputDecoration(bool isLight, String label, String placeholder){
       ),
 //      border: InputBorder.none,
       hintText: '$placeholder',
-      hintStyle: getHintStyle(isLight)
+      hintStyle: TextStyle(
+          color: (isLight) ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5),
+          fontFamily: secondaryFont,
+          fontWeight: FontWeight.w500,
+          height: 2
+      ),
   );
 }

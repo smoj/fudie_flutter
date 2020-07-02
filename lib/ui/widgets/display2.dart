@@ -15,7 +15,7 @@ class UIDisplay2 extends StatelessWidget {
         fontFamily: 'Poppins',
         fontWeight: FontWeight.bold,
         height: 0.8,
-        color: this.color != null ? this.color : (themeProvider.isLight) ? themeProvider.lightTheme.textColor : themeProvider.darkTheme.textColor,
+        color: this.color != null ? this.color : (themeProvider.isLight) ? flatBlack : flatWhite,
         fontSize: MediaQuery.of(context).size.width * 0.10
     ),);
   }

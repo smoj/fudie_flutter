@@ -8,6 +8,7 @@ class RegisterScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         brightness: Brightness.light,
@@ -33,51 +34,62 @@ class RegisterScreen extends StatelessWidget {
       ),
       resizeToAvoidBottomPadding: false,
       backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
-      body: SafeArea(
-          child: Stack(
-            children: <Widget>[
-              Container(
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+      body: SingleChildScrollView(
+        child: Stack(
+          fit: StackFit.loose,
+          children: <Widget>[
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                height: screenHeight,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/images/auth_bg.png'),
+                      fit: BoxFit.fitWidth
+                  ),
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.topCenter,
+              child: Container(
+                padding: EdgeInsets.all(screenWidth * 0.09),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    UIDisplay2(text: 'Register', color: themeProvider.isLight ? primaryColor : flatWhite,),
-                    SizedBox(height: 10,),
-                    TextField(
-//                    controller: TextEditingController(text: 'aries@hades.com'),
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Name', 'Your Name'),
+                    SizedBox(height: screenWidth * 0.28,),
+                    Row(
+                      children: <Widget>[
+                        UIDisplay2(text: 'Register',),
+                      ],
                     ),
+                    SizedBox(height: screenWidth * 0.07,),
                     TextField(
-//                    controller: TextEditingController(text: 'aries@hades.com'),
                       style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Username Email', 'Your username'),
-                    ),
-                    TextField(
-//                    controller: TextEditingController(text: 'aries@hades.com'),
-                      obscureText: true,
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Password', 'Min 6 Characters'),
+                      decoration: getInputDecoration(themeProvider.isLight, 'Your Name', 'Name here'),
                     ),
                     TextField(
-//                    controller: TextEditingController(text: 'aries@hades.com'),
-                      obscureText: true,
                       style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Confirm Password', 'Confirm Password'),
+                      decoration: getInputDecoration(themeProvider.isLight, 'email', 'youralias@youremail.com'),
                     ),
-                    SizedBox(
-                      height: 50,
+                    TextField(
+                      style: getTextFieldStyle(themeProvider.isLight),
+                      decoration: getInputDecoration(themeProvider.isLight, 'Password', 'Min 6 characters'),
                     ),
-                    UIButton(buttonText: 'Register',),
-                    SizedBox(
-                      height: 50,
+                    TextField(
+                      style: getTextFieldStyle(themeProvider.isLight),
+                      decoration: getInputDecoration(themeProvider.isLight, 'Confirm Password', 'confirm same password'),
                     ),
+                    SizedBox(height: 20,),
+                    UIButton(buttonText: 'Register', onTap: (){
+                      return;
+                    },),
                   ],
                 ),
               ),
-            ],
-          )
+            )
+          ],
+        ),
       ),
     );
   }

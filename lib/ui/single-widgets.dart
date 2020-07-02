@@ -17,4 +17,5 @@ export 'widgets/qty-counter.dart';
 export 'widgets/order.dart';
 export 'widgets/item-itenary.dart';
 export 'widgets/card-item.dart';
+export 'widgets/outline_button.dart';
 export 'theme.dart';
