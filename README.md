@@ -1,6 +1,6 @@
-# Flutter Magazine App Theme
+# Flutter Food App
 
-A custom UI for Magazine/News apps build using flutter
+A custom UI for Food apps build using flutter
 
 ## Installation
 
