@@ -82,7 +82,7 @@ class RegisterScreen extends StatelessWidget {
                     ),
                     SizedBox(height: 20,),
                     UIButton(buttonText: 'Register', onTap: (){
-                      return;
+                      Navigator.of(context).pushNamed('/home');
                     },),
                   ],
                 ),

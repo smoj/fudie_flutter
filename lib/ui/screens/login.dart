@@ -80,7 +80,7 @@ class LoginScreen extends StatelessWidget {
                     SizedBox(height: 20,),
                     Spacer(),
                     UIButton(buttonText: 'Login', onTap: (){
-                      return;
+                      Navigator.of(context).pushNamed('/home');
                     },),
                     SizedBox(height: 20,),
                     Row(
