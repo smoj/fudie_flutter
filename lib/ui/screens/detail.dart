@@ -18,12 +18,16 @@ class _DetailScreenState extends State<DetailScreen> {
   double price;
   double totalPrice;
   int maxCount;
+  double discount;
+  double discountedPrice;
 
   void initState(){
     super.initState();
     itemCount = 1;
     price = 4.99;
     maxCount = 10;
+    discount = 0.50;
+    discountedPrice = price * discount;
     updatePrice(itemCount, price);
   }
 
@@ -189,7 +193,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
-                                    Text('$price', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
+                                    Text('\$$price', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: secondaryFont,
                                         height: 1,
@@ -199,7 +203,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Text('4.99', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
+                                    Text("\$$discountedPrice", maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: primaryFont,
                                         fontWeight: FontWeight.w900,
