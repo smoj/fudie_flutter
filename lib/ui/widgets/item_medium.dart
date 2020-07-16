@@ -32,6 +32,9 @@ class _UIItemMediumState extends State<UIItemMedium> {
         child: Column(
           children: <Widget>[
             Container(
+              constraints: BoxConstraints(
+                minHeight: 100
+              ),
               padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 color: (themeProvider.isLight) ? Colors.white : Color.fromRGBO(12, 12, 12, 0.11),
@@ -57,7 +60,7 @@ class _UIItemMediumState extends State<UIItemMedium> {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(widget.description, style: TextStyle(
+                  Text(widget.description, maxLines: 2, overflow: TextOverflow.ellipsis, style: TextStyle(
                       color: (themeProvider.isLight) ? Colors.black : flatWhite,
                       fontSize: MediaQuery.of(context).size.width * 0.048,
                       fontFamily: 'Nunito'
@@ -71,6 +74,9 @@ class _UIItemMediumState extends State<UIItemMedium> {
                   Opacity(
                     child: UISubHeader(text: widget.price.toString(), weight: FontWeight.bold,),
                     opacity: 0.6,
+                  ),
+                  SizedBox(
+                    height: 10,
                   ),
                 ],
               ),

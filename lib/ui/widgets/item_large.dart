@@ -41,8 +41,8 @@ class UIItemLarge extends StatelessWidget {
                   '$url',
                   loadedCallback: () => print('Network Image loaded.'),
                   loadFailedCallback: () => print('Oh, no! failed! Timeout and Retry limit exceeded'),
-                  timeoutDuration: Duration(seconds: 60),
-                  retryLimit: 2,
+                  timeoutDuration: Duration(seconds: 80),
+                  retryLimit: 3,
                 ),
                 fit: BoxFit.contain,
               ),
@@ -76,7 +76,7 @@ class UIItemLarge extends StatelessWidget {
               ),
               Spacer(),
               Expanded(
-                flex: 3,
+                flex: 4,
                 child: Text("\$$price", textAlign: TextAlign.right, style: TextStyle(
                     color: Colors.white,
                     fontSize: MediaQuery.of(context).size.width * 0.08,
