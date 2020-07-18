@@ -63,6 +63,7 @@ class SideMenuScreen extends StatelessWidget {
                         onChanged: (boolVal){
                           themeProvider.setTheme(boolVal);
                         },
+                        inactiveTrackColor: Colors.grey,
                       ),
                   ),
                   Divider(height: 1, color: themeProvider.isLight ? flatWhite : themeProvider.darkTheme.accentColor.withOpacity(0.5)),
