@@ -208,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             UIItemMedium(
                               price : 33,
                               description: 'Spicy Chinese Salad',
-                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium.png',
+                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium3.png',
                               onTap: (){
                                 Navigator.pushNamed(context, '/detail');
                               },),
