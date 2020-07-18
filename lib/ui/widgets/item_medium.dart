@@ -72,7 +72,7 @@ class _UIItemMediumState extends State<UIItemMedium> {
                     height: 10,
                   ),
                   Opacity(
-                    child: UISubHeader(text: widget.price.toString(), weight: FontWeight.bold,),
+                    child: UISubHeader(text: "\$"+widget.price.toString(), weight: FontWeight.bold,),
                     opacity: 0.6,
                   ),
                   SizedBox(
