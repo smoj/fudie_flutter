@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         'https://randomuser.me/api/portraits/women/8.jpg',
                                         loadedCallback: () => print('Network Image loaded.'),
                                         loadFailedCallback: () => print('Oh, no! image load failed!'),
-                                        timeoutDuration: Duration(seconds: 60),
+                                        timeoutDuration: Duration(seconds: 90),
                                         retryLimit: 3,
                                       ),
                                       fit: BoxFit.contain,
