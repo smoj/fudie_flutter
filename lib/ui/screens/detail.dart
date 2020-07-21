@@ -353,7 +353,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: UIButton(buttonText: 'Order', price: '\$$totalPrice', onTap: (){
-                   return;
+                   Navigator.of(context).pushNamed('/order-added');
                   },),
                 ),
               )

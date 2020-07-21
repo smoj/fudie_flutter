@@ -14,6 +14,7 @@ import 'package:fudie_ui_flutter/ui/screens/card-detail.dart';
 import 'package:fudie_ui_flutter/ui/screens/search.dart';
 import 'package:fudie_ui_flutter/ui/screens/splash.dart';
 import 'package:fudie_ui_flutter/ui/screens/success.dart';
+import 'package:fudie_ui_flutter/ui/screens/order_added.dart';
 import 'package:fudie_ui_flutter/ui/screens/vendor.dart';
 import 'package:fudie_ui_flutter/ui/screens/favourite.dart';
 import 'package:fudie_ui_flutter/ui/screens/story_highlight.dart';
@@ -51,7 +52,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/' : (context) => SplashScreen(),
+        '/' : (context) => OrderAddedScreen(),
         '/home' : (context) => HomeScreen(),
         '/detail' : (context) => DetailScreen(),
         '/login' : (context) => LoginScreen(),
@@ -63,7 +64,8 @@ class MyApp extends StatelessWidget {
         '/favourite' : (context) => FavouriteScreen(),
         '/story-highlight' : (context) => StoryHighlight(),
         '/profile' : (context) => ProfileScreen(),
-        '/edit-profile' : (context) => EditProfilePage()
+        '/edit-profile' : (context) => EditProfilePage(),
+        '/order-added' : (context) => OrderAddedScreen()
       },
       debugShowCheckedModeBanner: false,
       theme: appLightTheme,
