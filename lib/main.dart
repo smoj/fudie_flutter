@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/' : (context) => OrderAddedScreen(),
+        '/' : (context) => SplashScreen(),
         '/home' : (context) => HomeScreen(),
         '/detail' : (context) => DetailScreen(),
         '/login' : (context) => LoginScreen(),
@@ -65,7 +65,8 @@ class MyApp extends StatelessWidget {
         '/story-highlight' : (context) => StoryHighlight(),
         '/profile' : (context) => ProfileScreen(),
         '/edit-profile' : (context) => EditProfilePage(),
-        '/order-added' : (context) => OrderAddedScreen()
+        '/order-added' : (context) => OrderAddedScreen(),
+        '/vendor' : (context) => VendorScreen()
       },
       debugShowCheckedModeBanner: false,
       theme: appLightTheme,
