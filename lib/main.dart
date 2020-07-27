@@ -19,6 +19,7 @@ import 'package:fudie_ui_flutter/ui/screens/vendor.dart';
 import 'package:fudie_ui_flutter/ui/screens/favourite.dart';
 import 'package:fudie_ui_flutter/ui/screens/story_highlight.dart';
 import 'package:fudie_ui_flutter/ui/screens/profile.dart';
+import 'package:fudie_ui_flutter/ui/screens/search.dart';
 import 'package:fudie_ui_flutter/ui/screens/i_slider.dart';
 import 'package:fudie_ui_flutter/ui/screens/edit_profile.dart';
 import 'package:provider/provider.dart';
@@ -66,7 +67,10 @@ class MyApp extends StatelessWidget {
         '/profile' : (context) => ProfileScreen(),
         '/edit-profile' : (context) => EditProfilePage(),
         '/order-added' : (context) => OrderAddedScreen(),
-        '/vendor' : (context) => VendorScreen()
+        '/vendor' : (context) => VendorScreen(),
+        '/search' : (context) => SearchScreen(),
+        '/cards' : (context) => CardScreen(),
+        '/success' : (context) => SuccessScreen()
       },
       debugShowCheckedModeBanner: false,
       theme: appLightTheme,

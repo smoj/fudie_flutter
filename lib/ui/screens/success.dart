@@ -65,12 +65,11 @@ class SuccessScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 40),
+                      padding: EdgeInsets.symmetric(vertical: screenWidth * 0.17),
                       child: UIDisplay1(text: 'Awesome! Your order  is on the way!', textAlign: TextAlign.center, color: themeProvider.isLight ? Colors.white : flatWhite,),
                     ),
                     Container(
                       width: MediaQuery.of(context).size.width * 0.7,
-                      height: 200,
                       padding: EdgeInsets.all(20),
                       decoration: BoxDecoration(
                         boxShadow : [BoxShadow(
@@ -144,30 +143,21 @@ class SuccessScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          // Figma Flutter Generator GrandtotalWidget - TEXT
-                          Text('Grand Total', textAlign: TextAlign.center, style: TextStyle(
-                              color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
-                              fontFamily: 'Nunito',
-                              fontSize: 12,
-                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                              fontWeight: FontWeight.normal,
-                              height: 1.3333333333333333
-                          ),)
+                          SizedBox(height: 20,),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: 20),
+                            child: Text('Your order has been sent prepping before the  dispatch picks it up for delivery', textAlign: TextAlign.center, style: TextStyle(
+                                color: themeProvider.isLight ? flatBlack : flatWhite,
+                                fontFamily: 'Nunito',
+                                fontSize: 15,
+                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                fontWeight: FontWeight.normal,
+                                height: 1
+                            ),),
+                          )
                         ],
                       ),
                     ),
-                    // Figma Flutter Generator Body1Widget - TEXT
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: 40),
-                      child: Text('Your order has been sent prepping before the  dispatch picks it up for delivery', textAlign: TextAlign.center, style: TextStyle(
-                          color: themeProvider.isLight ? flatBlack : flatWhite,
-                          fontFamily: 'Nunito',
-                          fontSize: 15,
-                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                          fontWeight: FontWeight.normal,
-                          height: 1
-                      ),),
-                    )
                   ],
                 ),
               ),
@@ -175,7 +165,9 @@ class SuccessScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: UIButton(buttonText: 'Order Tracking'),
+                  child: UIButton(buttonText: 'Continue', onTap: (){
+                    Navigator.of(context).pushNamed('/home');
+                  },),
                 ),
               )
             ],

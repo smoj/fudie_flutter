@@ -121,29 +121,29 @@ class _HomeScreenState extends State<HomeScreen> {
                           ],
                         ),
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: screenWidth * (ScreenGapValue / 3)),
-                        padding: EdgeInsets.only(left: 15),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(5),
-                            boxShadow: [lightFaintShadow]
-                        ),
-                        child: TextField(
-//                        controller: TextEditingController(text: ''),
-                          style: TextStyle(
-                              color: Colors.black.withOpacity(0.5),
-                            fontFamily: 'Nunito'
-                          ),
-                          decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'What do you want to order?',
-                              hintStyle: TextStyle(
+                      Row(
+                        children: <Widget>[
+                          Expanded(
+                            child: GestureDetector(
+                              onTap: (){
+                                Navigator.of(context).pushNamed('/search');
+                              },
+                              child: Container(
+                                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+                                margin: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: 7),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.circular(5),
+                                    boxShadow: [lightFaintShadow]
+                                ),
+                                child: Text('What do you want to order?', style: TextStyle(
                                   color: Color.fromRGBO(0, 0, 0, 0.5),
                                   fontFamily: 'Nunito',
-                              )
+                                ),),
+                              ),
+                            ),
                           ),
-                        ),
+                        ],
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: screenWidth * 0.06),

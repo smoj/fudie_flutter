@@ -4,7 +4,47 @@ import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 
-class UIItenary extends StatelessWidget {
+class UIItenary extends StatefulWidget {
+  @override
+  _UIItenaryState createState() => _UIItenaryState();
+}
+
+class _UIItenaryState extends State<UIItenary> {
+  int itemCount;
+  double price;
+  double totalPrice;
+  int maxCount;
+  double discount;
+  double discountedPrice;
+  String itemName;
+
+  void initState(){
+    super.initState();
+    itemCount = 1;
+    price = 4.99;
+    maxCount = 10;
+    discount = 0.50;
+    discountedPrice = price * discount;
+    updatePrice(itemCount, price);
+  }
+
+  updatePrice(int itemCount, double price){
+    setState(() {
+      totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
+    });
+  }
+
+  adjustCount(bool increment){
+    itemCount = increment ? itemCount+1 : itemCount-1;
+    if(itemCount < 1){
+      itemCount = 0;
+    }
+    if(itemCount >= maxCount){
+      itemCount = maxCount;
+    }
+    updatePrice(itemCount, price);
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -24,7 +64,7 @@ class UIItenary extends StatelessWidget {
                   bottomRight: Radius.circular(10),
                 ),
                 image : DecorationImage(
-                    image: AssetImage('assets/images/food1.png'),
+                    image: NetworkImage('http://www.audacitus.com/mobile_app_assets/item-medium.png'),
                     fit: BoxFit.fill
                 ),
               )

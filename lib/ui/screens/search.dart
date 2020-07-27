@@ -1,105 +1,158 @@
 import 'package:flutter/material.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
+import 'package:fudie_ui_flutter/ui/screens/sidemenu.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_advanced_networkimage/provider.dart';
+import 'package:flutter_advanced_networkimage/transition.dart';
+import 'package:provider/provider.dart';
+import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Color.fromRGBO(55, 55, 55, 1),
       appBar: AppBar(
         brightness: Brightness.light,
-        backgroundColor: Colors.white,
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.shopping_cart, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
+            onPressed: (){
+              Navigator.pushNamed(context, '/cart');
+            },
+          ),
+          Switch(
+            value: themeProvider.isLight,
+            onChanged: (boolVal){
+              themeProvider.setTheme(boolVal);
+            },
+          )
+        ],
+        backgroundColor: (themeProvider.isLight) ? Colors.white : Color.fromRGBO(66, 66, 66, 1),
         iconTheme: IconThemeData(
-            color: Colors.black
+            color: (themeProvider.isLight) ? flatBlack : flatWhite
         ),
-        title: Text('Search', style: TextStyle(
-            fontFamily: 'Montserrat',
-            fontWeight: FontWeight.w700,
-            color: Colors.black
+        title: Text('Home', style: TextStyle(
+            fontFamily: primaryFont,
+            color: (themeProvider.isLight) ? flatBlack : flatWhite
         ),),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 20,),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: Container(
-                  color: Color.fromRGBO(255, 255, 255, 0.34),
-                  padding: EdgeInsets.symmetric(vertical: 0, horizontal: 15),
-                  child: TextField(
-                    controller: TextEditingController(text: ''),
-                    style: TextStyle(
-                        color: Colors.white
+      backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(screenWidth * ScreenGapValue),
+            child: Column(
+              children: <Widget>[
+                Row(
+                  children: <Widget>[
+                    Expanded(
+                      child: Container(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            Container(
+                              padding: EdgeInsets.only(left: 15),
+                              decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(5),
+                                  boxShadow: [lightFaintShadow]
+                              ),
+                              child: TextField(
+//                        controller: TextEditingController(text: ''),
+                                style: TextStyle(
+                                    color: Colors.black.withOpacity(0.5),
+                                    fontFamily: 'Nunito'
+                                ),
+                                decoration: InputDecoration(
+                                    border: InputBorder.none,
+                                    hintText: 'What do you want to order?',
+                                    hintStyle: TextStyle(
+                                      color: Color.fromRGBO(0, 0, 0, 0.5),
+                                      fontFamily: 'Nunito',
+                                    )
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                     ),
-                    decoration: InputDecoration(
-                        border: InputBorder.none,
-                        hintText: 'Search query',
-                        hintStyle: TextStyle(
-                            color: Color.fromRGBO(255, 255, 255, 0.8),
-                            fontFamily: 'Montserrat',
-                            fontWeight: FontWeight.w700
-                        )
+                  ],
+                ),
+                SizedBox(height: 20,),
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius : BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
                     ),
+                    boxShadow : [BoxShadow(
+                        color: Color.fromRGBO(0, 0, 0, 0.10000000149011612),
+                        offset: Offset(0,4),
+                        blurRadius: 26
+                    )],
+                    color : themeProvider.isLight ? Color.fromRGBO(255, 255, 255, 1) : darkThemeElevation2,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text("Search Results", style: TextStyle(color: Color(0xffdfe6e9), fontSize: 16, fontFamily: "Poppins", fontWeight: FontWeight.w600, ), ),
+                      Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
+                      FlatButton(
+                        child: UIItenary(),
+                        padding: EdgeInsets.zero,
+                        onPressed: (){
+                          showDialog(context: context, builder: (BuildContext context){
+                            return AlertDialog(
+                              actions: <Widget>[
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: <Widget>[
+                                    FlatButton(
+                                      child: Text('Delete'),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            );
+                          });
+                        },
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
+                      ),
+                      UIItenary(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
+                      ),
+                      UIItenary(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 5),
+                        child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.only(top: 13),
-                width: MediaQuery.of(context).size.width,
-                padding: EdgeInsets.symmetric(horizontal: 15, vertical: 20),
-                color: Color.fromRGBO(0, 0, 0, 0.6),
-                child: Text('Search Results'.toUpperCase(), textAlign: TextAlign.left, style: TextStyle(
-                    fontFamily: 'Montserrat',
-                    color: Colors.white,
-                    fontSize: 13,
-                    letterSpacing: 8,
-                    fontWeight: FontWeight.bold
-                ),),
-              ),
-              SizedBox(height: 0,),
-              FlatButton(
-                padding: EdgeInsets.zero,
-                onPressed: (){
-                  Navigator.pushNamed(context, '/detail');
-                },
-                child: ArticleItem(
-                  title: 'A new perspective with UI in android/iOS with flutter',
-                  tag: 'Technology',
-                  url: 'https://i.picsum.photos/id/866/231/197.jpg',
-                ),
-              ),
-              Divider( color: Colors.white, height: 1,),
-              FlatButton(
-                padding: EdgeInsets.zero,
-                onPressed: (){
-                  Navigator.pushNamed(context, '/detail');
-                },
-                child: ArticleItem(
-                  title: 'A different take on things',
-                  tag: 'Other',
-                  url: 'https://i.picsum.photos/id/259/231/197.jpg',
-                ),
-              ),
-              Divider( color: Colors.white, height: 1,),
-              FlatButton(
-                padding: EdgeInsets.zero,
-                onPressed: (){
-                  Navigator.pushNamed(context, '/detail');
-                },
-                child: ArticleItem(
-                  title: 'Moving on: A different take on reconciliation',
-                  tag: 'Other',
-                  url: 'https://i.picsum.photos/id/139/231/197.jpg',
-                ),
-              ),
-              Divider( color: Colors.white, height: 1,),
-            ],
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+
+
+

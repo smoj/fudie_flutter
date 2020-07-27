@@ -19,7 +19,6 @@ class CardScreen extends StatelessWidget {
     final headingPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.01);
     return Scaffold(
         backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
-        drawer: SideMenuScreen(),
         appBar: AppBar(
           brightness: Brightness.light,
           actions: <Widget>[
@@ -82,9 +81,14 @@ class CardScreen extends StatelessWidget {
                             ),
                           child: Column(
                             children: <Widget>[
-                              Padding(
-                                padding: const EdgeInsets.all(12.0),
-                                child: UICardItem(vendor: 'VisaCard', logo: 'visa.png',),
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.pop(context);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: UICardItem(vendor: 'VisaCard', logo: 'visa.png',),
+                                ),
                               ),
                               Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
                               Padding(

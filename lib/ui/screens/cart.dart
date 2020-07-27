@@ -179,75 +179,80 @@ class CartScreen extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(vertical: 5),
                                 child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
                               ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: <Widget>[
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(vertical: 6),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.start,
-                                        children: <Widget>[
-                                          Text('Payment Method', textAlign: TextAlign.left, style: TextStyle(
-                                              color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
-                                              fontFamily: 'Nunito',
-                                              fontSize: 12,
-                                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height: 1.3333333333333333
-                                          ),),
-                                          SizedBox(height: 8,),
-                                          // Figma Flutter Generator 23434Widget - TEXT
-                                          Text('Mastercard', textAlign: TextAlign.left, style: TextStyle(
-                                              color: themeProvider.isLight ? flatBlack : flatWhite,
-                                              fontFamily: 'Poppins',
-                                              fontSize: 20,
-                                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.w600,
-                                              height: 1
-                                          ),),
-                                          Text('XXXX XXXX XXXX 3485', textAlign: TextAlign.left, style: TextStyle(
-                                              color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
-                                              fontFamily: 'Nunito',
-                                              fontSize: 12,
-                                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height: 1.3333333333333333
-                                          ),),
-                                        ],
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.pushNamed(context, '/cards');
+                                },
+                                child: Padding(
+                                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                                  child: Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: <Widget>[
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 6),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                          children: <Widget>[
+                                            Text('Payment Method', textAlign: TextAlign.left, style: TextStyle(
+                                                color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
+                                                fontFamily: 'Nunito',
+                                                fontSize: 12,
+                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                                fontWeight: FontWeight.normal,
+                                                height: 1.3333333333333333
+                                            ),),
+                                            SizedBox(height: 8,),
+                                            // Figma Flutter Generator 23434Widget - TEXT
+                                            Text('Mastercard', textAlign: TextAlign.left, style: TextStyle(
+                                                color: themeProvider.isLight ? flatBlack : flatWhite,
+                                                fontFamily: 'Poppins',
+                                                fontSize: 20,
+                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                                fontWeight: FontWeight.w600,
+                                                height: 1
+                                            ),),
+                                            Text('XXXX XXXX XXXX 3485', textAlign: TextAlign.left, style: TextStyle(
+                                                color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
+                                                fontFamily: 'Nunito',
+                                                fontSize: 12,
+                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                                fontWeight: FontWeight.normal,
+                                                height: 1.3333333333333333
+                                            ),),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Spacer(),
-                                    Padding(
-                                      padding: EdgeInsets.symmetric(vertical: 6),
-                                      child: Column(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        crossAxisAlignment: CrossAxisAlignment.end,
-                                        children: <Widget>[
-                                          Text('Grand Total', textAlign: TextAlign.left, style: TextStyle(
-                                              color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
-                                              fontFamily: 'Nunito',
-                                              fontSize: 12,
-                                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.normal,
-                                              height: 1.3333333333333333
-                                          ),),
-                                          SizedBox(height: 8,),
-                                          // Figma Flutter Generator 23434Widget - TEXT
-                                          Text('\$450', textAlign: TextAlign.left, style: TextStyle(
-                                              color: themeProvider.isLight ? flatBlack : flatWhite,
-                                              fontFamily: 'Poppins',
-                                              fontSize: 20,
-                                              letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                              fontWeight: FontWeight.w600,
-                                              height: 1
-                                          ),)
-                                        ],
-                                      ),
-                                    )
-                                  ],
+                                      Spacer(),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(vertical: 6),
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.end,
+                                          children: <Widget>[
+                                            Text('Grand Total', textAlign: TextAlign.left, style: TextStyle(
+                                                color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
+                                                fontFamily: 'Nunito',
+                                                fontSize: 12,
+                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                                fontWeight: FontWeight.normal,
+                                                height: 1.3333333333333333
+                                            ),),
+                                            SizedBox(height: 8,),
+                                            // Figma Flutter Generator 23434Widget - TEXT
+                                            Text('\$450', textAlign: TextAlign.left, style: TextStyle(
+                                                color: themeProvider.isLight ? flatBlack : flatWhite,
+                                                fontFamily: 'Poppins',
+                                                fontSize: 20,
+                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                                fontWeight: FontWeight.w600,
+                                                height: 1
+                                            ),)
+                                          ],
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],
@@ -264,7 +269,9 @@ class CartScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: UIButton(buttonText: 'Checkout'),
+                  child: UIButton(buttonText: 'Checkout', onTap: (){
+                    Navigator.of(context).pushNamed('/success');
+                  },),
                 ),
               )
             ],
