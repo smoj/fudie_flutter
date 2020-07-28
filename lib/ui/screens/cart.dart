@@ -269,7 +269,7 @@ class CartScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: UIButton(buttonText: 'Checkout', onTap: (){
+                  child: UIButton(buttonText: 'Pay', price: '\$340', onTap: (){
                     Navigator.of(context).pushNamed('/success');
                   },),
                 ),

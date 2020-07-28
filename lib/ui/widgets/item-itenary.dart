@@ -93,7 +93,7 @@ class _UIItenaryState extends State<UIItenary> {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Text('\$58.00', textAlign: TextAlign.right, style: TextStyle(
+                Text('\$$totalPrice', textAlign: TextAlign.right, style: TextStyle(
                     color: themeProvider.isLight ? flatBlack : flatWhite,
                     fontFamily: 'Poppins',
                     fontSize: 20,
@@ -108,16 +108,16 @@ class _UIItenaryState extends State<UIItenary> {
                   children: <Widget>[
                     GestureDetector(
                       onTap:() {
-                        return;
+                        adjustCount(false);
                       },
                       child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
                     ),
                     SizedBox(width: 7,),
-                    UITitle(text: '3', color: Colors.grey.shade700,),
+                    UITitle(text: this.itemCount.toString(), color: Colors.grey.shade700,),
                     SizedBox(width: 7,),
                     GestureDetector(
                       onTap:() {
-                        return;
+                        adjustCount(true);
                       },
                       child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
                     ),
