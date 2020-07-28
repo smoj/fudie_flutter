@@ -5,11 +5,6 @@ import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 
 class UIItenary extends StatefulWidget {
-  @override
-  _UIItenaryState createState() => _UIItenaryState();
-}
-
-class _UIItenaryState extends State<UIItenary> {
   int itemCount;
   double price;
   double totalPrice;
@@ -17,32 +12,40 @@ class _UIItenaryState extends State<UIItenary> {
   double discount;
   double discountedPrice;
   String itemName;
+  String thumbnail;
 
+  UIItenary({this.itemCount, this.price, this.maxCount, this.discountedPrice, this.itemName, this.thumbnail});
+
+  @override
+  _UIItenaryState createState() => _UIItenaryState();
+}
+
+class _UIItenaryState extends State<UIItenary> {
   void initState(){
     super.initState();
-    itemCount = 1;
-    price = 4.99;
-    maxCount = 10;
-    discount = 0.50;
-    discountedPrice = price * discount;
-    updatePrice(itemCount, price);
+    widget.itemCount = 1;
+    widget.price = 4.99;
+    widget.maxCount = 10;
+    widget.discount = 0.50;
+    widget.discountedPrice = widget.price * widget.discount;
+    updatePrice(widget.itemCount, widget.price);
   }
 
   updatePrice(int itemCount, double price){
     setState(() {
-      totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
+      widget.totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
     });
   }
 
   adjustCount(bool increment){
-    itemCount = increment ? itemCount+1 : itemCount-1;
-    if(itemCount < 1){
-      itemCount = 0;
+    widget.itemCount = increment ? widget.itemCount+1 : widget.itemCount-1;
+    if(widget.itemCount < 1){
+      widget.itemCount = 0;
     }
-    if(itemCount >= maxCount){
-      itemCount = maxCount;
+    if(widget.itemCount >= widget.maxCount){
+      widget.itemCount = widget.maxCount;
     }
-    updatePrice(itemCount, price);
+    updatePrice(widget.itemCount, widget.price);
   }
 
   @override
@@ -64,7 +67,7 @@ class _UIItenaryState extends State<UIItenary> {
                   bottomRight: Radius.circular(10),
                 ),
                 image : DecorationImage(
-                    image: NetworkImage('http://www.audacitus.com/mobile_app_assets/item-medium.png'),
+                    image: NetworkImage(widget.thumbnail),
                     fit: BoxFit.fill
                 ),
               )
@@ -93,7 +96,7 @@ class _UIItenaryState extends State<UIItenary> {
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
-                Text('\$$totalPrice', textAlign: TextAlign.right, style: TextStyle(
+                Text('\$'+widget.totalPrice.toString(), textAlign: TextAlign.right, style: TextStyle(
                     color: themeProvider.isLight ? flatBlack : flatWhite,
                     fontFamily: 'Poppins',
                     fontSize: 20,
@@ -113,7 +116,7 @@ class _UIItenaryState extends State<UIItenary> {
                       child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
                     ),
                     SizedBox(width: 7,),
-                    UITitle(text: this.itemCount.toString(), color: Colors.grey.shade700,),
+                    UITitle(text: widget.itemCount.toString(), color: Colors.grey.shade700,),
                     SizedBox(width: 7,),
                     GestureDetector(
                       onTap:() {

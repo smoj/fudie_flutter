@@ -88,7 +88,11 @@ class CartScreen extends StatelessWidget {
                           child: Column(
                             children: <Widget>[
                               FlatButton(
-                                  child: UIItenary(),
+                                  child: UIItenary(
+                                    thumbnail: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
+                                    itemCount: 3,
+                                    price: 33.99,
+                                  ),
                                   padding: EdgeInsets.zero,
                                   onPressed: (){
                                     showDialog(context: context, builder: (BuildContext context){
@@ -113,12 +117,6 @@ class CartScreen extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(vertical: 5),
                                 child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
                               ),
-                              UIItenary(),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5),
-                                child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                              ),
-                              UIItenary(),
                               Padding(
                                 padding: const EdgeInsets.symmetric(vertical: 5),
                                 child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
