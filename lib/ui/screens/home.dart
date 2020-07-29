@@ -207,7 +207,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: <Widget>[
                             UIItemMedium(
                               price : 33,
-                              description: 'Spicy Chinese Salad',
+                              description: 'Chinese Salad',
                               url: 'http://www.audacitus.com/mobile_app_assets/item-medium3.png',
                               onTap: (){
                                 Navigator.pushNamed(context, '/detail');
@@ -215,7 +215,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             SizedBox(width: 20,),
                             UIItemMedium(
                               price : 33,
-                              description: 'Extra Spicy Pizza',
+                              description: 'Spicy Pizza',
                               url: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
                               onTap: (){
                                 Navigator.pushNamed(context, '/detail');
