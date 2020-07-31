@@ -6,6 +6,7 @@ import 'package:flutter_advanced_networkimage/provider.dart';
 import 'package:flutter_advanced_networkimage/transition.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -39,6 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final shopProvider = Provider.of<ShopProvider>(context);
     final screenWidth = MediaQuery.of(context).size.width;
     return WillPopScope(
       onWillPop: _onWillPop,
@@ -48,12 +50,33 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: AppBar(
             brightness: Brightness.light,
             actions: <Widget>[
-              IconButton(
-                icon: Icon(Icons.shopping_cart, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
+              FlatButton(
+                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                 onPressed: (){
                   Navigator.pushNamed(context, '/cart');
                 },
-              )
+                child: Row(
+                  children: <Widget>[
+                    Icon(Icons.shopping_cart, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
+                    SizedBox(width: 5,),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.red,
+                        shape: BoxShape.circle,
+                      ),
+                      height: 30,
+                      width: 30,
+                      child: Text(shopProvider.items.length.toString(), textAlign: TextAlign.center, style: TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'Nunito',
+                          fontWeight: FontWeight.bold,
+                          height: 1.6,
+                          color: Colors.white
+                      ),),
+                    ),
+                  ],
+                ),
+              ),
             ],
             backgroundColor: (themeProvider.isLight) ? Colors.white : Color.fromRGBO(66, 66, 66, 1),
             iconTheme: IconThemeData(

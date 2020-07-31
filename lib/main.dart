@@ -24,14 +24,19 @@ import 'package:fudie_ui_flutter/ui/screens/i_slider.dart';
 import 'package:fudie_ui_flutter/ui/screens/edit_profile.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_){
     runApp(
-      ChangeNotifierProvider(
-        create: (_) => ThemeProvider(isLight: true),
-        child: MyApp(),
+      MultiProvider(
+        providers: [ChangeNotifierProvider(
+          create: (_) => ThemeProvider(isLight: true),
+        ),ChangeNotifierProvider(
+          create: (_) => ShopProvider(items: List<Item>()),
+        )],
+          child: MyApp(),
       )
     );
   });

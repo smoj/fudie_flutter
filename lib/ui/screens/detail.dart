@@ -7,6 +7,7 @@ import 'package:fudie_ui_flutter/ui/widgets/extra.dart';
 import 'package:fudie_ui_flutter/ui/widgets/quote.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 
 class DetailScreen extends StatefulWidget {
   @override
@@ -55,6 +56,7 @@ class _DetailScreenState extends State<DetailScreen> {
     final metaFontSize = screenWidth * 0.045;
     final horizontalPadding = screenWidth * 0.045;
     final headingPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.01);
+//    print('ShopProvider: '+shop.toString());
     return Scaffold(
         backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
         appBar: AppBar(
@@ -353,7 +355,8 @@ class _DetailScreenState extends State<DetailScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: UIButton(buttonText: 'Order', price: '\$$totalPrice', onTap: (){
-                   Navigator.of(context).pushNamed('/order-added');
+                    Provider.of<ShopProvider>(context).addToCart();
+//                     Navigator.of(context).pushNamed('/order-added');
                   },),
                 ),
               )
