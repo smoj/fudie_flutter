@@ -37,6 +37,25 @@ class _HomeScreenState extends State<HomeScreen> {
           false;
     }
 
+  Widget showCartCount(){
+    final shopProvider = Provider.of<ShopProvider>(context);
+    return shopProvider.items.length > 0 ? Container(
+      decoration: BoxDecoration(
+        color: Colors.red,
+        shape: BoxShape.circle,
+      ),
+      height: 30,
+      width: 30,
+      child: Text(shopProvider.items.length.toString(), textAlign: TextAlign.center, style: TextStyle(
+          fontSize: 18,
+          fontFamily: 'Nunito',
+          fontWeight: FontWeight.bold,
+          height: 1.6,
+          color: Colors.white
+      ),),
+    ) : SizedBox(width: 0,);
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -50,30 +69,17 @@ class _HomeScreenState extends State<HomeScreen> {
           appBar: AppBar(
             brightness: Brightness.light,
             actions: <Widget>[
-              FlatButton(
-                padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                onPressed: (){
+              GestureDetector(
+                onTap: (){
                   Navigator.pushNamed(context, '/cart');
                 },
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
                     Icon(Icons.shopping_cart, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
                     SizedBox(width: 5,),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        shape: BoxShape.circle,
-                      ),
-                      height: 30,
-                      width: 30,
-                      child: Text(shopProvider.items.length.toString(), textAlign: TextAlign.center, style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: 'Nunito',
-                          fontWeight: FontWeight.bold,
-                          height: 1.6,
-                          color: Colors.white
-                      ),),
-                    ),
+                    showCartCount(),
+                    SizedBox(width: 10,)
                   ],
                 ),
               ),
