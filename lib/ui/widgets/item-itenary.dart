@@ -52,83 +52,90 @@ class _UIItenaryState extends State<UIItenary> {
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return Padding(
-      padding: const EdgeInsets.all(12.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical:0),
+      child: Column(
         children: <Widget>[
-          Container(
-              width: 56,
-              height: 56,
-              decoration: BoxDecoration(
-                borderRadius : BorderRadius.only(
-                  topLeft: Radius.circular(10),
-                  topRight: Radius.circular(10),
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                ),
-                image : DecorationImage(
-                    image: NetworkImage(widget.thumbnail),
-                    fit: BoxFit.fill
-                ),
-              )
-          ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text('Sausage Brunch', textAlign: TextAlign.left, style: TextStyle(
-                      color: themeProvider.isLight ? flatBlack : flatWhite,
-                      fontFamily: 'Nunito',
-                      fontSize: 15,
-                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                      fontWeight: FontWeight.normal,
-                      height: 1.3333333333333333
-                  ),)
-                ],
+          SizedBox(height: 12,),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                  width: 56,
+                  height: 56,
+                  decoration: BoxDecoration(
+                    borderRadius : BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    ),
+                    image : DecorationImage(
+                        image: NetworkImage(widget.thumbnail),
+                        fit: BoxFit.fill
+                    ),
+                  )
               ),
-            ),
-          ),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text('\$'+widget.totalPrice.toString(), textAlign: TextAlign.right, style: TextStyle(
-                    color: themeProvider.isLight ? flatBlack : flatWhite,
-                    fontFamily: 'Poppins',
-                    fontSize: 20,
-                    letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                    fontWeight: FontWeight.w600,
-                    height: 1
-                ),),
-                SizedBox(height: 7,),
-                Row(
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text('Sausage Brunch', textAlign: TextAlign.left, style: TextStyle(
+                          color: themeProvider.isLight ? flatBlack : flatWhite,
+                          fontFamily: 'Nunito',
+                          fontSize: 15,
+                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                          fontWeight: FontWeight.normal,
+                          height: 1.3333333333333333
+                      ),)
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    GestureDetector(
-                      onTap:() {
-                        adjustCount(false);
-                      },
-                      child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
-                    ),
-                    SizedBox(width: 7,),
-                    UITitle(text: widget.itemCount.toString(), color: Colors.grey.shade700,),
-                    SizedBox(width: 7,),
-                    GestureDetector(
-                      onTap:() {
-                        adjustCount(true);
-                      },
-                      child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
-                    ),
+                    Text('\$'+widget.totalPrice.toString(), textAlign: TextAlign.right, style: TextStyle(
+                        color: themeProvider.isLight ? flatBlack : flatWhite,
+                        fontFamily: 'Poppins',
+                        fontSize: 20,
+                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                        fontWeight: FontWeight.w600,
+                        height: 1
+                    ),),
+                    SizedBox(height: 7,),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        GestureDetector(
+                          onTap:() {
+                            adjustCount(false);
+                          },
+                          child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
+                        ),
+                        SizedBox(width: 7,),
+                        UITitle(text: widget.itemCount.toString(), color: Colors.grey.shade700,),
+                        SizedBox(width: 7,),
+                        GestureDetector(
+                          onTap:() {
+                            adjustCount(true);
+                          },
+                          child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
+                        ),
+                      ],
+                    )
                   ],
-                )
-              ],
-            ),
+                ),
+              ),
+            ],
           ),
+          SizedBox(height: 12,),
+          Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
         ],
       ),
     );

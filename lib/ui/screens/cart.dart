@@ -7,6 +7,7 @@ import 'package:fudie_ui_flutter/ui/widgets/extra.dart';
 import 'package:fudie_ui_flutter/ui/widgets/quote.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 
 class CartScreen extends StatelessWidget {
 
@@ -18,6 +19,7 @@ class CartScreen extends StatelessWidget {
     final metaFontSize = screenWidth * 0.045;
     final horizontalPadding = screenWidth * 0.045;
     final headingPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.01);
+    final shopProvider = Provider.of<ShopProvider>(context);
     return Scaffold(
         backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
         appBar: AppBar(
@@ -69,8 +71,8 @@ class CartScreen extends StatelessWidget {
                         SizedBox(height: 10,),
                         UIDisplay2(text: 'Checkout Items', color: Colors.red,),
                         SizedBox(height: 30,),
-                        // Figma Flutter Generator Rectangle37Widget - RECTANGLE
                         Container(
+                          height: 300,
                             decoration: BoxDecoration(
                               borderRadius : BorderRadius.only(
                                 topLeft: Radius.circular(10),
@@ -85,176 +87,14 @@ class CartScreen extends StatelessWidget {
                               )],
                               color : themeProvider.isLight ? Color.fromRGBO(255, 255, 255, 1) : darkThemeElevation2,
                             ),
-                          child: Column(
-                            children: <Widget>[
-                              FlatButton(
-                                  child: UIItenary(
-                                    thumbnail: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
-                                    itemCount: 3,
-                                    price: 33.99,
-                                  ),
-                                  padding: EdgeInsets.zero,
-                                  onPressed: (){
-                                    showDialog(context: context, builder: (BuildContext context){
-                                      return AlertDialog(
-                                        actions: <Widget>[
-                                          Row(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: <Widget>[
-                                              FlatButton(
-                                                child: Text('Delete'),
-                                              ),
-                                            ],
-                                          )
-                                        ],
-                                      );
-                                    });
-                                  },
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5),
-                                child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5),
-                                child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                                child: Row(
-                                  children: <Widget>[
-                                    Text('Delivery', textAlign: TextAlign.left, style: TextStyle(
-                                        color: themeProvider.isLight ? flatBlack : flatWhite,
-                                        fontFamily: 'Nunito',
-                                        fontSize: 12,
-                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                        fontWeight: FontWeight.normal,
-                                        height: 1.3333333333333333
-                                    ),),
-                                    Spacer(),
-                                    Text('\$4.99', textAlign: TextAlign.right, style: TextStyle(
-                                        color: themeProvider.isLight ? flatBlack : flatWhite,
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                        fontWeight: FontWeight.w600,
-                                        height: 1
-                                    ),),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5),
-                                child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                                child: Row(
-                                  children: <Widget>[
-                                    Text('Vat', textAlign: TextAlign.left, style: TextStyle(
-                                        color: themeProvider.isLight ? flatBlack : flatWhite,
-                                        fontFamily: 'Nunito',
-                                        fontSize: 12,
-                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                        fontWeight: FontWeight.normal,
-                                        height: 1.3333333333333333
-                                    ),),
-                                    Spacer(),
-                                    Text('\$2.99', textAlign: TextAlign.right, style: TextStyle(
-                                        color: themeProvider.isLight ? flatBlack : flatWhite,
-                                        fontFamily: 'Poppins',
-                                        fontSize: 16,
-                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                        fontWeight: FontWeight.w600,
-                                        height: 1
-                                    ),),
-                                  ],
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(vertical: 5),
-                                child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                              ),
-                              GestureDetector(
-                                onTap: (){
-                                  Navigator.pushNamed(context, '/cards');
-                                },
-                                child: Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                                  child: Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(vertical: 6),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: <Widget>[
-                                            Text('Payment Method', textAlign: TextAlign.left, style: TextStyle(
-                                                color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
-                                                fontFamily: 'Nunito',
-                                                fontSize: 12,
-                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                                fontWeight: FontWeight.normal,
-                                                height: 1.3333333333333333
-                                            ),),
-                                            SizedBox(height: 8,),
-                                            // Figma Flutter Generator 23434Widget - TEXT
-                                            Text('Mastercard', textAlign: TextAlign.left, style: TextStyle(
-                                                color: themeProvider.isLight ? flatBlack : flatWhite,
-                                                fontFamily: 'Poppins',
-                                                fontSize: 20,
-                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                                fontWeight: FontWeight.w600,
-                                                height: 1
-                                            ),),
-                                            Text('XXXX XXXX XXXX 3485', textAlign: TextAlign.left, style: TextStyle(
-                                                color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
-                                                fontFamily: 'Nunito',
-                                                fontSize: 12,
-                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                                fontWeight: FontWeight.normal,
-                                                height: 1.3333333333333333
-                                            ),),
-                                          ],
-                                        ),
-                                      ),
-                                      Spacer(),
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(vertical: 6),
-                                        child: Column(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.end,
-                                          children: <Widget>[
-                                            Text('Grand Total', textAlign: TextAlign.left, style: TextStyle(
-                                                color: themeProvider.isLight ? themeProvider.lightTheme.accentColor : themeProvider.darkTheme.accentColor,
-                                                fontFamily: 'Nunito',
-                                                fontSize: 12,
-                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                                fontWeight: FontWeight.normal,
-                                                height: 1.3333333333333333
-                                            ),),
-                                            SizedBox(height: 8,),
-                                            // Figma Flutter Generator 23434Widget - TEXT
-                                            Text('\$450', textAlign: TextAlign.left, style: TextStyle(
-                                                color: themeProvider.isLight ? flatBlack : flatWhite,
-                                                fontFamily: 'Poppins',
-                                                fontSize: 20,
-                                                letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                                fontWeight: FontWeight.w600,
-                                                height: 1
-                                            ),)
-                                          ],
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
+                          child: ListView.builder(
+                            itemBuilder: (_, int index)=>UIItenary(
+                            thumbnail: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
+                            itemCount: 3,
+                            price: 33.99,
                           ),
+                            itemCount: shopProvider.items.length,
+                          )
                         ),
                         SizedBox(
                           height: 60,
