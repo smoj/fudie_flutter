@@ -329,7 +329,7 @@ class _DetailScreenState extends State<DetailScreen> {
                             UIItemMedium(
                               price : 33,
                               description: 'Chinese Salad',
-                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium.png',
+                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium3.png',
                               onTap: (){
                                 Navigator.pushNamed(context, '/detail');
                               },),
