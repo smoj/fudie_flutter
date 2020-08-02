@@ -35,60 +35,47 @@ class RegisterScreen extends StatelessWidget {
       resizeToAvoidBottomPadding: false,
       backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
       body: SingleChildScrollView(
-        child: Stack(
-          fit: StackFit.loose,
-          children: <Widget>[
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                height: screenHeight,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/auth_bg.png'),
-                      fit: BoxFit.fitWidth
-                  ),
-                ),
-              ),
+        child: Container(
+          padding: EdgeInsets.all(screenWidth * 0.09),
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/auth_bg.png'),
+                fit: BoxFit.fitWidth,
+                alignment: Alignment.topCenter
             ),
-            Align(
-              alignment: Alignment.topCenter,
-              child: Container(
-                padding: EdgeInsets.all(screenWidth * 0.09),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    SizedBox(height: screenWidth * 0.28,),
-                    Row(
-                      children: <Widget>[
-                        UIDisplay2(text: 'Register',),
-                      ],
-                    ),
-                    SizedBox(height: screenWidth * 0.07,),
-                    TextField(
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Your Name', 'Name here'),
-                    ),
-                    TextField(
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'email', 'youralias@youremail.com'),
-                    ),
-                    TextField(
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Password', 'Min 6 characters'),
-                    ),
-                    TextField(
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Confirm Password', 'confirm same password'),
-                    ),
-                    SizedBox(height: 20,),
-                    UIButton(buttonText: 'Register', onTap: (){
-                      Navigator.of(context).pushNamed('/home');
-                    },),
-                  ],
-                ),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: screenWidth * 0.28,),
+              Row(
+                children: <Widget>[
+                  UIDisplay2(text: 'Register',),
+                ],
               ),
-            )
-          ],
+              SizedBox(height: screenWidth * 0.07,),
+              TextField(
+                style: getTextFieldStyle(themeProvider.isLight),
+                decoration: getInputDecoration(themeProvider.isLight, 'Your Name', 'Name here'),
+              ),
+              TextField(
+                style: getTextFieldStyle(themeProvider.isLight),
+                decoration: getInputDecoration(themeProvider.isLight, 'email', 'youralias@youremail.com'),
+              ),
+              TextField(
+                style: getTextFieldStyle(themeProvider.isLight),
+                decoration: getInputDecoration(themeProvider.isLight, 'Password', 'Min 6 characters'),
+              ),
+              TextField(
+                style: getTextFieldStyle(themeProvider.isLight),
+                decoration: getInputDecoration(themeProvider.isLight, 'Confirm Password', 'confirm same password'),
+              ),
+              SizedBox(height: 20,),
+              UIButton(buttonText: 'Register', onTap: (){
+                Navigator.of(context).pushNamed('/home');
+              },),
+            ],
+          ),
         ),
       ),
     );

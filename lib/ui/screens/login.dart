@@ -35,72 +35,63 @@ class LoginScreen extends StatelessWidget {
       resizeToAvoidBottomPadding: false,
       backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
       body: SingleChildScrollView(
-        child: Stack(
-          fit: StackFit.loose,
-          children: <Widget>[
-            Container(
-              height: screenHeight,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/images/auth_bg.png'),
-                    fit: BoxFit.fitWidth
-                ),
-              ),
+        child: Container(
+          height: screenHeight * 1,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage('assets/images/auth_bg.png'),
+                fit: BoxFit.fitWidth,
+              alignment: Alignment.topCenter
             ),
-            Container(
-              height: screenHeight * 0.9,
-              child: Padding(
-                padding: EdgeInsets.all(screenWidth * 0.09),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Spacer(),
-                    Container(
-                      width: 64,
-                      height: 64,
+          ),
+          padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.09),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Spacer(),
+              Container(
+                width: 64,
+                height: 64,
 //                  decoration: BoxDecoration(
 //                      image: DecorationImage(
 //                          image: AssetImage('assets/images/logo-dark.png'),
 //                          fit: BoxFit.cover
 //                      )
 //                  ),
-                    ),
-                    Spacer(),
-                    UIDisplay2(text: 'Welcome',),
-                    SizedBox(height: 10,),
-                    TextField(
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Username', 'Username here'),
-                    ),
-                    TextField(
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Password', 'Password here'),
-                    ),
-                    SizedBox(height: 20,),
-                    Spacer(),
-                    UIButton(buttonText: 'Login', onTap: (){
-                      Navigator.of(context).pushNamed('/home');
-                    },),
-                    SizedBox(height: 20,),
-                    Row(
-                      children: <Widget>[
-                        UIOutlineButton(text: 'Reset', onTap: (){
-                          Navigator.of(context).pushNamed('/forgot');
-                        },),
-                        SizedBox(width: 20,),
-                        UIOutlineButton(text: 'Signup', onTap: (){
-                          Navigator.of(context).pushNamed('/register');
-                        },),
-                      ],
-                    ),
-                    SizedBox(height: 20,),
-                    Spacer(),
-                  ],
-                ),
               ),
-            )
-          ],
+              Spacer(),
+              UIDisplay2(text: 'Welcome',),
+              SizedBox(height: 10,),
+              TextField(
+                style: getTextFieldStyle(themeProvider.isLight),
+                decoration: getInputDecoration(themeProvider.isLight, 'Username', 'Username here'),
+              ),
+              TextField(
+                style: getTextFieldStyle(themeProvider.isLight),
+                decoration: getInputDecoration(themeProvider.isLight, 'Password', 'Password here'),
+              ),
+              SizedBox(height: 20,),
+              Spacer(),
+              UIButton(buttonText: 'Login', onTap: (){
+                Navigator.of(context).pushNamed('/home');
+              },),
+              SizedBox(height: 20,),
+              Row(
+                children: <Widget>[
+                  UIOutlineButton(text: 'Reset', onTap: (){
+                    Navigator.of(context).pushNamed('/forgot');
+                  },),
+                  SizedBox(width: 20,),
+                  UIOutlineButton(text: 'Signup', onTap: (){
+                    Navigator.of(context).pushNamed('/register');
+                  },),
+                ],
+              ),
+              SizedBox(height: 20,),
+              Spacer(),
+            ],
+          ),
         ),
       ),
     );
