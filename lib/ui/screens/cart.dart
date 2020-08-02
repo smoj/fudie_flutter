@@ -20,6 +20,7 @@ class CartScreen extends StatelessWidget {
     final horizontalPadding = screenWidth * 0.045;
     final headingPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.01);
     final shopProvider = Provider.of<ShopProvider>(context);
+    print('Cart Details: '+shopProvider.items.toString());
     return Scaffold(
         backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
         appBar: AppBar(
@@ -90,8 +91,9 @@ class CartScreen extends StatelessWidget {
                           child: ListView.builder(
                             itemBuilder: (_, int index)=>UIItenary(
                             thumbnail: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
-                            itemCount: 3,
-                            price: 33.99,
+                            itemCount: shopProvider.items[index].quantity,
+                            price: shopProvider.items[index].price,
+                            totalPrice: shopProvider.items[index].totalPrice,
                           ),
                             itemCount: shopProvider.items.length,
                           )

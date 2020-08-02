@@ -6,8 +6,8 @@ class ShopProvider extends ChangeNotifier {
 
   ShopProvider({this.username, this.items});
 
-  addToCart(){
-    items.add(Item(price: 4.99, totalPrice: 12.99, item: 'Sausage Soup', quantity: 2));
+  addToCart(Item item){
+    items.add(item);
     print('Cart: '+items.toString());
     notifyListeners();
   }
@@ -25,4 +25,9 @@ class Item {
   double totalPrice;
   double price;
   Item({this.item, this.quantity, this.price, this.totalPrice});
+
+  @override
+  String toString() {
+    return '{ ${this.item}, ${this.quantity}, ${this.price}, ${this.totalPrice}, }';
+  }
 }

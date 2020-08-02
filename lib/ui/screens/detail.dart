@@ -355,7 +355,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: UIButton(buttonText: 'Order', price: '\$$totalPrice', onTap: (){
-                    Provider.of<ShopProvider>(context).addToCart();
+                    Provider.of<ShopProvider>(context).addToCart(Item(price: price, totalPrice: totalPrice, item: 'Sausage Soup', quantity: itemCount));
 //                     Navigator.of(context).pushNamed('/order-added');
                   },),
                 ),

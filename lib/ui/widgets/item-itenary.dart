@@ -14,7 +14,7 @@ class UIItenary extends StatefulWidget {
   String itemName;
   String thumbnail;
 
-  UIItenary({this.itemCount, this.price, this.maxCount, this.discountedPrice, this.itemName, this.thumbnail});
+  UIItenary({this.itemCount, this.price, this.maxCount, this.discountedPrice, this.itemName, this.thumbnail, this.totalPrice});
 
   @override
   _UIItenaryState createState() => _UIItenaryState();
@@ -23,12 +23,12 @@ class UIItenary extends StatefulWidget {
 class _UIItenaryState extends State<UIItenary> {
   void initState(){
     super.initState();
-    widget.itemCount = 1;
-    widget.price = 4.99;
-    widget.maxCount = 10;
-    widget.discount = 0.50;
-    widget.discountedPrice = widget.price * widget.discount;
-    updatePrice(widget.itemCount, widget.price);
+//    widget.itemCount = 1;
+//    widget.price = 4.99;
+//    widget.maxCount = 10;
+//    widget.discount = 0.50;
+//    widget.discountedPrice = widget.price * widget.discount;
+//    updatePrice(widget.itemCount, widget.price);
   }
 
   updatePrice(int itemCount, double price){
