@@ -61,7 +61,7 @@ class _UIExtraState extends State<UIExtra> {
                   fontFamily: primaryFont,
                   fontSize: MediaQuery.of(context).size.width * 0.05
               ),),
-              Text('2.99', style: TextStyle(
+              Text('${widget.price}', style: TextStyle(
                   color: selected ? Colors.white : (themeProvider.isLight ? flatBlack : flatWhite),
                   fontFamily: primaryFont,
                   fontSize: MediaQuery.of(context).size.width * 0.035

@@ -312,9 +312,9 @@ class _DetailScreenState extends State<DetailScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
-                            UIExtra(title: 'Pickles', price: '2.99',),
+                            UIExtra(title: 'Pickles', price: '\$1.99',),
                             SizedBox(width: 10,),
-                            UIExtra(title: 'Onions', price: '2.99',),
+                            UIExtra(title: 'Onions', price: '\$4.99',),
                           ],
                         ),
                       ),
