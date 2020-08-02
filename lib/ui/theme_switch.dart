@@ -124,5 +124,8 @@ getInputDecoration(bool isLight, String label, String placeholder){
           fontWeight: FontWeight.w500,
           height: 2
       ),
+    enabledBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: isLight ? flatBlack : flatWhite)
+    )
   );
 }

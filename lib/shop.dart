@@ -12,6 +12,12 @@ class ShopProvider extends ChangeNotifier {
     notifyListeners();
   }
 
+  calculateTotal(){
+//    Item sum = items.reduce((value, element){
+//      return Item(totalPrice: )
+//    });
+  }
+
 }
 
 class User {

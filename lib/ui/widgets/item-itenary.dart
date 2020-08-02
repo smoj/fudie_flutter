@@ -25,7 +25,7 @@ class _UIItenaryState extends State<UIItenary> {
     super.initState();
 //    widget.itemCount = 1;
 //    widget.price = 4.99;
-//    widget.maxCount = 10;
+    widget.maxCount = 10;
 //    widget.discount = 0.50;
 //    widget.discountedPrice = widget.price * widget.discount;
 //    updatePrice(widget.itemCount, widget.price);
