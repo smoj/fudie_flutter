@@ -30,7 +30,8 @@ class Item {
   int quantity;
   double totalPrice;
   double price;
-  Item({this.item, this.quantity, this.price, this.totalPrice});
+  String imageUrl;
+  Item({this.item, this.quantity, this.price, this.totalPrice, this.imageUrl});
 
   @override
   String toString() {

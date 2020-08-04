@@ -90,7 +90,7 @@ class CartScreen extends StatelessWidget {
                             ),
                           child: ListView.builder(
                             itemBuilder: (_, int index)=>UIItenary(
-                            thumbnail: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
+                            thumbnail: shopProvider.items[index].imageUrl,
                             itemCount: shopProvider.items[index].quantity,
                             price: shopProvider.items[index].price,
                             totalPrice: shopProvider.items[index].totalPrice,

@@ -22,6 +22,8 @@ class _DetailScreenState extends State<DetailScreen> {
   double discount;
   double discountedPrice;
 
+  Item itemDetail;
+
   void initState(){
     super.initState();
     itemCount = 1;
@@ -355,7 +357,7 @@ class _DetailScreenState extends State<DetailScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: UIButton(buttonText: 'Order', price: '\$$totalPrice', onTap: (){
-                    Provider.of<ShopProvider>(context).addToCart(Item(price: price, totalPrice: totalPrice, item: 'Sausage Soup', quantity: itemCount));
+                    Provider.of<ShopProvider>(context).addToCart(Item(price: price, totalPrice: totalPrice, item: 'Sausage Soup', quantity: itemCount, imageUrl: 'http://www.audacitus.com/mobile_app_assets/item-medium3.png'));
 //                     Navigator.of(context).pushNamed('/order-added');
                   },),
                 ),
