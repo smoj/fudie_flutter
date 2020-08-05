@@ -10,11 +10,7 @@ import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 import 'package:fudie_ui_flutter/shop.dart';
 
 class DetailScreen extends StatefulWidget {
-  @override
-  _DetailScreenState createState() => _DetailScreenState();
-}
 
-class _DetailScreenState extends State<DetailScreen> {
   int itemCount;
   double price;
   double totalPrice;
@@ -22,37 +18,45 @@ class _DetailScreenState extends State<DetailScreen> {
   double discount;
   double discountedPrice;
 
-  Item itemDetail;
+  @override
+  _DetailScreenState createState() => _DetailScreenState();
+
+}
+
+class _DetailScreenState extends State<DetailScreen> {
 
   void initState(){
     super.initState();
-    itemCount = 1;
-    price = 4.99;
-    maxCount = 10;
-    discount = 0.50;
-    discountedPrice = price * discount;
-    updatePrice(itemCount, price);
+    widget.itemCount = 1;
+    widget.price = 4.99;
+    widget.maxCount = 10;
+    widget.discount = 0.50;
+    widget.discountedPrice = widget.price * widget.discount;
+    updatePrice(widget.itemCount, widget.price);
   }
 
   updatePrice(int itemCount, double price){
     setState(() {
-      totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
+      widget.totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
     });
   }
 
   adjustCount(bool increment){
-    itemCount = increment ? itemCount+1 : itemCount-1;
-    if(itemCount < 1){
-      itemCount = 0;
+    widget.itemCount = increment ? widget.itemCount+1 : widget.itemCount-1;
+    if(widget.itemCount < 1){
+      widget.itemCount = 0;
     }
-    if(itemCount >= maxCount){
-      itemCount = maxCount;
+    if(widget.itemCount >= widget.maxCount){
+      widget.itemCount = widget.maxCount;
     }
-    updatePrice(itemCount, price);
+    updatePrice(widget.itemCount, widget.price);
   }
 
   @override
   Widget build(BuildContext context) {
+    // takes arguments from prior screen
+    final Item details = ModalRoute.of(context).settings.arguments;
+
     final themeProvider = Provider.of<ThemeProvider>(context);
     final screenWidth = MediaQuery.of(context).size.width;
     final metaFontSize = screenWidth * 0.045;
@@ -84,7 +88,7 @@ class _DetailScreenState extends State<DetailScreen> {
           iconTheme: IconThemeData(
               color: (themeProvider.isLight) ? flatBlack : flatWhite
           ),
-          title: Text('Detail', style: TextStyle(
+          title: Text(details.imageUrl, style: TextStyle(
               fontFamily: primaryFont,
               color: (themeProvider.isLight) ? flatBlack : flatWhite
           ),),
@@ -197,7 +201,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                   mainAxisSize: MainAxisSize.min,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
-                                    Text('\$$price', maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
+                                    Text('\$'+widget.price.toString(), maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: secondaryFont,
                                         height: 1,
@@ -207,7 +211,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                     SizedBox(
                                       height: 10,
                                     ),
-                                    Text("\$$discountedPrice", maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
+                                    Text("\$"+widget.discountedPrice.toString(), maxLines: 3, textAlign: TextAlign.right, style: TextStyle(
                                         color: Colors.white,
                                         fontFamily: primaryFont,
                                         fontWeight: FontWeight.w900,
@@ -273,7 +277,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                         ),
                                       ),
                                       SizedBox(width: 20,),
-                                      UITitle(text: this.itemCount.toString(),),
+                                      UITitle(text: widget.itemCount.toString(),),
                                       SizedBox(width: 20,),
                                       GestureDetector(
                                         onTap:() {
@@ -356,9 +360,9 @@ class _DetailScreenState extends State<DetailScreen> {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: UIButton(buttonText: 'Order', price: '\$$totalPrice', onTap: (){
-                    Provider.of<ShopProvider>(context).addToCart(Item(price: price, totalPrice: totalPrice, item: 'Sausage Soup', quantity: itemCount, imageUrl: 'http://www.audacitus.com/mobile_app_assets/item-medium3.png'));
-//                     Navigator.of(context).pushNamed('/order-added');
+                  child: UIButton(buttonText: 'Order', price: '\$'+widget.totalPrice.toString(), onTap: (){
+                    Provider.of<ShopProvider>(context).addToCart(Item(price: widget.price, totalPrice: widget.totalPrice, item: 'Sausage Soup', quantity: widget.itemCount, imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png'));
+                     Navigator.of(context).pushNamed('/order-added');
                   },),
                 ),
               )
