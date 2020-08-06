@@ -188,7 +188,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               alignment: Alignment(-0.7,0.8),
                               child: Container(
                                 width: screenWidth * 0.7,
-                                child: Text('BBQ Ribs in Mushroom gravy', maxLines: 3, textAlign: TextAlign.left, style: TextStyle(
+                                child: Text(widget.item.itemName, maxLines: 3, textAlign: TextAlign.left, style: TextStyle(
                                     color: Colors.white,
                                     fontFamily: primaryFont,
                                     fontWeight: FontWeight.w900,
@@ -337,18 +337,32 @@ class _DetailScreenState extends State<DetailScreen> {
                           children: <Widget>[
                             UIItemMedium(
                               price : 33,
-                              description: 'Chinese Salad',
-                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium3.png',
+                              description: 'Pizza',
+                              url: 'http://www.audacitus.com/mobile_app_assets/detail3.png',
                               onTap: (){
-                                Navigator.pushNamed(context, '/detail');
+                                Item item = Item(
+                                    imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail3.png',
+                                    quantity: 1,
+                                    price: 4.99,
+                                    totalPrice: 4.99,
+                                    itemName: 'Pizza'
+                                );
+                                Navigator.of(context).pushNamed("/detail", arguments: item);
                               },),
                             SizedBox(width: 20,),
                             UIItemMedium(
-                              price : 33,
-                              description: 'Spicy Pizza',
-                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
+                              price : 14.99,
+                              description: 'Scotch Bread',
+                              url: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
                               onTap: (){
-                                Navigator.pushNamed(context, '/detail');
+                                Item item = Item(
+                                    imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
+                                    quantity: 1,
+                                    price: 14.99,
+                                    totalPrice: 4.99,
+                                    itemName: 'Scotch Bread'
+                                );
+                                Navigator.of(context).pushNamed("/detail", arguments: item);
                               },),
                           ],
                         ),
@@ -370,7 +384,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         itemName: widget.item.itemName,
                         quantity: widget.itemCount,
                         imageUrl: widget.item.imageUrl));
-                     Navigator.of(context).pushNamed('/order-added');
+                     Navigator.of(context).pushNamed('/order-added', arguments: widget.item);
                   },),
                 ),
               )

@@ -190,7 +190,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             );
                             Navigator.of(context).pushNamed("/detail", arguments: item);
                           },
-                          child: UIItemLarge(vendor: 'Naruto Shop', price: 23.99, url: 'http://www.audacitus.com/mobile_app_assets/item-large.png', description: 'Ramen Soup',),
+                          child: UIItemLarge(vendor: 'Naruto Shop', price: 23.99, url: 'http://www.audacitus.com/mobile_app_assets/item-large.jpg', description: 'Heavenly Burgers',),
                       ),
                       SizedBox(
                         height: 20,
@@ -244,18 +244,32 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: <Widget>[
                             UIItemMedium(
                               price : 33,
-                              description: 'Chinese Salad',
-                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium3.png',
+                              description: 'Pizza',
+                              url: 'http://www.audacitus.com/mobile_app_assets/detail3.png',
                               onTap: (){
-                                Navigator.pushNamed(context, '/detail');
+                                Item item = Item(
+                                    imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail3.png',
+                                    quantity: 1,
+                                    price: 4.99,
+                                    totalPrice: 4.99,
+                                    itemName: 'Pizza'
+                                );
+                                Navigator.of(context).pushNamed("/detail", arguments: item);
                               },),
                             SizedBox(width: 20,),
                             UIItemMedium(
-                              price : 33,
-                              description: 'Spicy Pizza',
-                              url: 'http://www.audacitus.com/mobile_app_assets/item-medium2.png',
+                              price : 14.99,
+                              description: 'Scotch Bread',
+                              url: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
                               onTap: (){
-                                Navigator.pushNamed(context, '/detail');
+                                Item item = Item(
+                                    imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
+                                    quantity: 1,
+                                    price: 14.99,
+                                    totalPrice: 4.99,
+                                    itemName: 'Scotch Bread'
+                                );
+                                Navigator.of(context).pushNamed("/detail", arguments: item);
                               },),
                           ],
                         ),

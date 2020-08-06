@@ -7,8 +7,14 @@ import 'package:fudie_ui_flutter/ui/widgets/extra.dart';
 import 'package:fudie_ui_flutter/ui/widgets/quote.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 
 class OrderAddedScreen extends StatelessWidget {
+
+  Item item;
+
+  OrderAddedScreen(this.item);
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -83,7 +89,7 @@ class OrderAddedScreen extends StatelessWidget {
                         children: <Widget>[
                           TransitionToImage(
                             image: AdvancedNetworkImage(
-                              'http://www.audacitus.com/mobile_app_assets/detail.png',
+                              this.item.imageUrl,
                               loadedCallback: () => print('Network Image loaded.'),
                               loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
                               timeoutDuration: Duration(seconds: 60),
@@ -92,7 +98,7 @@ class OrderAddedScreen extends StatelessWidget {
                             fit: BoxFit.cover,
                           ),
                           SizedBox(height: 20,),
-                          Text('BBQ Ribs in Mushroom gravy', maxLines: 3, textAlign: TextAlign.left, style: TextStyle(
+                          Text(this.item.itemName, maxLines: 3, textAlign: TextAlign.left, style: TextStyle(
                               color: themeProvider.isLight ? flatBlack : flatWhite,
                               fontFamily: primaryFont,
                               fontWeight: FontWeight.w700,

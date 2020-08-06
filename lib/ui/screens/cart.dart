@@ -88,15 +88,52 @@ class CartScreen extends StatelessWidget {
                               )],
                               color : themeProvider.isLight ? Color.fromRGBO(255, 255, 255, 1) : darkThemeElevation2,
                             ),
-                          child: ListView.builder(
+                          child: (shopProvider.items.length > 0) ? ListView.builder(
                             itemBuilder: (_, int index)=>UIItenary(
-                            thumbnail: shopProvider.items[index].imageUrl,
-                            itemCount: shopProvider.items[index].quantity,
-                            price: shopProvider.items[index].price,
-                            itemName: shopProvider.items[index].itemName,
-                            totalPrice: shopProvider.items[index].totalPrice,
-                          ),
+                              thumbnail: shopProvider.items[index].imageUrl,
+                              itemCount: shopProvider.items[index].quantity,
+                              price: shopProvider.items[index].price,
+                              itemName: shopProvider.items[index].itemName,
+                              totalPrice: shopProvider.items[index].totalPrice,
+                            ),
                             itemCount: shopProvider.items.length,
+                          ) : Column(
+                            children: <Widget>[
+                              Spacer(),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Icon(Icons.add_shopping_cart, color: themeProvider.isLight ? flatBlack : flatWhite, size: screenWidth * 0.15,),
+                                ],
+                              ),
+                              SizedBox(height: 20,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Text('Cart is empty', style: bodyRegularText.copyWith(
+                                      color: themeProvider.isLight ? flatBlack : flatWhite,
+                                      fontSize: screenWidth * 0.085,
+                                      fontWeight: FontWeight.w600
+                                  ),)
+                                ],
+                              ),
+                              SizedBox(height: 10,),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(8.0),
+                                      child: Text("Select anything you like and click 'order'", textAlign: TextAlign.center, maxLines: 3, overflow: TextOverflow.fade, style: bodyRegularText.copyWith(
+                                          color: themeProvider.isLight ? flatBlack : flatWhite,
+                                          fontSize: screenWidth * 0.05
+                                      ),),
+                                    ),
+                                  )
+                                ],
+                              ),
+                              Spacer()
+                            ],
                           )
                         ),
                         SizedBox(
@@ -110,8 +147,10 @@ class CartScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: UIButton(buttonText: 'Pay', price: '\$340', onTap: (){
+                  child: (shopProvider.items.length > 0) ? UIButton(buttonText: 'Pay', price: '\$340', onTap: (){
                     Navigator.of(context).pushNamed('/success');
+                  },) : UIButton(buttonText: 'Go Back', onTap: (){
+                    Navigator.of(context).pop();
                   },),
                 ),
               )
