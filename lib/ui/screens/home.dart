@@ -181,8 +181,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       GestureDetector(
                           onTap: (){
 //                          // You can pass an instance class of <Item> in navigator!
-                            Item item = Item(imageUrl: 'someUrl');
-                            Navigator.pushNamed(context, '/detail', arguments: item);
+                            Item item = Item(
+                                imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png',
+                                quantity: 1,
+                                price: 4.99,
+                                totalPrice: 4.99,
+                                itemName: 'Heavenly Burgers'
+                            );
+                            Navigator.of(context).pushNamed("/detail", arguments: item);
                           },
                           child: UIItemLarge(vendor: 'Naruto Shop', price: 23.99, url: 'http://www.audacitus.com/mobile_app_assets/item-large.png', description: 'Ramen Soup',),
                       ),

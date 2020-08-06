@@ -82,7 +82,7 @@ class _UIItenaryState extends State<UIItenary> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text('Sausage Brunch', textAlign: TextAlign.left, style: TextStyle(
+                      Text(widget.itemName, textAlign: TextAlign.left, style: TextStyle(
                           color: themeProvider.isLight ? flatBlack : flatWhite,
                           fontFamily: 'Nunito',
                           fontSize: 15,

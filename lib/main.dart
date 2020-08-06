@@ -60,7 +60,6 @@ class MyApp extends StatelessWidget {
       routes: {
         '/' : (context) => SplashScreen(),
         '/home' : (context) => HomeScreen(),
-        '/detail' : (context) => DetailScreen(),
         '/login' : (context) => LoginScreen(),
         '/register' : (context) => RegisterScreen(),
         '/cart' : (context) => CartScreen(),
@@ -76,6 +75,14 @@ class MyApp extends StatelessWidget {
         '/search' : (context) => SearchScreen(),
         '/cards' : (context) => CardScreen(),
         '/success' : (context) => SuccessScreen()
+      },
+      onGenerateRoute: (RouteSettings settings) {
+        print('build route for ${settings.name}');
+        var routes = <String, WidgetBuilder>{
+          "/detail": (context) => DetailScreen(settings.arguments),
+        };
+        WidgetBuilder builder = routes[settings.name];
+        return MaterialPageRoute(builder: (context) => builder(context));
       },
       debugShowCheckedModeBanner: false,
       theme: appLightTheme,

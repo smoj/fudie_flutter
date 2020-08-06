@@ -25,16 +25,16 @@ class User {
 }
 
 class Item {
-  String item;
+  String itemName;
   int number;
   int quantity;
   double totalPrice;
   double price;
   String imageUrl;
-  Item({this.item, this.quantity, this.price, this.totalPrice, this.imageUrl});
+  Item({this.itemName, this.quantity, this.price, this.totalPrice, this.imageUrl});
 
   @override
   String toString() {
-    return '{ ${this.item}, ${this.quantity}, ${this.price}, ${this.totalPrice}, }';
+    return '{ ${this.itemName}, ${this.quantity}, ${this.price}, ${this.totalPrice}, }';
   }
 }

@@ -17,6 +17,9 @@ class DetailScreen extends StatefulWidget {
   int maxCount;
   double discount;
   double discountedPrice;
+  Item item;
+
+  DetailScreen(this.item);
 
   @override
   _DetailScreenState createState() => _DetailScreenState();
@@ -27,10 +30,10 @@ class _DetailScreenState extends State<DetailScreen> {
 
   void initState(){
     super.initState();
-    widget.itemCount = 1;
-    widget.price = 4.99;
+    widget.itemCount = widget.item.quantity;
+    widget.price = widget.item.price;
     widget.maxCount = 10;
-    widget.discount = 0.50;
+    widget.discount = 1;
     widget.discountedPrice = widget.price * widget.discount;
     updatePrice(widget.itemCount, widget.price);
   }
@@ -88,7 +91,7 @@ class _DetailScreenState extends State<DetailScreen> {
           iconTheme: IconThemeData(
               color: (themeProvider.isLight) ? flatBlack : flatWhite
           ),
-          title: Text(details.imageUrl, style: TextStyle(
+          title: Text('Detail', style: TextStyle(
               fontFamily: primaryFont,
               color: (themeProvider.isLight) ? flatBlack : flatWhite
           ),),
@@ -118,7 +121,7 @@ class _DetailScreenState extends State<DetailScreen> {
                                 width: screenWidth,
                                 child: TransitionToImage(
                                   image: AdvancedNetworkImage(
-                                    'http://www.audacitus.com/mobile_app_assets/detail.png',
+                                    widget.item.imageUrl,
                                     loadedCallback: () => print('Network Image loaded.'),
                                     loadFailedCallback: () => print('Oh, no! Image failed! Timeout and Retry limit exceeded'),
                                     timeoutDuration: Duration(seconds: 60),
@@ -361,7 +364,12 @@ class _DetailScreenState extends State<DetailScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: UIButton(buttonText: 'Order', price: '\$'+widget.totalPrice.toString(), onTap: (){
-                    Provider.of<ShopProvider>(context).addToCart(Item(price: widget.price, totalPrice: widget.totalPrice, item: 'Sausage Soup', quantity: widget.itemCount, imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png'));
+                    Provider.of<ShopProvider>(context).addToCart(Item(
+                        price: widget.price,
+                        totalPrice: widget.totalPrice,
+                        itemName: widget.item.itemName,
+                        quantity: widget.itemCount,
+                        imageUrl: widget.item.imageUrl));
                      Navigator.of(context).pushNamed('/order-added');
                   },),
                 ),

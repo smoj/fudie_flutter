@@ -93,6 +93,7 @@ class CartScreen extends StatelessWidget {
                             thumbnail: shopProvider.items[index].imageUrl,
                             itemCount: shopProvider.items[index].quantity,
                             price: shopProvider.items[index].price,
+                            itemName: shopProvider.items[index].itemName,
                             totalPrice: shopProvider.items[index].totalPrice,
                           ),
                             itemCount: shopProvider.items.length,
