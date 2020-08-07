@@ -73,7 +73,7 @@ class CartScreen extends StatelessWidget {
                         UIDisplay2(text: 'Checkout Items', color: Colors.red,),
                         SizedBox(height: 30,),
                         Container(
-                          height: 300,
+                          height: screenHeight * 0.6,
                             decoration: BoxDecoration(
                               borderRadius : BorderRadius.only(
                                 topLeft: Radius.circular(10),
