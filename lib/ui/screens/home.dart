@@ -44,13 +44,13 @@ class _HomeScreenState extends State<HomeScreen> {
         color: Colors.red,
         shape: BoxShape.circle,
       ),
-      height: 30,
-      width: 30,
+      height: 20,
+      width: 20,
       child: Text(shopProvider.items.length.toString(), textAlign: TextAlign.center, style: TextStyle(
-          fontSize: 18,
+          fontSize: 14,
           fontFamily: 'Nunito',
           fontWeight: FontWeight.bold,
-          height: 1.6,
+          height: 1.4,
           color: Colors.white
       ),),
     ) : SizedBox(width: 0,);
@@ -73,13 +73,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: (){
                   Navigator.pushNamed(context, '/cart');
                 },
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+                child: Stack(
                   children: <Widget>[
-                    Icon(Icons.shopping_cart, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
-                    SizedBox(width: 5,),
-                    showCartCount(),
-                    SizedBox(width: 10,)
+                    Align(
+                        child: Row(
+                          children: <Widget>[
+                            Icon(Icons.shopping_cart, size: 30, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
+                            SizedBox(width: 15,)
+                          ],
+                        ),
+                        alignment: Alignment.center
+                    ),
+                    Positioned(
+                      top: 5,
+                      right: 5,
+                      child: showCartCount(),
+                    ),
                   ],
                 ),
               ),
