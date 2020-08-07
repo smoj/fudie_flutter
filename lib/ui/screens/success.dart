@@ -7,11 +7,13 @@ import 'package:fudie_ui_flutter/ui/widgets/extra.dart';
 import 'package:fudie_ui_flutter/ui/widgets/quote.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 
 class SuccessScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
+    final shopProvider = Provider.of<ShopProvider>(context);
     final screenWidth = MediaQuery.of(context).size.width;
     final metaFontSize = screenWidth * 0.045;
     final horizontalPadding = screenWidth * 0.045;
@@ -80,73 +82,47 @@ class SuccessScreen extends StatelessWidget {
                         color : themeProvider.isLight ? Colors.white : Color.fromRGBO(55, 55, 55, 1),
                       ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: <Widget>[
                           Padding(
                             padding: EdgeInsets.symmetric(vertical: 15),
                             child: UIDisplay1(text: 'Order #48548',),
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 0, vertical: 15),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-
-                              children: <Widget>[
-                                Container(
-                                    width: 51.2939453125,
-                                    height: 51,
-                                    decoration: BoxDecoration(
-                                      borderRadius : BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
-                                        bottomRight: Radius.circular(10),
-                                      ),
-                                      image : DecorationImage(
-                                          image: AssetImage('assets/images/food2.png'),
-                                          fit: BoxFit.fill
-                                      ),
-                                    )
-                                ), SizedBox(width : 7),
-                                Container(
-                                    width: 51.2939453125,
-                                    height: 51,
-                                    decoration: BoxDecoration(
-                                      borderRadius : BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
-                                        bottomRight: Radius.circular(10),
-                                      ),
-                                      image : DecorationImage(
-                                          image: AssetImage('assets/images/food3.png'),
-                                          fit: BoxFit.fill
-                                      ),
-                                    )
-                                ), SizedBox(width : 7),
-                                Container(
-                                    width: 51.2939453125,
-                                    height: 51,
-                                    decoration: BoxDecoration(
-                                      borderRadius : BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
-                                        bottomRight: Radius.circular(10),
-                                      ),
-                                      image : DecorationImage(
-                                          image: AssetImage('assets/images/food4.png'),
-                                          fit: BoxFit.fill
-                                      ),
-                                    )
-                                ),
-
-                              ],
+                            height: 51,
+                            width: 200,
+                            child: Center(
+                              child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index){
+                                    return Container(
+                                        width: 51,
+                                        height: 51,
+                                        margin: EdgeInsets.symmetric(horizontal: 7),
+                                        decoration: BoxDecoration(
+                                          borderRadius : BorderRadius.only(
+                                            topLeft: Radius.circular(10),
+                                            topRight: Radius.circular(10),
+                                            bottomLeft: Radius.circular(10),
+                                            bottomRight: Radius.circular(10),
+                                          ),
+                                          image : DecorationImage(
+                                              image: NetworkImage(shopProvider.items[index].imageUrl),
+                                              fit: BoxFit.fitHeight
+                                          ),
+                                          color: Colors.red,
+                                        )
+                                    );
+                                  },
+                                  itemCount: shopProvider.items.length,
+                              ),
                             ),
                           ),
                           SizedBox(height: 20,),
                           Padding(
                             padding: EdgeInsets.symmetric(horizontal: MediaQuery.of(context).size.width * ScreenGapValue, vertical: 20),
-                            child: Text('Your order has been sent prepping before the  dispatch picks it up for delivery', textAlign: TextAlign.center, style: TextStyle(
+                            child: Text('Your order has been sent for delivery', textAlign: TextAlign.center, style: TextStyle(
                                 color: themeProvider.isLight ? flatBlack : flatWhite,
                                 fontFamily: 'Nunito',
                                 fontSize: 15,

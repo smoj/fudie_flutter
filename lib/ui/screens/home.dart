@@ -155,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           Expanded(
                             child: GestureDetector(
                               onTap: (){
-                                Navigator.of(context).pushNamed('/search');
+//                                Navigator.of(context).pushNamed('/search');
                               },
                               child: Container(
                                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
