@@ -70,7 +70,7 @@ class RegisterScreen extends StatelessWidget {
                 style: getTextFieldStyle(themeProvider.isLight),
                 decoration: getInputDecoration(themeProvider.isLight, 'Confirm Password', 'confirm same password'),
               ),
-              SizedBox(height: 20,),
+              SizedBox(height: 35,),
               UIButton(buttonText: 'Register', onTap: (){
                 Navigator.of(context).pushNamed('/home');
               },),
