@@ -61,7 +61,7 @@ class CartScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: <Widget>[
-                        Text('Thanks for shopping. Here are your', textAlign: TextAlign.left, style: TextStyle(
+                        Text('Thanks for ordering. Here are your', textAlign: TextAlign.left, style: TextStyle(
                             color: themeProvider.isLight ? themeProvider.lightTheme.textColor : themeProvider.darkTheme.textColor,
                             fontFamily: 'Nunito',
                             fontSize: 16,
@@ -89,12 +89,37 @@ class CartScreen extends StatelessWidget {
                               color : themeProvider.isLight ? Color.fromRGBO(255, 255, 255, 1) : darkThemeElevation2,
                             ),
                           child: (shopProvider.items.length > 0) ? ListView.builder(
-                            itemBuilder: (_, int index)=>UIItenary(
-                              thumbnail: shopProvider.items[index].imageUrl,
-                              itemCount: shopProvider.items[index].quantity,
-                              price: shopProvider.items[index].price,
-                              itemName: shopProvider.items[index].itemName,
-                              totalPrice: shopProvider.items[index].totalPrice,
+                            itemBuilder: (_, int index)=>GestureDetector(
+                              onTap: (){
+                                showDialog(context: context, builder: (BuildContext context){
+                                  return AlertDialog(
+                                    actions: <Widget>[
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: <Widget>[
+                                          FlatButton(
+                                            child: Text('Delete'),
+                                            onPressed: (){
+                                              shopProvider.removeFromCart(shopProvider.items[index].itemKey);
+                                              Navigator.pop(context);
+                                            },
+                                          ),
+                                        ],
+                                      )
+                                    ],
+                                  );
+                                });
+                              },
+                              child: UIItenary(
+                                itemKey: shopProvider.items[index].itemKey,
+                                thumbnail: shopProvider.items[index].imageUrl,
+                                itemCount: shopProvider.items[index].quantity,
+                                price: shopProvider.items[index].price,
+                                itemName: shopProvider.items[index].itemName,
+                                totalPrice: shopProvider.items[index].totalPrice,
+                              ),
                             ),
                             itemCount: shopProvider.items.length,
                           ) : Column(
@@ -147,7 +172,7 @@ class CartScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: (shopProvider.items.length > 0) ? UIButton(buttonText: 'Pay', price: '\$340', onTap: (){
+                  child: (shopProvider.items.length > 0) ? UIButton(buttonText: 'Pay', price: '\$'+shopProvider.sum.totalPrice.toString(), onTap: (){
                     Navigator.of(context).pushNamed('/success');
                   },) : UIButton(buttonText: 'Go Back', onTap: (){
                     Navigator.of(context).pop();

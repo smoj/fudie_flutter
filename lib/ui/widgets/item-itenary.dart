@@ -3,8 +3,10 @@ import 'package:fudie_ui_flutter/ui/theme_meta.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 
 class UIItenary extends StatefulWidget {
+  String itemKey;
   int itemCount;
   double price;
   double totalPrice;
@@ -14,7 +16,7 @@ class UIItenary extends StatefulWidget {
   String itemName;
   String thumbnail;
 
-  UIItenary({this.itemCount, this.price, this.maxCount, this.discountedPrice, this.itemName, this.thumbnail, this.totalPrice});
+  UIItenary({@required this.itemKey, this.itemCount, this.price, this.maxCount, this.discountedPrice, this.itemName, this.thumbnail, this.totalPrice});
 
   @override
   _UIItenaryState createState() => _UIItenaryState();
@@ -34,13 +36,14 @@ class _UIItenaryState extends State<UIItenary> {
   updatePrice(int itemCount, double price){
     setState(() {
       widget.totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
+      Provider.of<ShopProvider>(context).updateItem(widget.itemKey, widget.itemCount);
     });
   }
 
   adjustCount(bool increment){
     widget.itemCount = increment ? widget.itemCount+1 : widget.itemCount-1;
     if(widget.itemCount < 1){
-      widget.itemCount = 0;
+      widget.itemCount = 1;
     }
     if(widget.itemCount >= widget.maxCount){
       widget.itemCount = widget.maxCount;

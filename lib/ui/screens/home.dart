@@ -191,6 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           onTap: (){
 //                          // You can pass an instance class of <Item> in navigator!
                             Item item = Item(
+                                itemKey: 'DLX234',
                                 imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png',
                                 quantity: 1,
                                 price: 4.99,

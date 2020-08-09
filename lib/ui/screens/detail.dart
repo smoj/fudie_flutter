@@ -341,6 +341,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               url: 'http://www.audacitus.com/mobile_app_assets/detail3.png',
                               onTap: (){
                                 Item item = Item(
+                                    itemKey: 'DLX233',
                                     imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail3.png',
                                     quantity: 1,
                                     price: 4.99,
@@ -356,6 +357,7 @@ class _DetailScreenState extends State<DetailScreen> {
                               url: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
                               onTap: (){
                                 Item item = Item(
+                                  itemKey: 'DLX232',
                                     imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
                                     quantity: 1,
                                     price: 14.99,
@@ -379,6 +381,7 @@ class _DetailScreenState extends State<DetailScreen> {
                   padding: const EdgeInsets.all(16.0),
                   child: UIButton(buttonText: 'Order', price: '\$'+widget.totalPrice.toString(), onTap: (){
                     Provider.of<ShopProvider>(context).addToCart(Item(
+                        itemKey: widget.item.itemKey,
                         price: widget.price,
                         totalPrice: widget.totalPrice,
                         itemName: widget.item.itemName,
