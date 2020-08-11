@@ -38,39 +38,42 @@ class ForgotScreen extends StatelessWidget {
       body: Builder(
         builder: (BuildContext context){
           return SafeArea(
-              child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/images/auth_bg.png'),
-                      fit: BoxFit.fitWidth,
-                      alignment: Alignment.topCenter
+              child: SingleChildScrollView(
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 0),
+                  height: screenHeight * 1.2,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/auth_bg.png'),
+                        fit: BoxFit.fitWidth,
+                        alignment: Alignment.topCenter
+                    ),
                   ),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Spacer(flex: 3,),
-                    UIDisplay2(text: 'Reset', color: themeProvider.isLight ? primaryColor : flatWhite,),
-                    SizedBox(height: 10,),
-                    TextField(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: <Widget>[
+                      Spacer(flex: 3,),
+                      UIDisplay2(text: 'Reset', color: themeProvider.isLight ? primaryColor : flatWhite,),
+                      SizedBox(height: 10,),
+                      TextField(
 //                    controller: TextEditingController(text: 'aries@hades.com'),
-                      style: getTextFieldStyle(themeProvider.isLight),
-                      decoration: getInputDecoration(themeProvider.isLight, 'Email Address', 'youremail@address.com'),
-                    ),
-                    SizedBox(
-                      height: 50,
-                    ),
-                    UIButton(buttonText: 'Reset Password', onTap: (){
-                      final snackBar = SnackBar(
-                        content: Text('Reset Email Sent!'),
-                      );
-                      Scaffold.of(context).showSnackBar(snackBar);
-                      Timer(Duration(seconds: 1), ()=> Navigator.of(context).pop());
-                    },),
-                    Spacer()
-                  ],
+                        style: getTextFieldStyle(themeProvider.isLight),
+                        decoration: getInputDecoration(themeProvider.isLight, 'Email Address', 'youremail@address.com'),
+                      ),
+                      SizedBox(
+                        height: 50,
+                      ),
+                      UIButton(buttonText: 'Reset Password', onTap: (){
+                        final snackBar = SnackBar(
+                          content: Text('Reset Email Sent!'),
+                        );
+                        Scaffold.of(context).showSnackBar(snackBar);
+                        Timer(Duration(seconds: 1), ()=> Navigator.of(context).pop());
+                      },),
+                      Spacer()
+                    ],
+                  ),
                 ),
               ),
           );

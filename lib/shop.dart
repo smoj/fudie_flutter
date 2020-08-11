@@ -21,7 +21,7 @@ class ShopProvider extends ChangeNotifier {
       );
     });
     notifyListeners();
-    return sum.totalPrice;
+//    return sum.totalPrice;
   }
 
   removeFromCart(String key){
@@ -33,6 +33,8 @@ class ShopProvider extends ChangeNotifier {
     int index = items.indexWhere((item)=> item.itemKey == key);
     print('key using updateItem($key, $itemCount):'+items[index].toString());
     items[index].totalPrice = itemCount * items[index].price;
+    items[index].quantity = itemCount;
+    print('After updateItem($key, $itemCount):'+items[index].toString());
     calculateTotal();
   }
 

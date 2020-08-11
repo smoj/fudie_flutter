@@ -37,6 +37,7 @@ class RegisterScreen extends StatelessWidget {
       body: SingleChildScrollView(
         child: Container(
           padding: EdgeInsets.all(screenWidth * 0.09),
+          height: screenHeight * 1.1,
           decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/images/auth_bg.png'),
