@@ -114,7 +114,7 @@ class OrderAddedScreen extends StatelessWidget {
                 alignment: Alignment.bottomCenter,
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: UIButton(buttonText: 'Continue Shopping', onTap: (){
+                  child: UIButton(buttonText: 'Continue Ordering', onTap: (){
                     Navigator.of(context).pushReplacementNamed('/home');
                   },),
                 ),
