@@ -9,7 +9,47 @@ import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 import 'package:fudie_ui_flutter/shop.dart';
 
-class CartScreen extends StatelessWidget {
+class CartScreen extends StatefulWidget {
+
+  @override
+  _CartScreenState createState() => _CartScreenState();
+}
+
+class _CartScreenState extends State<CartScreen> {
+  String itemKey;
+
+  int itemCount;
+
+  double price;
+
+  double totalPrice;
+
+  int maxCount = 10;
+
+  double discount;
+
+  double discountedPrice;
+
+  String itemName;
+
+  String thumbnail;
+
+  updatePrice(int itemCount, double price){
+    totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
+    Provider.of<ShopProvider>(context).updateItem('ABC123', itemCount);
+  }
+
+  adjustCount(bool increment, int qty, double subTotal){
+    print('adjustCount($increment): itemCount is:'+qty.toString());
+    qty = increment ? qty+1 : qty-1;
+    if(qty < 1){
+      qty = 1;
+    }
+    if(qty > maxCount){
+      qty = maxCount;
+    }
+    updatePrice(qty, subTotal);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -112,13 +152,93 @@ class CartScreen extends StatelessWidget {
                                   );
                                 });
                               },
-                              child: UIItenary(
-                                itemKey: shopProvider.items[index].itemKey,
-                                thumbnail: shopProvider.items[index].imageUrl,
-                                itemCount: shopProvider.items[index].quantity,
-                                price: shopProvider.items[index].price,
-                                itemName: shopProvider.items[index].itemName,
-                                totalPrice: shopProvider.items[index].totalPrice,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 12, vertical:0),
+                                child: Column(
+                                  children: <Widget>[
+                                    SizedBox(height: 12,),
+                                    Row(
+                                      crossAxisAlignment: CrossAxisAlignment.center,
+                                      children: <Widget>[
+                                        Container(
+                                            width: 56,
+                                            height: 56,
+                                            decoration: BoxDecoration(
+                                              borderRadius : BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10),
+                                                bottomLeft: Radius.circular(10),
+                                                bottomRight: Radius.circular(10),
+                                              ),
+                                              image : DecorationImage(
+                                                  image: NetworkImage(shopProvider.items[index].imageUrl),
+                                                  fit: BoxFit.fill
+                                              ),
+                                            )
+                                        ),
+                                        Expanded(
+                                          child: Container(
+                                            padding: EdgeInsets.symmetric(horizontal: 15),
+                                            child: Column(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              children: <Widget>[
+                                                Text(shopProvider.items[index].itemName.toString(), textAlign: TextAlign.left, style: TextStyle(
+                                                    color: themeProvider.isLight ? flatBlack : flatWhite,
+                                                    fontFamily: 'Nunito',
+                                                    fontSize: 15,
+                                                    letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                                    fontWeight: FontWeight.normal,
+                                                    height: 1.3333333333333333
+                                                ),)
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Column(
+                                            crossAxisAlignment: CrossAxisAlignment.end,
+                                            mainAxisAlignment: MainAxisAlignment.end,
+                                            children: <Widget>[
+                                              Text('\$'+shopProvider.items[index].totalPrice.toString(), textAlign: TextAlign.right, style: TextStyle(
+                                                  color: themeProvider.isLight ? flatBlack : flatWhite,
+                                                  fontFamily: 'Poppins',
+                                                  fontSize: 20,
+                                                  letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                                  fontWeight: FontWeight.w600,
+                                                  height: 1
+                                              ),),
+                                              SizedBox(height: 7,),
+                                              Row(
+                                                mainAxisAlignment: MainAxisAlignment.end,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: <Widget>[
+                                                  GestureDetector(
+                                                    onTap:() {
+                                                      adjustCount(false, shopProvider.items[index].quantity, shopProvider.items[index].totalPrice);
+                                                    },
+                                                    child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
+                                                  ),
+                                                  SizedBox(width: 7,),
+                                                  UITitle(text: shopProvider.items[index].quantity.toString(), color: Colors.grey.shade700,),
+                                                  SizedBox(width: 7,),
+                                                  GestureDetector(
+                                                    onTap:() {
+                                                      adjustCount(true, shopProvider.items[index].quantity, shopProvider.items[index].totalPrice);
+                                                    },
+                                                    child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
+                                                  ),
+                                                ],
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: 12,),
+                                    Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
+                                  ],
+                                ),
                               ),
                             ),
                             itemCount: shopProvider.items.length,
