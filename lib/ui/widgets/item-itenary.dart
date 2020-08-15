@@ -5,12 +5,13 @@ import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 import 'package:fudie_ui_flutter/ui/single-widgets.dart';
 import 'package:fudie_ui_flutter/shop.dart';
 
-class UIItenary extends StatefulWidget {
+class UIItenary extends StatelessWidget {
+
   String itemKey;
   int itemCount;
   double price;
   double totalPrice;
-  int maxCount;
+  int maxCount = 10;
   double discount;
   double discountedPrice;
   String itemName;
@@ -18,37 +19,21 @@ class UIItenary extends StatefulWidget {
 
   UIItenary({@required this.itemKey, this.itemCount, this.price, this.maxCount, this.discountedPrice, this.itemName, this.thumbnail, this.totalPrice});
 
-  @override
-  _UIItenaryState createState() => _UIItenaryState();
-}
-
-class _UIItenaryState extends State<UIItenary> {
-  void initState(){
-    super.initState();
-//    widget.itemCount = 1;
-//    widget.price = 4.99;
-    widget.maxCount = 10;
-//    widget.discount = 0.50;
-//    widget.discountedPrice = widget.price * widget.discount;
-//    updatePrice(widget.itemCount, widget.price);
-  }
-
   updatePrice(int itemCount, double price){
-    setState(() {
-      widget.totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
-      Provider.of<ShopProvider>(context).updateItem(widget.itemKey, widget.itemCount);
-    });
+      totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
+//    Provider.of<ShopProvider>(context, listen: false).updateItem(itemKey, itemCount);
   }
 
   adjustCount(bool increment){
-    widget.itemCount = increment ? widget.itemCount+1 : widget.itemCount-1;
-    if(widget.itemCount < 1){
-      widget.itemCount = 1;
+    print('adjustCount($increment): itemCount is:'+itemCount.toString());
+    itemCount = increment ? itemCount+1 : itemCount-1;
+    if(itemCount < 1){
+      itemCount = 1;
     }
-    if(widget.itemCount >= widget.maxCount){
-      widget.itemCount = widget.maxCount;
+    if(10 >= 1){
+      itemCount = maxCount;
     }
-    updatePrice(widget.itemCount, widget.price);
+    updatePrice(itemCount, price);
   }
 
   @override
@@ -73,7 +58,7 @@ class _UIItenaryState extends State<UIItenary> {
                       bottomRight: Radius.circular(10),
                     ),
                     image : DecorationImage(
-                        image: NetworkImage(widget.thumbnail),
+                        image: NetworkImage(thumbnail),
                         fit: BoxFit.fill
                     ),
                   )
@@ -85,7 +70,7 @@ class _UIItenaryState extends State<UIItenary> {
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(widget.itemName, textAlign: TextAlign.left, style: TextStyle(
+                      Text(itemName, textAlign: TextAlign.left, style: TextStyle(
                           color: themeProvider.isLight ? flatBlack : flatWhite,
                           fontFamily: 'Nunito',
                           fontSize: 15,
@@ -102,7 +87,7 @@ class _UIItenaryState extends State<UIItenary> {
                   crossAxisAlignment: CrossAxisAlignment.end,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: <Widget>[
-                    Text('\$'+widget.totalPrice.toString(), textAlign: TextAlign.right, style: TextStyle(
+                    Text('\$'+totalPrice.toString(), textAlign: TextAlign.right, style: TextStyle(
                         color: themeProvider.isLight ? flatBlack : flatWhite,
                         fontFamily: 'Poppins',
                         fontSize: 20,
@@ -122,7 +107,7 @@ class _UIItenaryState extends State<UIItenary> {
                           child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
                         ),
                         SizedBox(width: 7,),
-                        UITitle(text: widget.itemCount.toString(), color: Colors.grey.shade700,),
+                        UITitle(text: itemCount.toString(), color: Colors.grey.shade700,),
                         SizedBox(width: 7,),
                         GestureDetector(
                           onTap:() {
@@ -144,3 +129,4 @@ class _UIItenaryState extends State<UIItenary> {
     );
   }
 }
+
