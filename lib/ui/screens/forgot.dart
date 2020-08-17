@@ -53,7 +53,7 @@ class ForgotScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      Spacer(flex: 3,),
+                      Spacer(),
                       UIDisplay2(text: 'Reset', color: themeProvider.isLight ? primaryColor : flatWhite,),
                       SizedBox(height: 10,),
                       TextField(

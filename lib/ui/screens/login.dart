@@ -76,7 +76,7 @@ class LoginScreen extends StatelessWidget {
               UIButton(buttonText: 'Login', onTap: (){
                 Navigator.of(context).pushNamed('/home');
               },),
-              SizedBox(height: 20,),
+              SizedBox(height: 30,),
               Row(
                 children: <Widget>[
                   UIOutlineButton(text: 'Reset', onTap: (){

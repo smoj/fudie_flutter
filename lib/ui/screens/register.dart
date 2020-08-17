@@ -71,7 +71,7 @@ class RegisterScreen extends StatelessWidget {
                 style: getTextFieldStyle(themeProvider.isLight),
                 decoration: getInputDecoration(themeProvider.isLight, 'Confirm Password', 'confirm same password'),
               ),
-              SizedBox(height: 35,),
+              SizedBox(height: 50,),
               UIButton(buttonText: 'Register', onTap: (){
                 Navigator.of(context).pushNamed('/home');
               },),

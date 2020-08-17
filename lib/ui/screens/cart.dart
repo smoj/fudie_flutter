@@ -34,12 +34,12 @@ class _CartScreenState extends State<CartScreen> {
 
   String thumbnail;
 
-  updatePrice(int itemCount, double price){
+  updatePrice(String itemKey, int itemCount, double price){
     totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
-    Provider.of<ShopProvider>(context).updateItem('ABC123', itemCount);
+    Provider.of<ShopProvider>(context).updateItem(itemKey, itemCount);
   }
 
-  adjustCount(bool increment, int qty, double subTotal){
+  adjustCount(bool increment, int qty, double subTotal, String itemKey){
     print('adjustCount($increment): itemCount is:'+qty.toString());
     qty = increment ? qty+1 : qty-1;
     if(qty < 1){
@@ -48,7 +48,7 @@ class _CartScreenState extends State<CartScreen> {
     if(qty > maxCount){
       qty = maxCount;
     }
-    updatePrice(qty, subTotal);
+    updatePrice(itemKey, qty, subTotal);
   }
 
   @override
@@ -200,7 +200,7 @@ class _CartScreenState extends State<CartScreen> {
                                             crossAxisAlignment: CrossAxisAlignment.end,
                                             mainAxisAlignment: MainAxisAlignment.end,
                                             children: <Widget>[
-                                              Text('\$'+shopProvider.items[index].totalPrice.toString(), textAlign: TextAlign.right, style: TextStyle(
+                                              Text('\$'+shopProvider.items[index].totalPrice.toString(), maxLines: 1, textAlign: TextAlign.right, style: TextStyle(
                                                   color: themeProvider.isLight ? flatBlack : flatWhite,
                                                   fontFamily: 'Poppins',
                                                   fontSize: 20,
@@ -215,16 +215,20 @@ class _CartScreenState extends State<CartScreen> {
                                                 children: <Widget>[
                                                   GestureDetector(
                                                     onTap:() {
-                                                      adjustCount(false, shopProvider.items[index].quantity, shopProvider.items[index].totalPrice);
+                                                      adjustCount(false, shopProvider.items[index].quantity, shopProvider.items[index].totalPrice, shopProvider.items[index].itemKey);
                                                     },
                                                     child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
                                                   ),
                                                   SizedBox(width: 7,),
-                                                  UITitle(text: shopProvider.items[index].quantity.toString(), color: Colors.grey.shade700,),
+                                                  Text(shopProvider.items[index].quantity.toString(), style: bodyRegularText.copyWith(
+                                                    fontSize: MediaQuery.of(context).size.width * 0.06,
+                                                    fontWeight: FontWeight.w600,
+                                                    height: 1.3
+                                                  ),),
                                                   SizedBox(width: 7,),
                                                   GestureDetector(
                                                     onTap:() {
-                                                      adjustCount(true, shopProvider.items[index].quantity, shopProvider.items[index].totalPrice);
+                                                      adjustCount(true, shopProvider.items[index].quantity, shopProvider.items[index].totalPrice, shopProvider.items[index].itemKey);
                                                     },
                                                     child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
                                                   ),

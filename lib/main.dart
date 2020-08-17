@@ -34,13 +34,7 @@ void main() async{
         providers: [ChangeNotifierProvider(
           create: (_) => ThemeProvider(isLight: true),
         ),ChangeNotifierProvider(
-          create: (_) => ShopProvider(items: [Item(
-              itemKey: 'ABC123',
-              price: 2.33,
-              totalPrice: 43.99,
-              itemName: 'Special Korean kale',
-              quantity: 2,
-              imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png')]),
+          create: (_) => ShopProvider(items: List<Item>()),
         )],
           child: MyApp(),
       )

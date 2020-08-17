@@ -273,6 +273,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               url: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
                               onTap: (){
                                 Item item = Item(
+                                    itemKey: 'DLX873',
                                     imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
                                     quantity: 1,
                                     price: 14.99,
