@@ -19,23 +19,6 @@ class UIItenary extends StatelessWidget {
 
   UIItenary({@required this.itemKey, this.itemCount, this.price, this.maxCount, this.discountedPrice, this.itemName, this.thumbnail, this.totalPrice});
 
-  updatePrice(int itemCount, double price){
-      totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
-//    Provider.of<ShopProvider>(context, listen: false).updateItem(itemKey, itemCount);
-  }
-
-  adjustCount(bool increment){
-    print('adjustCount($increment): itemCount is:'+itemCount.toString());
-    itemCount = increment ? itemCount+1 : itemCount-1;
-    if(itemCount < 1){
-      itemCount = 1;
-    }
-    if(10 >= 1){
-      itemCount = maxCount;
-    }
-    updatePrice(itemCount, price);
-  }
-
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -102,7 +85,7 @@ class UIItenary extends StatelessWidget {
                       children: <Widget>[
                         GestureDetector(
                           onTap:() {
-                            adjustCount(false);
+//                            adjustCount(false);
                           },
                           child: Icon(Icons.remove_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
                         ),
@@ -111,7 +94,7 @@ class UIItenary extends StatelessWidget {
                         SizedBox(width: 7,),
                         GestureDetector(
                           onTap:() {
-                            adjustCount(true);
+//                            adjustCount(true);
                           },
                           child: Icon(Icons.add_circle_outline, color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite,),
                         ),

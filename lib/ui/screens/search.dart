@@ -17,7 +17,7 @@ class SearchScreen extends StatelessWidget {
         brightness: Brightness.light,
         actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.shopping_cart, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
+            icon: Icon(Icons.filter, color: (themeProvider.isLight) ? flatBlack : flatWhite,),
             onPressed: (){
               Navigator.pushNamed(context, '/cart');
             },
@@ -33,7 +33,7 @@ class SearchScreen extends StatelessWidget {
         iconTheme: IconThemeData(
             color: (themeProvider.isLight) ? flatBlack : flatWhite
         ),
-        title: Text('Home', style: TextStyle(
+        title: Text('Search', style: TextStyle(
             fontFamily: primaryFont,
             color: (themeProvider.isLight) ? flatBlack : flatWhite
         ),),
@@ -82,6 +82,76 @@ class SearchScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 20,),
+                Row(
+                  children: <Widget>[
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: 72,
+                          height: 72,
+                          decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                image: AssetImage('assets/images/detail-search-breakfast.png'),
+                                fit: BoxFit.fill
+                              )
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Text('Breakfast', textAlign: TextAlign.center, style: bodyRegularText.copyWith(
+                          color: themeProvider.isLight ? flatBlack : flatWhite
+                        ),),
+                      ],
+                    ),
+                    SizedBox(width: 20,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: 72,
+                          height: 72,
+                          decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage('assets/images/detail-search-lunch.png'),
+                                  fit: BoxFit.fill
+                              )
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Text('Lunch', textAlign: TextAlign.center, style: bodyRegularText.copyWith(
+                            color: themeProvider.isLight ? flatBlack : flatWhite
+                        ),),
+                      ],
+                    ),
+                    SizedBox(width: 20,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Container(
+                          width: 72,
+                          height: 72,
+                          decoration: BoxDecoration(
+                              color: Colors.red,
+                              shape: BoxShape.circle,
+                              image: DecorationImage(
+                                  image: AssetImage('assets/images/detail-search-dinner.png'),
+                                  fit: BoxFit.fill
+                              )
+                          ),
+                        ),
+                        SizedBox(height: 10,),
+                        Text('Dinner', textAlign: TextAlign.center, style: bodyRegularText.copyWith(
+                            color: themeProvider.isLight ? flatBlack : flatWhite
+                        ),),
+                      ],
+                    )
+                  ],
+                ),
+                SizedBox(height: 20,),
                 Container(
                   decoration: BoxDecoration(
                     borderRadius : BorderRadius.only(
@@ -100,48 +170,16 @@ class SearchScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text("Search Results", style: TextStyle(color: Color(0xffdfe6e9), fontSize: 16, fontFamily: "Poppins", fontWeight: FontWeight.w600, ), ),
+                      Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Text("Search Results", style: TextStyle(
+                          color: themeProvider.isLight ? flatBlack : flatWhite,
+                          fontSize: 16,
+                          fontFamily: "Poppins",
+                          fontWeight: FontWeight.w600,),
+                        ),
+                      ),
                       Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                      FlatButton(
-                        child: UIItenary(),
-                        padding: EdgeInsets.zero,
-                        onPressed: (){
-                          showDialog(context: context, builder: (BuildContext context){
-                            return AlertDialog(
-                              actions: <Widget>[
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: <Widget>[
-                                    FlatButton(
-                                      child: Text('Delete'),
-                                    ),
-                                  ],
-                                )
-                              ],
-                            );
-                          });
-                        },
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                      ),
-                      UIItenary(),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                      ),
-                      UIItenary(),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 5),
-                        child: Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.3) : flatWhite.withOpacity(0.3), height: 1,),
-                      ),
                     ],
                   ),
                 ),
