@@ -13,20 +13,38 @@ class SearchScreen extends StatelessWidget {
 
   List<Item> searchResults = [
     Item(
-      itemName: 'Squashed Eggs',
-      price: 4.44,
-      imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png'
+        itemKey: 'DLX234',
+        imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png',
+        quantity: 1,
+        price: 4.99,
+        totalPrice: 4.99,
+        itemName: 'Heavenly Burgers'
     ),
     Item(
-        itemName: 'Squashed Eggs',
-        price: 4.44,
-        imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png'
+        itemKey: 'DLX873',
+        imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
+        quantity: 1,
+        price: 14.99,
+        totalPrice: 4.99,
+        itemName: 'Scotch Bread'
     ),
     Item(
-        itemName: 'Squashed Eggs',
-        price: 4.44,
-        imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png'
+        imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail3.png',
+        quantity: 1,
+        price: 4.99,
+        totalPrice: 4.99,
+        itemName: 'Pizza',
+        itemKey: 'DLX159',
     ),
+  ];
+
+  List<Vendor> vendorResults = [
+    Vendor(
+      name: 'Noodle Nation & States of Meat',
+      vendorKey: 'RLX343',
+      isOpen: true,
+      imageUrl: 'http://www.audacitus.com/mobile_app_assets/vendor1.png'
+    )
   ];
 
   @override
@@ -205,61 +223,66 @@ class SearchScreen extends StatelessWidget {
                       ListView.builder(
                         physics: ScrollPhysics(),
                         shrinkWrap: true,
-                        itemBuilder: (_, int index)=>Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Container(
-                                  width: 56,
-                                  height: 56,
-                                  decoration: BoxDecoration(
-                                    borderRadius : BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(10),
-                                      bottomLeft: Radius.circular(10),
-                                      bottomRight: Radius.circular(10),
+                        itemBuilder: (_, int index)=>GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).pushNamed("/detail", arguments: searchResults[index]);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                    width: 56,
+                                    height: 56,
+                                    decoration: BoxDecoration(
+                                      borderRadius : BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10),
+                                        bottomLeft: Radius.circular(10),
+                                        bottomRight: Radius.circular(10),
+                                      ),
+                                      image : DecorationImage(
+                                          image: NetworkImage(searchResults[index].imageUrl),
+                                          fit: BoxFit.fill
+                                      ),
+                                    )
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 15),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(searchResults[index].itemName, textAlign: TextAlign.left, style: TextStyle(
+                                            color: themeProvider.isLight ? flatBlack : flatWhite,
+                                            fontFamily: 'Nunito',
+                                            fontSize: 15,
+                                            letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                            fontWeight: FontWeight.normal,
+                                            height: 1.3333333333333333
+                                        ),)
+                                      ],
                                     ),
-                                    image : DecorationImage(
-                                        image: AssetImage('assets/images/food1.png'),
-                                        fit: BoxFit.fill
-                                    ),
-                                  )
-                              ),
-                              Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 15),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text('Sausage Brunch', textAlign: TextAlign.left, style: TextStyle(
-                                          color: themeProvider.isLight ? flatBlack : flatWhite,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 15,
-                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                          fontWeight: FontWeight.normal,
-                                          height: 1.3333333333333333
-                                      ),)
-                                    ],
                                   ),
                                 ),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  Text('\$58.00', textAlign: TextAlign.right, style: TextStyle(
-                                      color: themeProvider.isLight ? flatBlack : flatWhite,
-                                      fontFamily: 'Poppins',
-                                      fontSize: 20,
-                                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                      fontWeight: FontWeight.normal,
-                                      height: 1
-                                  ),),
-                                ],
-                              ),
-                            ],
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Text('\$'+searchResults[index].price.toString(), textAlign: TextAlign.right, style: TextStyle(
+                                        color: themeProvider.isLight ? flatBlack : flatWhite,
+                                        fontFamily: 'Poppins',
+                                        fontSize: 20,
+                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                        fontWeight: FontWeight.normal,
+                                        height: 1
+                                    ),),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         itemCount: searchResults.length,
@@ -277,64 +300,69 @@ class SearchScreen extends StatelessWidget {
                       ListView.builder(
                         physics: ScrollPhysics(),
                         shrinkWrap: true,
-                        itemBuilder: (_, int index)=>Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Container(
-                                  width: 56,
-                                  height: 56,
-                                  decoration: BoxDecoration(
-                                    borderRadius : BorderRadius.only(
-                                      topLeft: Radius.circular(10),
-                                      topRight: Radius.circular(10),
-                                      bottomLeft: Radius.circular(10),
-                                      bottomRight: Radius.circular(10),
+                        itemBuilder: (_, int index)=>GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).pushNamed('/vendor');
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(12.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                Container(
+                                    width: 56,
+                                    height: 56,
+                                    decoration: BoxDecoration(
+                                      borderRadius : BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        topRight: Radius.circular(10),
+                                        bottomLeft: Radius.circular(10),
+                                        bottomRight: Radius.circular(10),
+                                      ),
+                                      image : DecorationImage(
+                                          image: NetworkImage(vendorResults[index].imageUrl),
+                                          fit: BoxFit.fill
+                                      ),
+                                    )
+                                ),
+                                Expanded(
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(horizontal: 15),
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: <Widget>[
+                                        Text(vendorResults[index].name, textAlign: TextAlign.left, style: TextStyle(
+                                            color: themeProvider.isLight ? flatBlack : flatWhite,
+                                            fontFamily: 'Nunito',
+                                            fontSize: 15,
+                                            letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                            fontWeight: FontWeight.normal,
+                                            height: 1.3333333333333333
+                                        ),)
+                                      ],
                                     ),
-                                    image : DecorationImage(
-                                        image: AssetImage('assets/images/food1.png'),
-                                        fit: BoxFit.fill
-                                    ),
-                                  )
-                              ),
-                              Expanded(
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(horizontal: 15),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: <Widget>[
-                                      Text('Sausage Brunch', textAlign: TextAlign.left, style: TextStyle(
-                                          color: themeProvider.isLight ? flatBlack : flatWhite,
-                                          fontFamily: 'Nunito',
-                                          fontSize: 15,
-                                          letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                          fontWeight: FontWeight.normal,
-                                          height: 1.3333333333333333
-                                      ),)
-                                    ],
                                   ),
                                 ),
-                              ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.end,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: <Widget>[
-                                  Text('\$58.00', textAlign: TextAlign.right, style: TextStyle(
-                                      color: themeProvider.isLight ? flatBlack : flatWhite,
-                                      fontFamily: 'Poppins',
-                                      fontSize: 20,
-                                      letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                      fontWeight: FontWeight.normal,
-                                      height: 1
-                                  ),),
-                                ],
-                              ),
-                            ],
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: <Widget>[
+                                    Text(vendorResults[index].isOpen ? 'OPEN' : 'CLOSED', textAlign: TextAlign.right, style: TextStyle(
+                                        color: themeProvider.isLight ? flatBlack : flatWhite,
+                                        fontFamily: 'Poppins',
+                                        fontSize: 20,
+                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
+                                        fontWeight: FontWeight.w600,
+                                        height: 1
+                                    ),),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                        itemCount: searchResults.length,
+                        itemCount: vendorResults.length,
                       ),
                     ],
                   ),

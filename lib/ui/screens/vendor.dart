@@ -8,6 +8,7 @@ import 'package:fudie_ui_flutter/ui/widgets/extra.dart';
 import 'package:fudie_ui_flutter/ui/widgets/quote.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 
 class VendorScreen extends StatelessWidget {
   @override
@@ -19,7 +20,6 @@ class VendorScreen extends StatelessWidget {
     final headingPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.01);
     return Scaffold(
         backgroundColor: (themeProvider.isLight) ? themeProvider.lightTheme.scaffoldBackground : themeProvider.darkTheme.scaffoldBackground,
-        drawer: SideMenuScreen(),
         appBar: AppBar(
           brightness: Brightness.light,
           actions: <Widget>[
@@ -112,7 +112,7 @@ class VendorScreen extends StatelessWidget {
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: screenWidth * 0.04),
                   child: UITitle(text: 'New Deals', color: themeProvider.isLight ? flatBlack: flatWhite,),
                 ),
-                UIItemLarge(),
+                UIItemLarge(vendor: 'Naruto Shop', price: 15.99, url: 'http://www.audacitus.com/mobile_app_assets/item-large2.png', description: 'Chilli Soul Food',),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue, vertical: 30),
                   child: Row(

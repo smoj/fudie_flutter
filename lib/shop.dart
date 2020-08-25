@@ -64,6 +64,7 @@ class Vendor {
   String name;
   String vendorKey;
   bool isOpen;
+  String imageUrl;
 
-  Vendor({@required this.name, @required this.vendorKey, this.isOpen});
+  Vendor({@required this.name, @required this.vendorKey, this.isOpen, this.imageUrl});
 }
