@@ -59,3 +59,11 @@ class Item {
     return '{ ${this.itemKey}, ${this.itemName}, ${this.quantity}, ${this.price}, ${this.totalPrice}, }';
   }
 }
+
+class Vendor {
+  String name;
+  String vendorKey;
+  bool isOpen;
+
+  Vendor({@required this.name, @required this.vendorKey, this.isOpen});
+}
