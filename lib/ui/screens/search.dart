@@ -227,62 +227,10 @@ class SearchScreen extends StatelessWidget {
                           onTap: (){
                             Navigator.of(context).pushNamed("/detail", arguments: searchResults[index]);
                           },
-                          child: Padding(
-                            padding: const EdgeInsets.all(12.0),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: <Widget>[
-                                Container(
-                                    width: 56,
-                                    height: 56,
-                                    decoration: BoxDecoration(
-                                      borderRadius : BorderRadius.only(
-                                        topLeft: Radius.circular(10),
-                                        topRight: Radius.circular(10),
-                                        bottomLeft: Radius.circular(10),
-                                        bottomRight: Radius.circular(10),
-                                      ),
-                                      image : DecorationImage(
-                                          image: NetworkImage(searchResults[index].imageUrl),
-                                          fit: BoxFit.fill
-                                      ),
-                                    )
-                                ),
-                                Expanded(
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(horizontal: 15),
-                                    child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(searchResults[index].itemName, textAlign: TextAlign.left, style: TextStyle(
-                                            color: themeProvider.isLight ? flatBlack : flatWhite,
-                                            fontFamily: 'Nunito',
-                                            fontSize: 15,
-                                            letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                            fontWeight: FontWeight.normal,
-                                            height: 1.3333333333333333
-                                        ),)
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: <Widget>[
-                                    Text('\$'+searchResults[index].price.toString(), textAlign: TextAlign.right, style: TextStyle(
-                                        color: themeProvider.isLight ? flatBlack : flatWhite,
-                                        fontFamily: 'Poppins',
-                                        fontSize: 20,
-                                        letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                                        fontWeight: FontWeight.normal,
-                                        height: 1
-                                    ),),
-                                  ],
-                                ),
-                              ],
-                            ),
+                          child: UIItenary(
+                            imageUrl: searchResults[index].imageUrl,
+                            price: searchResults[index].price,
+                            name: searchResults[index].itemName,
                           ),
                         ),
                         itemCount: searchResults.length,

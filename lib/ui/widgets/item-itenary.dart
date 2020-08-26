@@ -4,6 +4,20 @@ import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
 class UIItenary extends StatelessWidget {
+
+  final String name;
+  final imageUrl;
+  final double price;
+  final double discount;
+
+  UIItenary({this.name, this.imageUrl, this.price, this.discount = 0}) : assert(discount >= 0 && discount <= 1, name != null);
+
+  Widget showDiscount(){
+    if(this.discount == 0){
+
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -23,7 +37,7 @@ class UIItenary extends StatelessWidget {
                   bottomRight: Radius.circular(10),
                 ),
                 image : DecorationImage(
-                    image: AssetImage('assets/images/food1.png'),
+                    image: NetworkImage('$imageUrl'),
                     fit: BoxFit.fill
                 ),
               )
@@ -35,7 +49,7 @@ class UIItenary extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text('Sausage Brunch', textAlign: TextAlign.left, style: TextStyle(
+                  Text('$name', textAlign: TextAlign.left, style: TextStyle(
                       color: themeProvider.isLight ? flatBlack : flatWhite,
                       fontFamily: 'Nunito',
                       fontSize: 15,
@@ -47,20 +61,19 @@ class UIItenary extends StatelessWidget {
               ),
             ),
           ),
-          // Figma Flutter Generator 5800Widget - TEXT
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
-              Text('\$58.00', textAlign: TextAlign.right, style: TextStyle(
+              Text('\$$price', textAlign: TextAlign.right, style: TextStyle(
                   color: themeProvider.isLight ? flatBlack : flatWhite,
                   fontFamily: 'Poppins',
                   fontSize: 20,
                   letterSpacing: 0 /*percentages not used in flutter. defaulting to zero*/,
-                  fontWeight: FontWeight.normal,
+                  fontWeight: FontWeight.w600,
                   height: 1
               ),),
-              Text('30% Discount', textAlign: TextAlign.right, style: TextStyle(
+              Text((this.discount == 0) ? '' : (this.discount * 100).toString() + '% Discount', textAlign: TextAlign.right, style: TextStyle(
                   color: themeProvider.isLight ? primaryColor : accentColor,
                   fontFamily: 'Nunito',
                   fontSize: 12,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 
 class SideMenuScreen extends StatelessWidget {
 
@@ -11,6 +12,7 @@ class SideMenuScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
   final themeProvider = Provider.of<ThemeProvider>(context);
+  final shopProvider = Provider.of<ShopProvider>(context);
   final screenWidth = MediaQuery.of(context).size.width;
     return Drawer(
       child: Container(
@@ -88,7 +90,7 @@ class SideMenuScreen extends StatelessWidget {
                                 color: Colors.red,
                                 shape: BoxShape.circle
                             ),
-                            child: Text('89', textAlign: TextAlign.center, style: TextStyle(
+                            child: Text(shopProvider.items.length.toString(), textAlign: TextAlign.center, style: TextStyle(
                                 color: flatWhite,
                                 fontSize: 15,
                                 fontFamily: secondaryFont,

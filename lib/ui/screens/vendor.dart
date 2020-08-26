@@ -10,7 +10,37 @@ import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 import 'package:fudie_ui_flutter/shop.dart';
 
+
 class VendorScreen extends StatelessWidget {
+
+  List<Item> vendorMenu = [
+    Item(
+        itemKey: 'DLX234',
+        imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail.png',
+        quantity: 1,
+        price: 4.99,
+        totalPrice: 4.99,
+        itemName: 'Heavenly Burgers'
+    ),
+    Item(
+        itemKey: 'DLX873',
+        imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail2.png',
+        quantity: 1,
+        price: 14.99,
+        totalPrice: 4.99,
+        itemName: 'Scotch Bread'
+    ),
+    Item(
+      imageUrl: 'http://www.audacitus.com/mobile_app_assets/detail3.png',
+      quantity: 1,
+      price: 4.99,
+      totalPrice: 4.99,
+      itemName: 'Pizza',
+      itemKey: 'DLX159',
+    ),
+  ];
+
+
   @override
   Widget build(BuildContext context) {
     final themeProvider = Provider.of<ThemeProvider>(context);
@@ -193,13 +223,27 @@ class VendorScreen extends StatelessWidget {
                             ),),
                           ),
                           Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5), height: 1,),
-                          UIItenary(),
-                          Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5), height: 1,),
-                          UIItenary(),
-                          Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5), height: 1,),
-                          UIItenary(),
-                          Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5), height: 1,),
-                          UIItenary(),
+                          ListView.builder(
+                            itemBuilder: (_, int index)=>Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: <Widget>[
+                                FlatButton(
+                                  padding: EdgeInsets.zero,
+                                  onPressed: (){
+                                    Navigator.of(context).pushNamed("/detail", arguments: vendorMenu[index]);
+                                  },
+                                  child: UIItenary(
+                                    name: vendorMenu[index].itemName,
+                                    imageUrl: vendorMenu[index].imageUrl,
+                                    price: vendorMenu[index].price,
+                                  ),
+                                ),
+                                Divider(color: themeProvider.isLight ? flatBlack.withOpacity(0.5) : flatWhite.withOpacity(0.5), height: 1,),
+                              ],
+                            ),
+                            itemCount: vendorMenu.length,
+                            shrinkWrap: true,
+                          ),
                         ],
                       ),
                       decoration: BoxDecoration(
