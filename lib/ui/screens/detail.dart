@@ -55,6 +55,41 @@ class _DetailScreenState extends State<DetailScreen> {
     updatePrice(widget.itemCount, widget.price);
   }
 
+  Widget showExtras(List<Extra> extra){
+    final screenWidth = MediaQuery.of(context).size.width;
+    final horizontalPadding = screenWidth * 0.045;
+    final headingPadding = EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: screenWidth * 0.01);
+    return (extra.length > 0 || extra != null) ? Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Padding(
+          padding: headingPadding,
+          child: UITitle(text: 'Extras',),
+        ),
+        SizedBox(height: 20,),
+        Padding(
+          padding: headingPadding,
+          child: GridView.builder(
+            shrinkWrap: true,
+            physics: ScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10.0,
+                mainAxisSpacing: 10.0,
+                childAspectRatio: 4/3
+            ),
+            itemBuilder: (_, int index){
+              return UIExtra(
+                title: widget.item.extras[index].name,
+                price: '\$'+widget.item.extras[index].price.toString(),);
+            },
+            itemCount: widget.item.extras.length,
+          ),
+        )
+      ],
+    ) : SizedBox(height: 0,);
+  }
+
   @override
   Widget build(BuildContext context) {
     // takes arguments from prior screen
@@ -312,21 +347,8 @@ class _DetailScreenState extends State<DetailScreen> {
                             height: 1.5
                         ),),
                       ),
-                      Padding(
-                        padding: headingPadding,
-                        child: UITitle(text: 'Extras',),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.045, vertical: screenWidth * 0.065),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: <Widget>[
-                            UIExtra(title: 'Pickles', price: '\$1.99',),
-                            SizedBox(width: 10,),
-                            UIExtra(title: 'Onions', price: '\$4.99',),
-                          ],
-                        ),
-                      ),
+                      (widget.item.extras != null)? showExtras(widget.item.extras) : SizedBox(height: 0,),
+                      SizedBox(height: 20,),
                       Padding(
                         padding: headingPadding,
                         child: UITitle(text: 'More from Vendor',),

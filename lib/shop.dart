@@ -52,7 +52,16 @@ class Item {
   double price;
   String imageUrl;
   @required String itemKey;
-  Item({this.itemKey, this.itemName, this.quantity, this.price, this.totalPrice, this.imageUrl});
+  List<Extra> extras;
+  Item({
+    this.itemKey,
+    this.itemName,
+    this.quantity,
+    this.price,
+    this.totalPrice,
+    this.imageUrl,
+    this.extras,
+  });
 
   @override
   String toString() {
@@ -67,4 +76,11 @@ class Vendor {
   String imageUrl;
 
   Vendor({@required this.name, @required this.vendorKey, this.isOpen, this.imageUrl});
+}
+
+class Extra {
+  String name;
+  double price;
+
+  Extra({@required this.name, @required this.price});
 }
