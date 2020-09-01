@@ -81,6 +81,7 @@ class Vendor {
 class Extra {
   String name;
   double price;
+  bool selected;
 
-  Extra({@required this.name, @required this.price});
+  Extra({@required this.name, @required this.price, this.selected});
 }

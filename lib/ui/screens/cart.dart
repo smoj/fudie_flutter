@@ -223,7 +223,8 @@ class _CartScreenState extends State<CartScreen> {
                                                   Text(shopProvider.items[index].quantity.toString(), style: bodyRegularText.copyWith(
                                                     fontSize: MediaQuery.of(context).size.width * 0.06,
                                                     fontWeight: FontWeight.w600,
-                                                    height: 1.3
+                                                    height: 1.3,
+                                                    color: themeProvider.isLight ? flatBlack : flatWhite
                                                   ),),
                                                   SizedBox(width: 7,),
                                                   GestureDetector(

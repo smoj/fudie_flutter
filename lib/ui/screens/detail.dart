@@ -19,6 +19,11 @@ class DetailScreen extends StatefulWidget {
   double discountedPrice;
   Item item;
 
+  // Function to get data from UIExtra() widget.
+  callback(data){
+    print('data from child Extra to DetailScreen: '+data);
+  }
+
   DetailScreen(this.item);
 
   @override
@@ -81,7 +86,9 @@ class _DetailScreenState extends State<DetailScreen> {
             itemBuilder: (_, int index){
               return UIExtra(
                 title: widget.item.extras[index].name,
-                price: '\$'+widget.item.extras[index].price.toString(),);
+                price: '\$'+widget.item.extras[index].price.toString(),
+                callback: widget.callback, // changes from inside UIExtra will trigger widget.callback
+              );
             },
             itemCount: widget.item.extras.length,
           ),
@@ -408,6 +415,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         totalPrice: widget.totalPrice,
                         itemName: widget.item.itemName,
                         quantity: widget.itemCount,
+                        extras: (widget.item.extras.length > 0) ? widget.item.extras : [],
                         imageUrl: widget.item.imageUrl));
                      Navigator.of(context).pushNamed('/order-added', arguments: widget.item);
                   },),

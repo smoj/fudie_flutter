@@ -6,8 +6,9 @@ class UIExtra extends StatefulWidget {
 
   final String title;
   final String price;
+  Function(String) callback;
 
-  UIExtra({@required this.title, @required this.price});
+  UIExtra({@required this.title, @required this.price, this.callback});
 
   @override
   _UIExtraState createState() => _UIExtraState();
@@ -26,6 +27,7 @@ class _UIExtraState extends State<UIExtra> {
     return GestureDetector(
       onTap: (){
         print('toggle');
+        widget.callback('something new');
         setState(() {
           if(selected){
             selected = false;
