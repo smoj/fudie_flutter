@@ -65,7 +65,7 @@ class Item {
 
   @override
   String toString() {
-    return '{ ${this.itemKey}, ${this.itemName}, ${this.quantity}, ${this.price}, ${this.totalPrice}, }';
+    return '{ ${this.itemKey}, ${this.itemName}, ${this.quantity}, ${this.price}, ${this.totalPrice}. Extras: ${this.extras} }';
   }
 }
 

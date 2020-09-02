@@ -445,7 +445,7 @@ class _DetailScreenState extends State<DetailScreen> {
                         totalPrice: widget.totalPrice,
                         itemName: widget.item.itemName,
                         quantity: widget.itemCount,
-                        extras: (widget.item.extras.length > 0) ? widget.item.extras : [],
+                        extras: (widget.item.extras != null && widget.item.extras.length > 0 ) ? widget.item.extras : [],
                         imageUrl: widget.item.imageUrl));
                      Navigator.of(context).pushNamed('/order-added', arguments: widget.item);
                   },),

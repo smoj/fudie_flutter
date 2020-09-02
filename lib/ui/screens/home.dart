@@ -237,12 +237,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: screenWidth * ScreenGapValue),
-                        child: UIOrder(
-                          order: '#45444444443',
-                          qty: '33',
-                          description: 'Sunday May 22nd 2020',
-                          imageUrl: 'http://www.audacitus.com/mobile_app_assets/tiny-order-summary.png',
-                          total: '\$334.73',
+                        child: FlatButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: (){
+                            Navigator.pushNamed(context, '/history');
+                          },
+                          child: UIOrder(
+                            order: '#45444444443',
+                            qty: '33',
+                            description: 'Sunday May 22nd 2020',
+                            imageUrl: 'http://www.audacitus.com/mobile_app_assets/tiny-order-summary.png',
+                            total: '\$334.73',
+                          ),
                         ),
                       ),
                       SizedBox(

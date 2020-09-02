@@ -20,6 +20,7 @@ import 'package:fudie_ui_flutter/ui/screens/favourite.dart';
 import 'package:fudie_ui_flutter/ui/screens/story_highlight.dart';
 import 'package:fudie_ui_flutter/ui/screens/profile.dart';
 import 'package:fudie_ui_flutter/ui/screens/search.dart';
+import 'package:fudie_ui_flutter/ui/screens/order-history.dart';
 import 'package:fudie_ui_flutter/ui/screens/i_slider.dart';
 import 'package:fudie_ui_flutter/ui/screens/edit_profile.dart';
 import 'package:provider/provider.dart';
@@ -73,6 +74,7 @@ class MyApp extends StatelessWidget {
         '/vendor' : (context) => VendorScreen(),
         '/search' : (context) => SearchScreen(),
         '/cards' : (context) => CardScreen(),
+        '/history' : (context) => OrderHistory(),
         '/success' : (context) => SuccessScreen()
       },
       onGenerateRoute: (RouteSettings settings) {
