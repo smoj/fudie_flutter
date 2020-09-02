@@ -83,5 +83,11 @@ class Extra {
   double price;
   bool selected;
 
+
   Extra({@required this.name, @required this.price, this.selected});
+
+  @override
+  String toString() {
+    return '{ Extra(): ${this.name}, ${this.price}, ${this.selected},}';
+  }
 }

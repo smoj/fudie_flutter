@@ -19,10 +19,6 @@ class DetailScreen extends StatefulWidget {
   double discountedPrice;
   Item item;
 
-  // Function to get data from UIExtra() widget.
-  callback(data){
-    print('data from child Extra to DetailScreen: '+data);
-  }
 
   DetailScreen(this.item);
 
@@ -32,6 +28,14 @@ class DetailScreen extends StatefulWidget {
 }
 
 class _DetailScreenState extends State<DetailScreen> {
+
+  // Function to get data from UIExtra() widget.
+  callback(List<Extra> data){
+    print('data from child Extra to DetailScreen: '+data.toString());
+    setState(() {
+      widget.item.extras = data;
+    });
+  }
 
   void initState(){
     super.initState();
@@ -87,7 +91,8 @@ class _DetailScreenState extends State<DetailScreen> {
               return UIExtra(
                 title: widget.item.extras[index].name,
                 price: '\$'+widget.item.extras[index].price.toString(),
-                callback: widget.callback, // changes from inside UIExtra will trigger widget.callback
+                callback: callback, // changes from inside UIExtra will trigger widget.callback
+                extras: (widget.item.extras != null) ? widget.item.extras : [],
               );
             },
             itemCount: widget.item.extras.length,

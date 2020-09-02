@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fudie_ui_flutter/shop.dart';
 import 'package:provider/provider.dart';
 import 'package:fudie_ui_flutter/ui/theme_switch.dart';
 
@@ -6,9 +7,10 @@ class UIExtra extends StatefulWidget {
 
   final String title;
   final String price;
-  Function(String) callback;
+  final List<Extra> extras;
+  Function(List<Extra>) callback;
 
-  UIExtra({@required this.title, @required this.price, this.callback});
+  UIExtra({@required this.title, @required this.price, this.callback, @required this.extras});
 
   @override
   _UIExtraState createState() => _UIExtraState();
@@ -27,7 +29,7 @@ class _UIExtraState extends State<UIExtra> {
     return GestureDetector(
       onTap: (){
         print('toggle');
-        widget.callback('something new');
+        widget.callback([Extra(name: 'Updated Item', price: 999, selected: true)]);
         setState(() {
           if(selected){
             selected = false;
