@@ -82,12 +82,13 @@ class Extra {
   String name;
   double price;
   bool selected;
+  String extraId;
 
 
-  Extra({@required this.name, @required this.price, this.selected});
+  Extra({@required this.name, @required this.price, this.selected, @required this.extraId});
 
   @override
   String toString() {
-    return '{ Extra(): ${this.name}, ${this.price}, ${this.selected},}';
+    return '{ Extra(): ${this.name}, ${this.price}, ${this.selected}, ${this.extraId}';
   }
 }

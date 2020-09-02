@@ -8,19 +8,29 @@ class UIExtra extends StatefulWidget {
   final String title;
   final String price;
   final List<Extra> extras;
+  final String extraId;
+  final bool selected;
   Function(List<Extra>) callback;
 
-  UIExtra({@required this.title, @required this.price, this.callback, @required this.extras});
+  UIExtra({
+    @required this.title,
+    @required this.price,
+    this.callback,
+    @required this.extras,
+    @required this.extraId,
+    @required this.selected
+  });
 
   @override
   _UIExtraState createState() => _UIExtraState();
 }
 
 class _UIExtraState extends State<UIExtra> {
-  bool selected = false;
+  bool selected;
   @override
   void initState(){
     super.initState();
+    selected = widget.selected;
   }
 
   @override
@@ -28,8 +38,12 @@ class _UIExtraState extends State<UIExtra> {
     final themeProvider = Provider.of<ThemeProvider>(context);
     return GestureDetector(
       onTap: (){
-        print('toggle');
-        widget.callback([Extra(name: 'Updated Item', price: 999, selected: true)]);
+//        print('toggle');
+//        widget.callback([Extra(name: 'Updated Item', price: 999, selected: true)]);
+        int index = widget.extras.indexWhere((extra)=> extra.extraId == widget.extraId);
+//        print('extraId index is'+index.toString());
+        widget.extras[index].selected = !widget.extras[index].selected;
+        widget.callback(widget.extras);
         setState(() {
           if(selected){
             selected = false;

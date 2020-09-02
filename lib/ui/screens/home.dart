@@ -198,8 +198,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 totalPrice: 4.99,
                                 itemName: 'Heavenly Burgers',
                                 extras: [
-                                  Extra(name: 'Caramelized Onions Spiced', price: 3.44),
-                                  Extra(name: 'More Cheese', price: 3.44)
+                                  Extra(name: 'Caramelized Onions Spiced', price: 3.99, extraId: 'Ex344', selected: false),
+                                  Extra(name: 'More Cheese', price: 0.99, extraId: 'Ex323', selected: false)
                                 ]
                             );
                             Navigator.of(context).pushNamed("/detail", arguments: item);

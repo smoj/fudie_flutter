@@ -19,7 +19,6 @@ class DetailScreen extends StatefulWidget {
   double discountedPrice;
   Item item;
 
-
   DetailScreen(this.item);
 
   @override
@@ -29,11 +28,15 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
 
+  double extraSum = 0;
+
   // Function to get data from UIExtra() widget.
   callback(List<Extra> data){
-    print('data from child Extra to DetailScreen: '+data.toString());
+//    print('data from child Extra to DetailScreen: '+data.toString());
     setState(() {
       widget.item.extras = data;
+      calculateExtras();
+      updatePrice(widget.itemCount, widget.price);
     });
   }
 
@@ -49,8 +52,28 @@ class _DetailScreenState extends State<DetailScreen> {
 
   updatePrice(int itemCount, double price){
     setState(() {
-      widget.totalPrice = double.parse((price * itemCount).toStringAsFixed(2));
+      widget.totalPrice = double.parse((price * itemCount).toStringAsFixed(2)) + extraSum;
     });
+  }
+
+  calculateExtras(){
+    List<Extra> filtered = widget.item.extras.where((extra)=> extra.selected).toList();
+    if(filtered.length > 0){
+      Extra total = filtered.reduce((Extra curr, Extra next){
+        return Extra(
+            price: curr.price + next.price
+        );
+      });
+      print('Extra Cost: '+total.price.toString());
+      setState(() {
+        extraSum = total.price;
+      });
+    }
+    else{
+      setState(() {
+        extraSum = 0.01;
+      });
+    }
   }
 
   adjustCount(bool increment){
@@ -93,6 +116,8 @@ class _DetailScreenState extends State<DetailScreen> {
                 price: '\$'+widget.item.extras[index].price.toString(),
                 callback: callback, // changes from inside UIExtra will trigger widget.callback
                 extras: (widget.item.extras != null) ? widget.item.extras : [],
+                extraId: widget.item.extras[index].extraId,
+                selected: (widget.item.extras[index].selected != null) ? widget.item.extras[index].selected : false,
               );
             },
             itemCount: widget.item.extras.length,
