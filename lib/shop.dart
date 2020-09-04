@@ -69,6 +69,27 @@ class Item {
   }
 }
 
+class Order {
+  String orderName;
+  int number;
+  double totalPrice;
+  String imageUrl;
+  @required String orderKey;
+  List<Item> items;
+  Order({
+    this.orderKey,
+    this.totalPrice,
+    this.imageUrl,
+    this.items,
+    this.orderName
+  });
+
+  @override
+  String toString() {
+    return '{ ${this.orderKey}, ${this.totalPrice}. Extras: ${this.items} }';
+  }
+}
+
 class Vendor {
   String name;
   String vendorKey;
