@@ -298,7 +298,7 @@ class _CartScreenState extends State<CartScreen> {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: (shopProvider.items.length > 0) ? UIButton(buttonText: 'Pay', price: '\$'+shopProvider.sum.totalPrice.toString(), onTap: (){
-                    Navigator.of(context).pushNamed('/success');
+                    Navigator.of(context).pushNamed('/address');
                   },) : UIButton(buttonText: 'Go Back', onTap: (){
                     Navigator.of(context).pop();
                   },),

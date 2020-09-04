@@ -90,6 +90,20 @@ class Order {
   }
 }
 
+class Address {
+  String address;
+  String addressKey;
+  Address({
+    @required this.address,
+    @required this.addressKey
+  });
+
+  @override
+  String toString() {
+    return '{ ${this.address}, ${this.addressKey} }';
+  }
+}
+
 class Vendor {
   String name;
   String vendorKey;
