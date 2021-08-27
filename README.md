@@ -1,6 +1,10 @@
 # Flutter Food App
 
 A custom UI for Food apps build using flutter
+![fudie-screen](https://user-images.githubusercontent.com/6443227/131125268-86ae0590-5099-400f-90d7-fb8b1c820085.png)
+![s2](https://user-images.githubusercontent.com/6443227/131125335-f355968e-826b-46a8-b843-58443d7c1d58.png)
+
+
 
 ## Installation
 
